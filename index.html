@@ -8,52 +8,56 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
 
 <style>
+
 body {
     font-family:'Inter',sans-serif;
     margin:0;
     background:#f8fafc;
-    color:#1e293b;
+    color:#0f172a;
 }
 
- .intro-question {
-    font-size: 32px; /* samme størrelse som din undertekst */
-    font-style: italic;
-    color: #64748b;
-    text-align: center;
-    margin-top: 20px;
-}   
 /* HERO */
 .hero {
-    padding:100px 10%;
+    padding:120px 10% 80px;
     text-align:center;
 }
 
 .hero h1 {
     font-size:64px;
+    font-weight:600;
+    margin-bottom:10px;
 }
 
 .hero p {
-    font-size:32px;
+    font-size:28px;
     color:#64748b;
+}
+
+/* QUESTION */
+.intro-question {
+    font-size:26px;
+    font-style:italic;
+    color:#94a3b8;
+    margin-top:30px;
 }
 
 /* GRID */
 .grid {
     display:grid;
     grid-template-columns:repeat(3, 1fr);
-    gap:25px;
+    gap:30px;
     padding:40px 10%;
 }
 
 /* CARD */
 .card {
     position:relative;
-    height:180px;
-    border-radius:16px;
+    height:220px;
+    border-radius:18px;
     overflow:hidden;
     display:flex;
     align-items:flex-end;
-    padding:20px;
+    padding:25px;
     text-decoration:none;
     color:white;
     font-weight:600;
@@ -67,7 +71,7 @@ body {
     content:"";
     position:absolute;
     inset:0;
-    background:rgba(0,0,0,0.45);
+    background:linear-gradient(to top, rgba(0,0,0,0.6), rgba(0,0,0,0.1));
     transition:0.4s;
 }
 
@@ -75,17 +79,65 @@ body {
 .card span {
     position:relative;
     z-index:2;
-    font-size:18px;
+    font-size:20px;
 }
 
-/* 🔥 PREMIUM HOVER */
+/* HOVER */
 .card:hover {
-    transform:translateY(-6px);
+    transform:translateY(-8px);
     background-size:120%;
 }
 
 .card:hover::before {
-    background:rgba(0,0,0,0.2);
+    background:linear-gradient(to top, rgba(0,0,0,0.3), rgba(0,0,0,0.05));
+}
+
+/* PREMIUM DIVIDER */
+.divider {
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    margin:80px 10%;
+}
+
+.divider::before,
+.divider::after {
+    content:"";
+    flex:1;
+    height:1px;
+    background:linear-gradient(to right, transparent, #cbd5e1, transparent);
+}
+
+.divider span {
+    padding:0 20px;
+    font-size:22px;
+    font-style:italic;
+    color:#64748b;
+}
+
+/* CTA */
+.cta {
+    text-align:center;
+    padding:100px 10%;
+}
+
+.cta h2 {
+    font-size:36px;
+    margin-bottom:20px;
+}
+
+.btn {
+    background:linear-gradient(90deg,#0ea5e9,#3b82f6);
+    color:white;
+    padding:14px 28px;
+    border-radius:10px;
+    text-decoration:none;
+    font-weight:600;
+    transition:0.3s;
+}
+
+.btn:hover {
+    opacity:0.85;
 }
 
 /* MOBILE */
@@ -99,23 +151,10 @@ body {
     }
 
     .hero p {
-        font-size:22px;
+        font-size:20px;
     }
 }
 
-/* CTA */
-.cta {
-    text-align:center;
-    padding:60px 10%;
-}
-
-.btn {
-    background:#0ea5e9;
-    color:white;
-    padding:12px 20px;
-    border-radius:8px;
-    text-decoration:none;
-}
 </style>
 
 </head>
@@ -127,47 +166,58 @@ body {
     <h1>Din forretning. Ét system.</h1>
     <p>Lad Danpay levere jeres næste kasseapparat</p>
 
-<!-- DEN NYE LINJE -->
- <p class="intro-question">
-    – " Hvilken type forretning har du " – </p>
+    <p class="intro-question">
+    – Hvilken type forretning har du? –
+    </p>
+</div>
 
-<!-- GRID -->
+<!-- BRANCHER -->
 <div class="grid">
 
 <a href="restaurant.html" class="card" style="background-image:url('restaurant.jpg')">
-    <span>Restaurant / Café </span>
+<span>Restaurant / Café</span>
 </a>
 
 <a href="bar.html" class="card" style="background-image:url('bar.jpg')">
-    <span>Bar / Natklub </span>
+<span>Bar / Natklub</span>
 </a>
 
 <a href="hotel.html" class="card" style="background-image:url('hotel.jpg')">
-    <span>Kro / Hotel </span>
+<span>Kro / Hotel</span>
 </a>
 
 <a href="shop.html" class="card" style="background-image:url('butik.jpg')">
-    <span>Detailhandel / Kiosk</span>
+<span>Detailhandel / Kiosk</span>
 </a>
 
 <a href="klinik.html" class="card" style="background-image:url('klinik.jpg')">
-    <span>Frisør,Behandler & Klinikker</span>
+<span>Frisør / Klinik</span>
 </a>
 
 <a href="events.html" class="card" style="background-image:url('event.jpg')">
-    <span>Events</span>
+<span>Events</span>
 </a>
 
+</div>
+
+<!-- DIVIDER -->
+<div class="divider">
+<span>– Udstyr og løsninger til din forretning –</span>
+</div>
+
+<!-- LØSNINGER -->
+<div class="grid">
+
 <a href="hardware.html" class="card" style="background-image:url('hardware.jpg')">
-    <span>Hardware udstyr </span>
+<span>Hardware udstyr</span>
 </a>
 
 <a href="indlosning.html" class="card" style="background-image:url('terminal.jpg')">
-    <span>Indløsning / Betaløsningsaftale </span>
+<span>Betalingsløsning</span>
 </a>
 
 <a href="bonruller.html" class="card" style="background-image:url('bonruller.jpg')">
-    <span>Bonruller</span>
+<span>Bonruller</span>
 </a>
 
 </div>
