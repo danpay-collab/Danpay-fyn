@@ -8,265 +8,328 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
 
 <style>
-
-body {
+body{
     font-family:'Inter',sans-serif;
     margin:0;
     background:#ffffff;
-    color:#1e293b;
+    color:#0f172a;
 }
 
-/* NAV */
-.nav {
+/* 🔝 NAV (samme stil som index) */
+.nav{
+    position:sticky;
+    top:0;
+    z-index:1000;
     display:flex;
     justify-content:space-between;
-    padding:20px 10%;
-}
-
-.btn {
-    background:linear-gradient(90deg,#0ea5e9,#38bdf8);
-    padding:10px 18px;
-    border-radius:8px;
-    color:white;
-    text-decoration:none;
-}
-
-/* HERO IMAGE */
-.sub-hero {
-    height:460px;
-    background-image:url('restaurant.jpg');
-    background-size:cover;
-    background-position:center;
-    display:flex;
     align-items:center;
-    justify-content:center;
+    padding:16px 10%;
+    background:rgba(255,255,255,0.7);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid rgba(0,0,0,0.05);
+}
+.logo img{ height:45px; }
+.nav-right{ display:flex; gap:20px; align-items:center; }
+.phone{ text-decoration:none; color:#0f172a; font-weight:600; }
+.cta-btn{
+    background:linear-gradient(90deg,#0ea5e9,#3b82f6);
+    color:white; padding:10px 18px; border-radius:8px; text-decoration:none;
+}
+
+/* HERO */
+.hero{
+    height:460px;
+    background:url('restaurant.jpg') center/cover;
+    display:flex; align-items:center; justify-content:center;
     position:relative;
 }
-
-.sub-hero::before {
-    content:"";
-    position:absolute;
-    inset:0;
+.hero::before{
+    content:""; position:absolute; inset:0;
     background:linear-gradient(to top, rgba(0,0,0,0.7), rgba(0,0,0,0.2));
 }
-
-.sub-hero-overlay {
-    position:relative;
-    color:white;
-    text-align:center;
-    max-width:700px;
-    padding:40px;
+.hero-text{
+    position:relative; color:white; text-align:center; max-width:700px;
 }
+.hero-text h1{ font-size:52px; margin-bottom:10px; }
+.hero-text p{ font-size:22px; color:#e2e8f0; }
 
-/* ✨ FADE IN */
-.fade-in {
-    opacity:0;
-    transform:translateY(20px);
-    animation:fadeUp 1s ease forwards;
-}
-
-@keyframes fadeUp {
-    to {
-        opacity:1;
-        transform:translateY(0);
-    }
-}
-
-.sub-hero-overlay h1 {
-    font-size:52px;
-    margin-bottom:10px;
-}
-
-.sub-hero-overlay p {
-    font-size:22px;
-    color:#e2e8f0;
-}
-
-/* SECTION */
-.section {
-    padding:80px 10%;
-    opacity:0;
-    transform:translateY(30px);
-    transition:0.6s ease;
-}
-
-.section.show {
-    opacity:1;
-    transform:translateY(0);
-}
-
-/* FEATURES GRID */
-.features {
+/* SPLIT SECTIONS */
+.split{
     display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-    gap:25px;
+    grid-template-columns:1fr 1fr;
+    gap:60px;
+    padding:100px 10%;
+    align-items:center;
+}
+.split img{
+    width:100%;
+    border-radius:16px;
+}
+.text h2{ font-size:32px; margin-bottom:10px; }
+.text ul{
+    color:#64748b;
+    line-height:1.7;
+    padding-left:18px;
 }
 
-.feature {
+/* skiftevis layout */
+.reverse{ direction:rtl; }
+.reverse .text{ direction:ltr; }
+
+/* PRICING BOX */
+.pricing{
+    text-align:center;
+    padding:100px 10%;
     background:#f1f5f9;
-    padding:25px;
-    border-radius:12px;
-    transition:0.3s;
+    border-radius:20px;
+    margin:80px 10%;
+}
+.price-sub{ color:#64748b; font-size:18px; }
+.price-main{ font-size:42px; margin:10px 0 20px; }
+
+.btn-offer{
+    background:#f97316;
+    color:white;
+    padding:14px 30px;
+    border-radius:30px;
+    text-decoration:none;
+    font-weight:600;
+    display:inline-block;
+    margin-bottom:40px;
+}
+.btn-offer:hover{ transform:scale(1.05); }
+
+.price-title{ font-size:22px; margin-bottom:20px; }
+
+.price-list{
+    list-style:none;
+    padding:0;
+    color:#64748b;
+    line-height:1.8;
+    margin-bottom:30px;
 }
 
-.feature:hover {
-    transform:translateY(-5px);
+.btn-demo{
+    display:inline-block;
+    padding:12px 24px;
+    border-radius:25px;
+    border:1px solid #0ea5e9;
+    color:#0ea5e9;
+    text-decoration:none;
+}
+.btn-demo:hover{
+    background:#0ea5e9;
+    color:white;
 }
 
 /* CTA */
-.cta {
+.cta{
     text-align:center;
     padding:80px 10%;
 }
-
-.cta h2 {
-    font-size:36px;
-}
-
-.btn-main {
+.btn-main{
     background:linear-gradient(90deg,#0ea5e9,#3b82f6);
     padding:14px 28px;
     border-radius:10px;
     color:white;
     text-decoration:none;
-    display:inline-block;
-    margin-top:20px;
+}
+
+/* FOOTER (samme som index) */
+.footer{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:40px 10%;
+    background:#0f172a;
+    color:white;
+}
+.footer-left img{ height:45px; }
+.footer-right{
+    text-align:right;
+    font-size:14px;
+    color:#cbd5e1;
+}
+.footer-right p{ margin:5px 0; }
+.footer-right a{ color:#38bdf8; text-decoration:none; }
+
+.footer-bottom{
+    text-align:center;
+    padding:15px;
+    font-size:12px;
+    color:#94a3b8;
+    background:#020617;
 }
 
 /* MOBILE */
 @media(max-width:768px){
-    .sub-hero {
-        height:320px;
-    }
-
-    .sub-hero-overlay h1 {
-        font-size:32px;
-    }
-
-    .sub-hero-overlay p {
-        font-size:18px;
-    }
+    .split{ grid-template-columns:1fr; }
+    .hero{ height:320px; }
+    .hero-text h1{ font-size:32px; }
+    .hero-text p{ font-size:18px; }
+    .footer{ flex-direction:column; text-align:center; gap:20px; }
+    .footer-right{ text-align:center; }
 }
-
 </style>
-
 </head>
 
 <body>
 
 <!-- NAV -->
 <div class="nav">
-    <div>Danpay</div>
-    <a href="index.html" class="btn">Tilbage</a>
-</div>
-
-<!-- HERO MED BILLEDE -->
-<div class="sub-hero">
-    <div class="sub-hero-overlay fade-in">
-        <h1>Restaurant system</h1>
-        <p>Alt du har brug for til at drive en moderne restaurant – samlet i én løsning.</p>
+    <div class="logo">
+        <img src="danpaylogo.jpg" alt="Danpay logo">
+    </div>
+    <div class="nav-right">
+        <a href="tel:+4570180099" class="phone">📞 +45 70 18 00 99</a>
+        <a href="#" class="cta-btn">Kontakt</a>
     </div>
 </div>
 
-<!-- INTRO -->
-<div class="section">
-<h2 style="text-align:center;">Én løsning til hele restauranten</h2>
-<p style="text-align:center; max-width:700px; margin:auto; color:#64748b;">
-Danpay samler bestilling, betaling, booking og administration i ét system, så du kan fokusere på dine gæster.
-</p>
+<!-- HERO -->
+<div class="hero">
+    <div class="hero-text">
+        <h1>Restaurant system</h1>
+        <p>Alt du har brug for – samlet i én løsning</p>
+    </div>
 </div>
 
-<!-- FEATURES -->
-<div class="section">
-<h2 style="text-align:center;">Funktioner</h2>
-
-<div class="features">
-
-<div class="feature">
-<h4>Professionelt salgsværktøj giver Øget effektivitet</h4>
-<p>Brugervenligt og letforståeligt salgsværktøj</p>
-    <p>Hurtig oprettelse af produkter og kategorier</p>
-    <p>Indsæt valgmuligheder på produkter f.eks. tilbehør eller størrelser</p>
-    <p>Åbn og luk hurtigt en eller flere kasser, direkte på kassen eller fra en anden enhed</p>
-    <p>Hurtig betaling ved kreditkort, eller del betalingen mellem kontant, kreditkort, MobilePay eller faktura</p>
-    <p>Opsætning af elektronisk menukort (onlinebestilling) og QR-bestilling</p>
-    <p>Nem håndtering af salg og indløsning af gavekort og tilgodebevis</p>
-    <p>Følg og redigere løbende lagerstatus</p>
+<!-- 1: SALGSVÆRKTØJ -->
+<div class="split">
+    <img src="restaurant.jpg">
+    <div class="text">
+        <h2>Professionelt salgsværktøj</h2>
+        <ul>
+            <li>Brugervenligt og letforståeligt system</li>
+            <li>Hurtig oprettelse af produkter og kategorier</li>
+            <li>Valgmuligheder på produkter (tilbehør, størrelser)</li>
+            <li>Åbn/luk kasser fra flere enheder</li>
+            <li>Betaling via kort, MobilePay eller faktura</li>
+            <li>QR-bestilling og online menukort</li>
+            <li>Gavekort og tilgodebeviser</li>
+            <li>Lagerstatus i realtid</li>
+        </ul>
+    </div>
 </div>
 
-<div class="feature">
-<h4>Bordbooking</h4>
-<p>Lad dine gæster booke bord online.</p>
+<!-- 2: BORDSTYRING -->
+<div class="split reverse">
+    <img src="restaurant.jpg">
+    <div class="text">
+        <h2>Bordstyring & booking</h2>
+        <ul>
+            <li>2D bordplan og kalenderoverblik</li>
+            <li>Automatisk reservation ved salg</li>
+            <li>Online booking via hjemmeside & sociale medier</li>
+            <li>SMS påmindelser</li>
+            <li>Split regninger og flyt gæster</li>
+        </ul>
+    </div>
 </div>
 
-<div class="feature">
-<h4>Takeaway</h4>
-<p>Modtag bestillinger direkte fra dine kunder.</p>
+<!-- 3: BETALING -->
+<div class="split">
+    <img src="restaurant.jpg">
+    <div class="text">
+        <h2>Fleksibel betaling</h2>
+        <ul>
+            <li>Kreditkort, kontant, MobilePay eller faktura</li>
+            <li>Kundekonti og efterfakturering</li>
+            <li>Rabatgrupper og kampagner</li>
+            <li>Mobile POS løsninger</li>
+            <li>Variable priser og mængderabat</li>
+        </ul>
+    </div>
 </div>
 
-<div class="feature">
-<h4>Håndholdt betaling</h4>
-<p>Tag imod betaling direkte ved bordet.</p>
+<!-- 4: BEMANDING -->
+<div class="split reverse">
+    <img src="restaurant.jpg">
+    <div class="text">
+        <h2>Bemanding & løn</h2>
+        <ul>
+            <li>Vagtplan og tidsregistrering</li>
+            <li>Overblik over timer og løn</li>
+            <li>Kopiering af vagtplaner</li>
+            <li>Automatisk vagttildeling</li>
+            <li>Provision og løntillæg</li>
+        </ul>
+    </div>
 </div>
 
-<div class="feature">
-<h4>Lagerstyring</h4>
-<p>Få styr på råvarer og undgå spild.</p>
+<!-- 5: TAKEAWAY / APP -->
+<div class="split">
+    <img src="restaurant.jpg">
+    <div class="text">
+        <h2>Takeaway & bestillings-app</h2>
+        <ul>
+            <li>Online bestilling via web eller app</li>
+            <li>Forudbestilling med bordreservation</li>
+            <li>Betaling direkte i app</li>
+            <li>Loyalitetsprogrammer og kampagner</li>
+            <li>Push-beskeder til kunder</li>
+        </ul>
+    </div>
 </div>
 
-<div class="feature">
-<h4>Rapporter</h4>
-<p>Få indsigt i din forretning.</p>
+<!-- 6: INTEGRATION -->
+<div class="split reverse">
+    <img src="restaurant.jpg">
+    <div class="text">
+        <h2>Integration & tilpasning</h2>
+        <ul>
+            <li>Integration til E-conomic, Dinero m.fl.</li>
+            <li>Fungerer på Windows, iOS og Android</li>
+            <li>Integration til betalingsterminaler</li>
+            <li>Brugerroller og adgangsstyring</li>
+        </ul>
+    </div>
 </div>
 
-</div>
-</div>
+<!-- 🔥 PRIS -->
+<div class="pricing">
+    <p class="price-sub">Pris fra kun</p>
+    <h2 class="price-main">299,00 kr/md</h2>
 
-<!-- WHY -->
-<div class="section">
-<h2 style="text-align:center;">Hvorfor vælge Danpay?</h2>
+    <a href="#" class="btn-offer">FÅ TILBUD</a>
 
-<div class="features">
+    <h3 class="price-title">Mere end et kassesystem</h3>
 
-<div class="feature">
-<h4>Alt samlet ét sted</h4>
-<p>Ét system til det hele.</p>
-</div>
+    <ul class="price-list">
+        <li>Kassesystem</li>
+        <li>Selskabshåndtering & billetsalg</li>
+        <li>Vagtplan, tidsregistrering & medarbejder app</li>
+        <li>Online bestilling & digitalt menukort (QR)</li>
+        <li>Bordstyring & booking + SMS</li>
+        <li>Bestillings-app & loyalitet</li>
+        <li>Integration til regnskab & terminaler</li>
+    </ul>
 
-<div class="feature">
-<h4>Let at bruge</h4>
-<p>Designet til travl hverdag.</p>
-</div>
-
-<div class="feature">
-<h4>Support</h4>
-<p>Vi hjælper dig hele vejen.</p>
-</div>
-
-</div>
+    <a href="#" class="btn-demo">PRØV GRATIS DEMO</a>
 </div>
 
 <!-- CTA -->
 <div class="cta">
-<h2>Klar til at optimere din restaurant?</h2>
-<a href="#" class="btn-main">Book demo</a>
+    <h2>Klar til at optimere din restaurant?</h2>
+    <a href="#" class="btn-main">Book demo</a>
 </div>
 
-<!-- 🔥 SCROLL ANIMATION -->
-<script>
-window.addEventListener('load', () => {
-    const sections = document.querySelectorAll('.section');
+<!-- FOOTER -->
+<footer class="footer">
+    <div class="footer-left">
+        <img src="danpaylogo.jpg" alt="Danpay logo">
+    </div>
+    <div class="footer-right">
+	    <p>DanPay ApS<p>
+        <p>CVR: 25128184</p>
+        <p>9200 Aalborg SV</p>
+        <p><a href="mailto:kundeservice@danpay.dk">Kundeservice@danpay.dk</a></p>
+    </div>
+</footer>
 
-    window.addEventListener('scroll', () => {
-        sections.forEach(sec => {
-            const top = sec.getBoundingClientRect().top;
-            if(top < window.innerHeight - 100){
-                sec.classList.add('show');
-            }
-        });
-    });
-});
-</script>
+<div class="footer-bottom">
+    © 2026 Danpay – Alle rettigheder forbeholdes
+</div>
 
 </body>
 </html>
