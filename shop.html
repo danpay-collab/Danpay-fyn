@@ -3,11 +3,12 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Butik - Danpay</title>
+<title>Butik & Detailhandel - Danpay</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
 
 <style>
+
 body {
     font-family:'Inter',sans-serif;
     margin:0;
@@ -31,25 +32,70 @@ body {
 }
 
 /* HERO */
-.hero {
-    padding:100px 10%;
+.sub-hero {
+    height:460px;
+    background-image:url('butik.jpg');
+    background-size:cover;
+    background-position:center;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    position:relative;
+}
+
+.sub-hero::before {
+    content:"";
+    position:absolute;
+    inset:0;
+    background:linear-gradient(to top, rgba(0,0,0,0.7), rgba(0,0,0,0.2));
+}
+
+.sub-hero-overlay {
+    position:relative;
+    color:white;
     text-align:center;
+    max-width:700px;
+    padding:40px;
 }
 
-.hero h1 {
-    font-size:48px;
+/* FADE */
+.fade-in {
+    opacity:0;
+    transform:translateY(20px);
+    animation:fadeUp 1s ease forwards;
 }
 
-.hero p {
-    font-size:20px;
-    color:#64748b;
+@keyframes fadeUp {
+    to {
+        opacity:1;
+        transform:translateY(0);
+    }
 }
 
-/* SECTION */
+.sub-hero-overlay h1 {
+    font-size:52px;
+    margin-bottom:10px;
+}
+
+.sub-hero-overlay p {
+    font-size:22px;
+    color:#e2e8f0;
+}
+
+/* SECTIONS */
 .section {
     padding:80px 10%;
+    opacity:0;
+    transform:translateY(30px);
+    transition:0.6s ease;
 }
 
+.section.show {
+    opacity:1;
+    transform:translateY(0);
+}
+
+/* FEATURES */
 .features {
     display:grid;
     grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
@@ -72,6 +118,36 @@ body {
     text-align:center;
     padding:80px 10%;
 }
+
+.cta h2 {
+    font-size:36px;
+}
+
+.btn-main {
+    background:linear-gradient(90deg,#0ea5e9,#3b82f6);
+    padding:14px 28px;
+    border-radius:10px;
+    color:white;
+    text-decoration:none;
+    display:inline-block;
+    margin-top:20px;
+}
+
+/* MOBILE */
+@media(max-width:768px){
+    .sub-hero {
+        height:320px;
+    }
+
+    .sub-hero-overlay h1 {
+        font-size:32px;
+    }
+
+    .sub-hero-overlay p {
+        font-size:18px;
+    }
+}
+
 </style>
 
 </head>
@@ -85,16 +161,18 @@ body {
 </div>
 
 <!-- HERO -->
-<div class="hero">
-    <h1>Butik & retail system</h1>
-    <p>Få fuldt overblik over din butik – fra salg til lager og medarbejdere.</p>
+<div class="sub-hero">
+    <div class="sub-hero-overlay fade-in">
+        <h1>Butik & detailhandel</h1>
+        <p>Få styr på salg, lager og betaling – i én samlet løsning til din butik.</p>
+    </div>
 </div>
 
 <!-- INTRO -->
 <div class="section">
-<h2 style="text-align:center;">Én løsning til hele din butik</h2>
+<h2 style="text-align:center;">Én løsning til din butik</h2>
 <p style="text-align:center; max-width:700px; margin:auto; color:#64748b;">
-Danpay samler alle dine funktioner i ét system, så du kan fokusere på dine kunder i stedet for administration.
+Danpay gør det nemt at håndtere salg, lager og kunder – uanset om du driver kiosk, butik eller detailhandel.
 </p>
 </div>
 
@@ -105,38 +183,57 @@ Danpay samler alle dine funktioner i ét system, så du kan fokusere på dine ku
 <div class="features">
 
 <div class="feature">
-<h4>Produktoverblik</h4>
-<p>Få et klart overblik over dine varer, kategorier og lagerstatus – altid opdateret i realtid.</p>
+<h4>Kassesystem (POS)</h4>
+<p>Hurtigt og brugervenligt salgssystem til butikker.</p>
 </div>
 
 <div class="feature">
-<h4>Fleksibel betaling</h4>
-<p>Tag imod alle betalingsformer – kort, mobile betalinger og online betalinger.</p>
+<h4>Lagerstyring</h4>
+<p>Hold styr på varer og beholdning i realtid.</p>
 </div>
 
 <div class="feature">
-<h4>Overblik over bemanding & løn</h4>
-<p>Hold styr på medarbejdere, arbejdstimer og løn direkte i systemet.</p>
+<h4>Stregkoder</h4>
+<p>Scan varer hurtigt og effektivt.</p>
 </div>
 
 <div class="feature">
-<h4>Salgsdata & rapporter</h4>
-<p>Se hvad der sælger, hvornår du har travlt, og hvordan din forretning performer.</p>
+<h4>Kundekartotek</h4>
+<p>Gem kundedata og opbyg relationer.</p>
 </div>
 
 <div class="feature">
-<h4>Tilpasning</h4>
-<p>Systemet kan tilpasses din butik, dine produkter og dine arbejdsgange.</p>
+<h4>Rapporter</h4>
+<p>Få indsigt i salg og performance.</p>
 </div>
 
 <div class="feature">
-<h4>Integrationer</h4>
-<p>Integrer med regnskab, betaling og andre systemer for en effektiv hverdag.</p>
+<h4>Flere betalingsmetoder</h4>
+<p>Tag imod kort, mobile betalinger og kontanter.</p>
+</div>
+
+</div>
+</div>
+
+<!-- WHY -->
+<div class="section">
+<h2 style="text-align:center;">Hvorfor vælge Danpay?</h2>
+
+<div class="features">
+
+<div class="feature">
+<h4>Effektiv drift</h4>
+<p>Automatisér din hverdag og spar tid.</p>
 </div>
 
 <div class="feature">
-<h4>Selvbetjening</h4>
-<p>Giv dine kunder mulighed for selvbetjening og hurtigere ekspedition.</p>
+<h4>Skalerbar løsning</h4>
+<p>Perfekt til både små og store butikker.</p>
+</div>
+
+<div class="feature">
+<h4>Support</h4>
+<p>Vi er klar til at hjælpe dig.</p>
 </div>
 
 </div>
@@ -145,8 +242,24 @@ Danpay samler alle dine funktioner i ét system, så du kan fokusere på dine ku
 <!-- CTA -->
 <div class="cta">
 <h2>Klar til at optimere din butik?</h2>
-<a href="#" class="btn">Book demo</a>
+<a href="#" class="btn-main">Book demo</a>
 </div>
+
+<!-- SCROLL ANIMATION -->
+<script>
+window.addEventListener('load', () => {
+    const sections = document.querySelectorAll('.section');
+
+    window.addEventListener('scroll', () => {
+        sections.forEach(sec => {
+            const top = sec.getBoundingClientRect().top;
+            if(top < window.innerHeight - 100){
+                sec.classList.add('show');
+            }
+        });
+    });
+});
+</script>
 
 </body>
 </html>
