@@ -187,6 +187,18 @@ Danpay samler bestilling, betaling, booking og administration i ét system, så 
 <h2>Klar til at optimere din restaurant?</h2>
 <a href="#" class="btn">Book demo</a>
 </div>
+    <script>
+const sections = document.querySelectorAll('.section');
+
+window.addEventListener('scroll', () => {
+    sections.forEach(sec => {
+        const top = sec.getBoundingClientRect().top;
+        if(top < window.innerHeight - 100){
+            sec.classList.add('show');
+        }
+    });
+});
+</script>
 
 </body>
 </html>
