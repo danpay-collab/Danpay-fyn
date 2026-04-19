@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Danpay</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+body {
+    font-family:'Inter',sans-serif;
+    margin:0;
+    background:#f8fafc;
+    color:#1e293b;
+}
+
+/* HERO */
+.hero {
+    padding:100px 10%;
+    text-align:center;
+}
+
+.hero h1 {
+    font-size:64px;
+}
+
+.hero p {
+    font-size:32px;
+    color:#64748b;
+}
+
+/* GRID */
+.grid {
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:25px;
+    padding:40px 10%;
+}
+
+/* CARD */
+.card {
+    position:relative;
+    height:230px;
+    border-radius:16px;
+    overflow:hidden;
+    display:flex;
+    align-items:flex-end;
+    padding:20px;
+    text-decoration:none;
+    color:white;
+    font-weight:600;
+    background-size:110%;
+    background-position:center;
+    transition:all 0.4s ease;
+}
+
+/* overlay */
+.card::before {
+    content:"";
+    position:absolute;
+    inset:0;
+    background:rgba(0,0,0,0.45);
+    transition:0.4s;
+}
+
+/* text */
+.card span {
+    position:relative;
+    z-index:2;
+    font-size:18px;
+}
+
+/* 🔥 PREMIUM HOVER */
+.card:hover {
+    transform:translateY(-6px);
+    background-size:120%;
+}
+
+.card:hover::before {
+    background:rgba(0,0,0,0.2);
+}
+
+/* MOBILE */
+@media(max-width:768px){
+    .grid {
+        grid-template-columns:1fr;
+    }
+
+    .hero h1 {
+        font-size:36px;
+    }
+
+    .hero p {
+        font-size:22px;
+    }
+}
+
+/* CTA */
+.cta {
+    text-align:center;
+    padding:60px 10%;
+}
+
+.btn {
+    background:#0ea5e9;
+    color:white;
+    padding:12px 20px;
+    border-radius:8px;
+    text-decoration:none;
+}
+</style>
+
+</head>
+
+<body>
+
+<!-- HERO -->
+<div class="hero">
+    <h1>Din forretning. Ét system.</h1>
+    <p>Lad Danpay levere jeres næste kasseapparat</p>
+</div>
+
+<!-- GRID -->
+<div class="grid">
+
+<a href="restaurant.html" class="card" style="background-image:url('images/restaurant.jpg')">
+    <span>Restaurant</span>
+</a>
+
+<a href="bar.html" class="card" style="background-image:url('images/bar.jpg')">
+    <span>Bar</span>
+</a>
+
+<a href="hotel.html" class="card" style="background-image:url('images/hotel.jpg')">
+    <span>Hotel</span>
+</a>
+
+<a href="shop.html" class="card" style="background-image:url('images/shop.jpg')">
+    <span>Butikker</span>
+</a>
+
+<a href="klinik.html" class="card" style="background-image:url('images/klinik.jpg')">
+    <span>Klinik</span>
+</a>
+
+<a href="event.html" class="card" style="background-image:url('images/event.jpg')">
+    <span>Events</span>
+</a>
+
+<a href="hardware.html" class="card">
+    <span>Hardware</span>
+</a>
+
+<a href="indlosning.html" class="card">
+    <span>Indløsning</span>
+</a>
+
+<a href="bonruller.html" class="card">
+    <span>Bonruller</span>
+</a>
+
+</div>
+
+<!-- CTA -->
+<div class="cta">
+<h2>Klar til at komme i gang?</h2>
+<a href="#" class="btn">Kontakt os</a>
+</div>
+
+</body>
+</html>
