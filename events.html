@@ -3,11 +3,12 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Events - Danpay</title>
+<title>Events & Venues - Danpay</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
 
 <style>
+
 body {
     font-family:'Inter',sans-serif;
     margin:0;
@@ -31,25 +32,70 @@ body {
 }
 
 /* HERO */
-.hero {
-    padding:100px 10%;
+.sub-hero {
+    height:460px;
+    background-image:url('event.jpg');
+    background-size:cover;
+    background-position:center;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    position:relative;
+}
+
+.sub-hero::before {
+    content:"";
+    position:absolute;
+    inset:0;
+    background:linear-gradient(to top, rgba(0,0,0,0.7), rgba(0,0,0,0.2));
+}
+
+.sub-hero-overlay {
+    position:relative;
+    color:white;
     text-align:center;
+    max-width:700px;
+    padding:40px;
 }
 
-.hero h1 {
-    font-size:48px;
+/* FADE */
+.fade-in {
+    opacity:0;
+    transform:translateY(20px);
+    animation:fadeUp 1s ease forwards;
 }
 
-.hero p {
-    font-size:20px;
-    color:#64748b;
+@keyframes fadeUp {
+    to {
+        opacity:1;
+        transform:translateY(0);
+    }
 }
 
-/* SECTION */
+.sub-hero-overlay h1 {
+    font-size:52px;
+    margin-bottom:10px;
+}
+
+.sub-hero-overlay p {
+    font-size:22px;
+    color:#e2e8f0;
+}
+
+/* SECTIONS */
 .section {
     padding:80px 10%;
+    opacity:0;
+    transform:translateY(30px);
+    transition:0.6s ease;
 }
 
+.section.show {
+    opacity:1;
+    transform:translateY(0);
+}
+
+/* FEATURES */
 .features {
     display:grid;
     grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
@@ -72,6 +118,36 @@ body {
     text-align:center;
     padding:80px 10%;
 }
+
+.cta h2 {
+    font-size:36px;
+}
+
+.btn-main {
+    background:linear-gradient(90deg,#0ea5e9,#3b82f6);
+    padding:14px 28px;
+    border-radius:10px;
+    color:white;
+    text-decoration:none;
+    display:inline-block;
+    margin-top:20px;
+}
+
+/* MOBILE */
+@media(max-width:768px){
+    .sub-hero {
+        height:320px;
+    }
+
+    .sub-hero-overlay h1 {
+        font-size:32px;
+    }
+
+    .sub-hero-overlay p {
+        font-size:18px;
+    }
+}
+
 </style>
 
 </head>
@@ -85,16 +161,18 @@ body {
 </div>
 
 <!-- HERO -->
-<div class="hero">
-    <h1>Event & venue system</h1>
-    <p>Alt du har brug for til at styre events, billetter og gæster – samlet ét sted.</p>
+<div class="sub-hero">
+    <div class="sub-hero-overlay fade-in">
+        <h1>Events & venues</h1>
+        <p>Håndtér billetter, adgang og betaling – perfekt til events og arrangementer.</p>
+    </div>
 </div>
 
 <!-- INTRO -->
 <div class="section">
-<h2 style="text-align:center;">Én løsning til hele dit event</h2>
+<h2 style="text-align:center;">Én løsning til events</h2>
 <p style="text-align:center; max-width:700px; margin:auto; color:#64748b;">
-Danpay gør det nemt at planlægge, sælge billetter og håndtere gæster – uanset om det er koncerter, events eller større arrangementer.
+Danpay gør det nemt at håndtere alt fra billetsalg til adgang og betaling – uanset om du driver events, festivaler eller venues.
 </p>
 </div>
 
@@ -105,33 +183,33 @@ Danpay gør det nemt at planlægge, sælge billetter og håndtere gæster – ua
 <div class="features">
 
 <div class="feature">
-<h4>Billetsalg</h4>
-<p>Sælg billetter online og få fuldt overblik over dine events.</p>
-</div>
-
-<div class="feature">
-<h4>Eventstyring</h4>
-<p>Planlæg og administrer dine events nemt fra ét system.</p>
+<h4>Billetsystem</h4>
+<p>Sælg billetter online og ved indgangen.</p>
 </div>
 
 <div class="feature">
 <h4>Check-in & adgang</h4>
-<p>Hurtig scanning og adgangskontrol ved indgangen.</p>
+<p>Scan billetter og få hurtigt flow ved indgang.</p>
 </div>
 
 <div class="feature">
-<h4>Gæstehåndtering</h4>
-<p>Hold styr på deltagere, VIP og gæstelister.</p>
+<h4>Mobile betalinger</h4>
+<p>Tag imod betaling overalt på eventområdet.</p>
 </div>
 
 <div class="feature">
-<h4>Betaling</h4>
-<p>Tag imod betaling både online og på stedet.</p>
+<h4>Flere salgssteder</h4>
+<p>Håndter flere barer eller salgssteder samtidig.</p>
 </div>
 
 <div class="feature">
-<h4>Rapporter & overblik</h4>
-<p>Få indsigt i billetsalg, fremmøde og performance.</p>
+<h4>Overblik i realtid</h4>
+<p>Se salg og aktivitet live under eventet.</p>
+</div>
+
+<div class="feature">
+<h4>Rapporter</h4>
+<p>Få indsigt efter eventet og optimer fremtidige arrangementer.</p>
 </div>
 
 </div>
@@ -144,13 +222,13 @@ Danpay gør det nemt at planlægge, sælge billetter og håndtere gæster – ua
 <div class="features">
 
 <div class="feature">
-<h4>Alt samlet ét sted</h4>
-<p>Slip for flere systemer – vi samler det hele.</p>
+<h4>Skalerbar løsning</h4>
+<p>Fungerer til både små og store events.</p>
 </div>
 
 <div class="feature">
-<h4>Skalerbart</h4>
-<p>Perfekt til både små og store events.</p>
+<h4>Stabil drift</h4>
+<p>Systemet holder – også når der er tryk på.</p>
 </div>
 
 <div class="feature">
@@ -163,9 +241,25 @@ Danpay gør det nemt at planlægge, sælge billetter og håndtere gæster – ua
 
 <!-- CTA -->
 <div class="cta">
-<h2>Klar til at styre dine events?</h2>
-<a href="#" class="btn">Book demo</a>
+<h2>Klar til at optimere dine events?</h2>
+<a href="#" class="btn-main">Book demo</a>
 </div>
+
+<!-- SCROLL ANIMATION -->
+<script>
+window.addEventListener('load', () => {
+    const sections = document.querySelectorAll('.section');
+
+    window.addEventListener('scroll', () => {
+        sections.forEach(sec => {
+            const top = sec.getBoundingClientRect().top;
+            if(top < window.innerHeight - 100){
+                sec.classList.add('show');
+            }
+        });
+    });
+});
+</script>
 
 </body>
 </html>
