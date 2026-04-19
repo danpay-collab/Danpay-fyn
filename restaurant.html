@@ -8,6 +8,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
 
 <style>
+
 body {
     font-family:'Inter',sans-serif;
     margin:0;
@@ -30,40 +31,71 @@ body {
     text-decoration:none;
 }
 
-/* HERO */
+/* HERO IMAGE */
 .sub-hero {
-    height: 420px;
-    background-size: cover;
-    background-position: center;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    height:460px;
+    background-image:url('restaurant.jpg');
+    background-size:cover;
+    background-position:center;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    position:relative;
+}
+
+.sub-hero::before {
+    content:"";
+    position:absolute;
+    inset:0;
+    background:linear-gradient(to top, rgba(0,0,0,0.7), rgba(0,0,0,0.2));
 }
 
 .sub-hero-overlay {
-    background: rgba(0,0,0,0.55);
-    padding: 50px;
-    border-radius: 12px;
-    text-align: center;
-    color: white;
-    max-width: 700px;
+    position:relative;
+    color:white;
+    text-align:center;
+    max-width:700px;
+    padding:40px;
+}
+
+/* ✨ FADE IN */
+.fade-in {
+    opacity:0;
+    transform:translateY(20px);
+    animation:fadeUp 1s ease forwards;
+}
+
+@keyframes fadeUp {
+    to {
+        opacity:1;
+        transform:translateY(0);
+    }
 }
 
 .sub-hero-overlay h1 {
-    font-size: 48px;
-    margin-bottom: 10px;
+    font-size:52px;
+    margin-bottom:10px;
 }
 
 .sub-hero-overlay p {
-    font-size: 20px;
-    color: #e2e8f0;
+    font-size:22px;
+    color:#e2e8f0;
 }
 
 /* SECTION */
 .section {
     padding:80px 10%;
+    opacity:0;
+    transform:translateY(30px);
+    transition:0.6s ease;
 }
 
+.section.show {
+    opacity:1;
+    transform:translateY(0);
+}
+
+/* FEATURES GRID */
 .features {
     display:grid;
     grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
@@ -86,6 +118,36 @@ body {
     text-align:center;
     padding:80px 10%;
 }
+
+.cta h2 {
+    font-size:36px;
+}
+
+.btn-main {
+    background:linear-gradient(90deg,#0ea5e9,#3b82f6);
+    padding:14px 28px;
+    border-radius:10px;
+    color:white;
+    text-decoration:none;
+    display:inline-block;
+    margin-top:20px;
+}
+
+/* MOBILE */
+@media(max-width:768px){
+    .sub-hero {
+        height:320px;
+    }
+
+    .sub-hero-overlay h1 {
+        font-size:32px;
+    }
+
+    .sub-hero-overlay p {
+        font-size:18px;
+    }
+}
+
 </style>
 
 </head>
@@ -98,9 +160,9 @@ body {
     <a href="index.html" class="btn">Tilbage</a>
 </div>
 
-<!-- HERO -->
-<div class="sub-hero" style="background-image:url('restaurant.jpg')">
-    <div class="sub-hero-overlay">
+<!-- HERO MED BILLEDE -->
+<div class="sub-hero">
+    <div class="sub-hero-overlay fade-in">
         <h1>Restaurant system</h1>
         <p>Alt du har brug for til at drive en moderne restaurant – samlet i én løsning.</p>
     </div>
@@ -122,37 +184,32 @@ Danpay samler bestilling, betaling, booking og administration i ét system, så 
 
 <div class="feature">
 <h4>Kassesystem (POS)</h4>
-<p>Hurtigt og stabilt system til travle perioder, hvor alt skal gå stærkt.</p>
+<p>Hurtigt og stabilt system til travle perioder.</p>
 </div>
 
 <div class="feature">
 <h4>Bordbooking</h4>
-<p>Lad dine gæster booke bord online og undgå dobbeltbookinger.</p>
+<p>Lad dine gæster booke bord online.</p>
 </div>
 
 <div class="feature">
-<h4>Takeaway & online bestilling</h4>
-<p>Modtag bestillinger direkte fra dine kunder og øg din omsætning.</p>
+<h4>Takeaway</h4>
+<p>Modtag bestillinger direkte fra dine kunder.</p>
 </div>
 
 <div class="feature">
 <h4>Håndholdt betaling</h4>
-<p>Tag imod betaling direkte ved bordet og spar tid i driften.</p>
+<p>Tag imod betaling direkte ved bordet.</p>
 </div>
 
 <div class="feature">
-<h4>Lagerkontrol</h4>
-<p>Få styr på råvarer og undgå spild i køkkenet.</p>
+<h4>Lagerstyring</h4>
+<p>Få styr på råvarer og undgå spild.</p>
 </div>
 
 <div class="feature">
-<h4>Gæsteloyalitet</h4>
-<p>Opbyg relationer og få dine gæster til at komme igen.</p>
-</div>
-
-<div class="feature">
-<h4>Rapporter & statistik</h4>
-<p>Få indsigt i din forretning og træf bedre beslutninger.</p>
+<h4>Rapporter</h4>
+<p>Få indsigt i din forretning.</p>
 </div>
 
 </div>
@@ -166,17 +223,17 @@ Danpay samler bestilling, betaling, booking og administration i ét system, så 
 
 <div class="feature">
 <h4>Alt samlet ét sted</h4>
-<p>Slip for flere systemer – vi samler det hele i én løsning.</p>
+<p>Ét system til det hele.</p>
 </div>
 
 <div class="feature">
 <h4>Let at bruge</h4>
-<p>Designet til travle medarbejdere og hurtig oplæring.</p>
+<p>Designet til travl hverdag.</p>
 </div>
 
 <div class="feature">
 <h4>Support</h4>
-<p>Vi hjælper dig hele vejen – når du har brug for det.</p>
+<p>Vi hjælper dig hele vejen.</p>
 </div>
 
 </div>
@@ -185,17 +242,21 @@ Danpay samler bestilling, betaling, booking og administration i ét system, så 
 <!-- CTA -->
 <div class="cta">
 <h2>Klar til at optimere din restaurant?</h2>
-<a href="#" class="btn">Book demo</a>
+<a href="#" class="btn-main">Book demo</a>
 </div>
-    <script>
-const sections = document.querySelectorAll('.section');
 
-window.addEventListener('scroll', () => {
-    sections.forEach(sec => {
-        const top = sec.getBoundingClientRect().top;
-        if(top < window.innerHeight - 100){
-            sec.classList.add('show');
-        }
+<!-- 🔥 SCROLL ANIMATION -->
+<script>
+window.addEventListener('load', () => {
+    const sections = document.querySelectorAll('.section');
+
+    window.addEventListener('scroll', () => {
+        sections.forEach(sec => {
+            const top = sec.getBoundingClientRect().top;
+            if(top < window.innerHeight - 100){
+                sec.classList.add('show');
+            }
+        });
     });
 });
 </script>
