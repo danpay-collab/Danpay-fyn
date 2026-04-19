@@ -3,79 +3,263 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Bar - Danpay</title>
+<title>Bar & Natklub - Danpay</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
 
 <style>
-body { font-family:'Inter',sans-serif; margin:0; background:#ffffff; color:#1e293b; }
-.nav { display:flex; justify-content:space-between; padding:20px 10%; }
-.btn { background:linear-gradient(90deg,#0ea5e9,#38bdf8); padding:10px 18px; border-radius:8px; color:white; text-decoration:none; }
-.hero { padding:100px 10%; text-align:center; }
-.hero h1 { font-size:48px; }
-.hero p { font-size:20px; color:#64748b; }
-.section { padding:80px 10%; }
-.features { display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:25px; }
-.feature { background:#f1f5f9; padding:25px; border-radius:12px; transition:0.3s; }
-.feature:hover { transform:translateY(-5px); }
-.cta { text-align:center; padding:80px 10%; }
+
+body {
+    font-family:'Inter',sans-serif;
+    margin:0;
+    background:#ffffff;
+    color:#1e293b;
+}
+
+/* NAV */
+.nav {
+    display:flex;
+    justify-content:space-between;
+    padding:20px 10%;
+}
+
+.btn {
+    background:linear-gradient(90deg,#0ea5e9,#38bdf8);
+    padding:10px 18px;
+    border-radius:8px;
+    color:white;
+    text-decoration:none;
+}
+
+/* HERO */
+.sub-hero {
+    height:460px;
+    background-image:url('bar.jpg');
+    background-size:cover;
+    background-position:center;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    position:relative;
+}
+
+.sub-hero::before {
+    content:"";
+    position:absolute;
+    inset:0;
+    background:linear-gradient(to top, rgba(0,0,0,0.7), rgba(0,0,0,0.2));
+}
+
+.sub-hero-overlay {
+    position:relative;
+    color:white;
+    text-align:center;
+    max-width:700px;
+    padding:40px;
+}
+
+/* FADE */
+.fade-in {
+    opacity:0;
+    transform:translateY(20px);
+    animation:fadeUp 1s ease forwards;
+}
+
+@keyframes fadeUp {
+    to {
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+.sub-hero-overlay h1 {
+    font-size:52px;
+    margin-bottom:10px;
+}
+
+.sub-hero-overlay p {
+    font-size:22px;
+    color:#e2e8f0;
+}
+
+/* SECTIONS */
+.section {
+    padding:80px 10%;
+    opacity:0;
+    transform:translateY(30px);
+    transition:0.6s ease;
+}
+
+.section.show {
+    opacity:1;
+    transform:translateY(0);
+}
+
+/* FEATURES */
+.features {
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:25px;
+}
+
+.feature {
+    background:#f1f5f9;
+    padding:25px;
+    border-radius:12px;
+    transition:0.3s;
+}
+
+.feature:hover {
+    transform:translateY(-5px);
+}
+
+/* CTA */
+.cta {
+    text-align:center;
+    padding:80px 10%;
+}
+
+.cta h2 {
+    font-size:36px;
+}
+
+.btn-main {
+    background:linear-gradient(90deg,#0ea5e9,#3b82f6);
+    padding:14px 28px;
+    border-radius:10px;
+    color:white;
+    text-decoration:none;
+    display:inline-block;
+    margin-top:20px;
+}
+
+/* MOBILE */
+@media(max-width:768px){
+    .sub-hero {
+        height:320px;
+    }
+
+    .sub-hero-overlay h1 {
+        font-size:32px;
+    }
+
+    .sub-hero-overlay p {
+        font-size:18px;
+    }
+}
+
 </style>
+
 </head>
 
 <body>
 
+<!-- NAV -->
 <div class="nav">
     <div>Danpay</div>
     <a href="index.html" class="btn">Tilbage</a>
 </div>
 
-<div class="hero">
-    <h1>Bar & natklub system</h1>
-    <p>Bygget til høj tempo, travle aftener og maksimal kontrol.</p>
+<!-- HERO -->
+<div class="sub-hero">
+    <div class="sub-hero-overlay fade-in">
+        <h1>Bar & Natklub system</h1>
+        <p>Hurtig betaling, effektiv drift og fuldt overblik – perfekt til travle barer og natklubber.</p>
+    </div>
 </div>
 
+<!-- INTRO -->
 <div class="section">
-<h2 style="text-align:center;">Én løsning til hele din bar</h2>
+<h2 style="text-align:center;">Én løsning til bar og natliv</h2>
 <p style="text-align:center; max-width:700px; margin:auto; color:#64748b;">
-Danpay giver dig fuldt overblik over salg, gæster og events – så du kan fokusere på oplevelsen.
+Danpay gør det nemt at håndtere højt tempo, mange gæster og betalinger – uden at gå på kompromis med overblik.
 </p>
 </div>
 
+<!-- FEATURES -->
 <div class="section">
 <h2 style="text-align:center;">Funktioner</h2>
 
 <div class="features">
 
-<div class="feature"><h4>Hurtigt kassesystem</h4><p>Håndter mange ordrer hurtigt i travle perioder.</p></div>
+<div class="feature">
+<h4>Lynhurtig betaling</h4>
+<p>Perfekt til travle barer med mange gæster.</p>
+</div>
 
-<div class="feature"><h4>Håndholdt betaling</h4><p>Tag imod betaling direkte på gulvet.</p></div>
+<div class="feature">
+<h4>Håndholdte enheder</h4>
+<p>Tag imod betaling direkte ved gæsten.</p>
+</div>
 
-<div class="feature"><h4>Events & billetter</h4><p>Administrer events og billetsalg nemt.</p></div>
+<div class="feature">
+<h4>Split betaling</h4>
+<p>Del regninger nemt mellem flere gæster.</p>
+</div>
 
-<div class="feature"><h4>Gæstelister</h4><p>Hold styr på VIP, gæster og adgang.</p></div>
+<div class="feature">
+<h4>Events & adgang</h4>
+<p>Håndter events og gæstelister effektivt.</p>
+</div>
 
-<div class="feature"><h4>Loyalitet</h4><p>Få kunder til at komme igen.</p></div>
+<div class="feature">
+<h4>Lager & varer</h4>
+<p>Hold styr på drikkevarer og beholdning.</p>
+</div>
 
-<div class="feature"><h4>Rapporter</h4><p>Få overblik over salg og performance.</p></div>
+<div class="feature">
+<h4>Rapporter</h4>
+<p>Få indsigt i salg og travle perioder.</p>
+</div>
 
 </div>
 </div>
 
+<!-- WHY -->
 <div class="section">
 <h2 style="text-align:center;">Hvorfor vælge Danpay?</h2>
 
 <div class="features">
-<div class="feature"><h4>Hurtighed</h4><p>Systemet er bygget til travle miljøer.</p></div>
-<div class="feature"><h4>Kontrol</h4><p>Få fuldt overblik over drift og personale.</p></div>
-<div class="feature"><h4>Support</h4><p>Vi er klar når du har brug for hjælp.</p></div>
+
+<div class="feature">
+<h4>Hurtighed</h4>
+<p>Minimer ventetid og maksimer omsætning.</p>
+</div>
+
+<div class="feature">
+<h4>Stabil drift</h4>
+<p>Systemet virker – også i de travleste timer.</p>
+</div>
+
+<div class="feature">
+<h4>Support</h4>
+<p>Vi er klar, når du har brug for hjælp.</p>
 </div>
 
 </div>
+</div>
 
+<!-- CTA -->
 <div class="cta">
 <h2>Klar til at optimere din bar?</h2>
-<a href="#" class="btn">Book demo</a>
+<a href="#" class="btn-main">Book demo</a>
 </div>
+
+<!-- SCROLL ANIMATION -->
+<script>
+window.addEventListener('load', () => {
+    const sections = document.querySelectorAll('.section');
+
+    window.addEventListener('scroll', () => {
+        sections.forEach(sec => {
+            const top = sec.getBoundingClientRect().top;
+            if(top < window.innerHeight - 100){
+                sec.classList.add('show');
+            }
+        });
+    });
+});
+</script>
 
 </body>
 </html>
