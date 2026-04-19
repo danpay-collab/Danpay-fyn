@@ -31,18 +31,32 @@ body {
 }
 
 /* HERO */
-.hero {
-    padding:100px 10%;
-    text-align:center;
+.sub-hero {
+    height: 420px;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-.hero h1 {
-    font-size:48px;
+.sub-hero-overlay {
+    background: rgba(0,0,0,0.55);
+    padding: 50px;
+    border-radius: 12px;
+    text-align: center;
+    color: white;
+    max-width: 700px;
 }
 
-.hero p {
-    font-size:20px;
-    color:#64748b;
+.sub-hero-overlay h1 {
+    font-size: 48px;
+    margin-bottom: 10px;
+}
+
+.sub-hero-overlay p {
+    font-size: 20px;
+    color: #e2e8f0;
 }
 
 /* SECTION */
@@ -85,9 +99,11 @@ body {
 </div>
 
 <!-- HERO -->
-<div class="hero">
-    <h1>Restaurant system</h1>
-    <p>Alt du har brug for til at drive en moderne restaurant – samlet i én løsning.</p>
+<div class="sub-hero" style="background-image:url('restaurant.jpg')">
+    <div class="sub-hero-overlay">
+        <h1>Restaurant system</h1>
+        <p>Alt du har brug for til at drive en moderne restaurant – samlet i én løsning.</p>
+    </div>
 </div>
 
 <!-- INTRO -->
