@@ -3,12 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Hardware & Kasseudstyr - Danpay</title>
+<title>Hardware - Danpay</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
 
 <style>
 
+/* RESET */
 body{
     font-family:'Inter',sans-serif;
     margin:0;
@@ -25,7 +26,7 @@ body{
     justify-content:space-between;
     align-items:center;
     padding:16px 10%;
-    background:rgba(255,255,255,0.8);
+    background:rgba(255,255,255,0.85);
     backdrop-filter:blur(10px);
 }
 
@@ -37,7 +38,11 @@ body{
     align-items:center;
 }
 
-.phone{ text-decoration:none; color:#0f172a; font-weight:600; }
+.phone{
+    text-decoration:none;
+    color:#0f172a;
+    font-weight:600;
+}
 
 .cta-btn{
     background:linear-gradient(90deg,#0ea5e9,#3b82f6);
@@ -74,18 +79,20 @@ body{
     position:relative;
     color:white;
     text-align:center;
+    max-width:800px;
 }
 
 .hero-text h1{
     font-size:48px;
+    margin-bottom:10px;
 }
 
 .hero-text p{
-    color:#e2e8f0;
     font-size:20px;
+    color:#e2e8f0;
 }
 
-/* SECTION */
+/* INTRO */
 .section{
     padding:80px 10%;
     text-align:center;
@@ -102,13 +109,89 @@ body{
     margin:auto;
 }
 
-/* CTA BOX */
-.cta-box{
-    background:#f1f5f9;
-    padding:60px 20px;
+/* 🔥 HARDWARE PAKKER */
+.hardware-pakker{
+    padding:80px 10%;
+    text-align:center;
+}
+
+.hardware-pakker h2{
+    font-size:28px;
+    margin-bottom:10px;
+}
+
+.sub{
+    color:#64748b;
+    margin-bottom:40px;
+}
+
+.pakke-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:40px;
+}
+
+.pakke{
+    background:#f8fafc;
+    padding:30px;
     border-radius:16px;
-    max-width:600px;
-    margin:80px auto;
+    transition:0.3s;
+}
+
+.pakke:hover{
+    transform:translateY(-5px);
+    box-shadow:0 10px 25px rgba(0,0,0,0.08);
+}
+
+.pakke img{
+    width:100%;
+    max-width:220px;
+    height:auto;
+    object-fit:contain;
+    margin-bottom:20px;
+}
+
+.pakke h3{
+    font-size:20px;
+    margin-bottom:10px;
+}
+
+.pakke p{
+    color:#64748b;
+    margin-bottom:15px;
+}
+
+.pris{
+    font-size:22px;
+    font-weight:600;
+    margin-bottom:10px;
+}
+
+.leje{
+    font-size:14px;
+    color:#475569;
+    margin-bottom:20px;
+}
+
+.btn-pakke{
+    display:inline-block;
+    background:#0ea5e9;
+    color:white;
+    padding:10px 20px;
+    border-radius:8px;
+    text-decoration:none;
+}
+
+.note{
+    margin-top:30px;
+    font-size:12px;
+    color:#94a3b8;
+}
+
+/* CTA */
+.cta{
+    text-align:center;
+    padding:80px 10%;
 }
 
 .btn-main{
@@ -117,8 +200,6 @@ body{
     border-radius:10px;
     color:white;
     text-decoration:none;
-    display:inline-block;
-    margin-top:20px;
 }
 
 /* FOOTER */
@@ -126,7 +207,6 @@ body{
     width:100%;
     background:#0b1736;
     color:white;
-    margin-top:80px;
 }
 
 .footer-inner{
@@ -135,20 +215,50 @@ body{
     padding:50px 20px;
     display:flex;
     justify-content:space-between;
+    align-items:center;
 }
 
-.footer-left img{ height:45px; }
+.footer-left img{
+    height:45px;
+}
 
 .footer-right{
     text-align:right;
+    font-size:14px;
     color:#cbd5e1;
 }
 
 .footer-bottom{
     text-align:center;
     padding:15px;
+    font-size:12px;
     background:#020617;
     color:#94a3b8;
+}
+
+/* MOBILE */
+@media(max-width:768px){
+    .pakke-grid{
+        grid-template-columns:1fr;
+    }
+
+    .hero{
+        height:300px;
+    }
+
+    .hero-text h1{
+        font-size:30px;
+    }
+
+    .footer-inner{
+        flex-direction:column;
+        gap:20px;
+        text-align:center;
+    }
+
+    .footer-right{
+        text-align:center;
+    }
 }
 
 </style>
@@ -173,7 +283,7 @@ body{
 <div class="hero">
     <div class="hero-text">
         <h1>Hardware & kasseudstyr</h1>
-        <p>Professionelle POS-enheder tilpasset din forretning</p>
+        <p>Professionelle POS-løsninger – klar til brug</p>
     </div>
 </div>
 
@@ -181,25 +291,61 @@ body{
 <div class="section">
     <h2>Komplet hardware løsning</h2>
     <p>
-        Vi leverer komplette løsninger med kassesystem, skærme, printere og betalingsterminaler.
-        Alt er testet og fungerer sammen fra dag ét.
+        Vi leverer komplette løsninger med skærme, printere, betalingsterminaler
+        og kassesystem – alt spiller sammen fra dag ét.
     </p>
 </div>
 
-<!-- CTA -->
-<div class="cta-box">
-    <h2>Se priser & bestil hardware</h2>
-    <p>Få et tilbud på præcis den løsning du har brug for.</p>
+<!-- 🔥 PAKKER -->
+<div class="hardware-pakker">
 
-    <!-- 🔥 LINK TIL DIN FORM -->
-    <a href="hardware-bestilling.html" class="btn-main">
-        Se priser / bestil
-    </a>
+    <h2>Populære hardwarepakker</h2>
+    <p class="sub">Færdige løsninger – køb eller leasing</p>
+
+    <div class="pakke-grid">
+
+        <div class="pakke">
+            <img src="pakke1.jpg">
+            <h3>Alt i én startpakke</h3>
+            <p>10" skærm, printer, pengeskuffe & kundeskærm</p>
+            <div class="pris">kr. 4.400,00</div>
+            <div class="leje">
+                <strong>kr. 249 / md</strong><br>
+                kr. 900 oprettelse<br>
+                Binding 36 mdr.
+            </div>
+            <a href="hardware-bestilling.html" class="btn-pakke">Få tilbud</a>
+        </div>
+
+        <div class="pakke">
+            <img src="pakke2.jpg">
+            <h3>15,6" Startpakke</h3>
+            <p>15,6" skærm, printer & pengeskuffe</p>
+            <div class="pris">kr. 6.447,00</div>
+            <div class="leje">
+                <strong>kr. 349 / md</strong><br>
+                kr. 1.500 oprettelse<br>
+                Binding 36 mdr.
+            </div>
+            <a href="hardware-bestilling.html" class="btn-pakke">Få tilbud</a>
+        </div>
+
+    </div>
+
+    <p class="note">Alle priser er ekskl. moms</p>
+
+</div>
+
+<!-- CTA -->
+<div class="cta">
+    <h2>Klar til at få den rigtige løsning?</h2>
+    <a href="hardware-bestilling.html" class="btn-main">Se priser / bestil</a>
 </div>
 
 <!-- FOOTER -->
 <footer class="footer">
     <div class="footer-inner">
+
         <div class="footer-left">
             <img src="danpaylogo.jpg">
         </div>
@@ -210,6 +356,7 @@ body{
             <p>9200 Aalborg SV</p>
             <p>Kundeservice@danpay.dk</p>
         </div>
+
     </div>
 
     <div class="footer-bottom">
