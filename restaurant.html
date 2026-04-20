@@ -15,7 +15,7 @@ body{
     color:#0f172a;
 }
 
-/* 🔝 NAV (samme stil som index) */
+/* NAV */
 .nav{
     position:sticky;
     top:0;
@@ -29,99 +29,119 @@ body{
     border-bottom:1px solid rgba(0,0,0,0.05);
 }
 .logo img{ height:45px; }
-.nav-right{ display:flex; gap:20px; align-items:center; }
-.phone{ text-decoration:none; color:#0f172a; font-weight:600; }
+
+.nav-right{
+    display:flex;
+    gap:20px;
+    align-items:center;
+}
+
+.phone{
+    text-decoration:none;
+    color:#0f172a;
+    font-weight:600;
+}
+
 .cta-btn{
     background:linear-gradient(90deg,#0ea5e9,#3b82f6);
-    color:white; padding:10px 18px; border-radius:8px; text-decoration:none;
+    color:white;
+    padding:10px 18px;
+    border-radius:8px;
+    text-decoration:none;
 }
 
 /* HERO */
 .hero{
-    height:460px;
+    height:420px;
     background:url('restaurant.jpg') center/cover;
-    display:flex; align-items:center; justify-content:center;
+    display:flex;
+    align-items:center;
+    justify-content:center;
     position:relative;
 }
 .hero::before{
-    content:""; position:absolute; inset:0;
+    content:"";
+    position:absolute;
+    inset:0;
     background:linear-gradient(to top, rgba(0,0,0,0.7), rgba(0,0,0,0.2));
 }
 .hero-text{
-    position:relative; color:white; text-align:center; max-width:700px;
+    position:relative;
+    color:white;
+    text-align:center;
+    max-width:700px;
 }
-.hero-text h1{ font-size:52px; margin-bottom:10px; }
-.hero-text p{ font-size:22px; color:#e2e8f0; }
+.hero-text h1{ font-size:48px; margin-bottom:10px; }
+.hero-text p{ font-size:20px; color:#e2e8f0; }
 
-/* SPLIT SECTIONS */
+/* SECTIONS */
 .split{
     display:grid;
     grid-template-columns:1fr 1fr;
-    gap:60px;
-    padding:100px 10%;
+    gap:50px;
+    padding:80px 10%;
     align-items:center;
 }
+
+/* 🔥 ENS BILLEDER */
 .split img{
     width:100%;
+    height:280px;
+    object-fit:cover;
     border-radius:16px;
+    transition:0.4s ease;
 }
-.text h2{ font-size:32px; margin-bottom:10px; }
+.split img:hover{
+    transform:scale(1.03);
+}
+
+.text h2{ font-size:28px; margin-bottom:10px; }
 .text ul{
     color:#64748b;
     line-height:1.7;
     padding-left:18px;
 }
 
-/* skiftevis layout */
+/* reverse layout */
 .reverse{ direction:rtl; }
 .reverse .text{ direction:ltr; }
 
-/* PRICING BOX */
+/* PRICING */
 .pricing{
     text-align:center;
-    padding:40px 20px;        /* 🔽 mindre luft */
+    padding:50px 30px;
     background:#f1f5f9;
-    border-radius:12px;
-    
-    max-width:600px;          /* 🔥 vigtig! begrænser bredden */
-    margin:60px auto;         /* centrerer + mindre afstand */
+    border-radius:16px;
+    max-width:600px;
+    margin:60px auto;
 }
-.price-sub{ color:#64748b; font-size:18px; }
+
+.price-sub{ color:#64748b; font-size:16px; }
 .price-main{ font-size:32px; margin:10px 0 20px; }
 
 .btn-offer{
     background:#f97316;
     color:white;
-    padding:14px 30px;
-    border-radius:30px;
+    padding:10px 24px;
+    border-radius:25px;
     text-decoration:none;
     font-weight:600;
     display:inline-block;
-    margin-bottom:40px;
+    margin-bottom:30px;
+    transition:0.3s;
 }
-.btn-offer:hover{ transform:scale(1.05); }
+.btn-offer:hover{
+    transform:scale(1.05);
+}
 
-.price-title{ font-size:18px; margin-bottom:20px; }
+.price-title{ font-size:18px; margin-bottom:15px; }
 
 .price-list{
     list-style:none;
     padding:0;
     color:#64748b;
     line-height:1.8;
-    margin-bottom:30px;
-}
-
-.btn-demo{
-    display:inline-block;
-    padding:12px 24px;
-    border-radius:25px;
-    border:1px solid #0ea5e9;
-    color:#0ea5e9;
-    text-decoration:none;
-}
-.btn-demo:hover{
-    background:#0ea5e9;
-    color:white;
+    margin-bottom:20px;
 }
 
 /* CTA */
@@ -137,7 +157,7 @@ body{
     text-decoration:none;
 }
 
-/* FOOTER (samme som index) */
+/* FOOTER */
 .footer{
     display:flex;
     justify-content:space-between;
@@ -147,6 +167,7 @@ body{
     color:white;
 }
 .footer-left img{ height:45px; }
+
 .footer-right{
     text-align:right;
     font-size:14px;
@@ -166,9 +187,8 @@ body{
 /* MOBILE */
 @media(max-width:768px){
     .split{ grid-template-columns:1fr; }
-    .hero{ height:320px; }
-    .hero-text h1{ font-size:32px; }
-    .hero-text p{ font-size:18px; }
+    .hero{ height:300px; }
+    .hero-text h1{ font-size:30px; }
     .footer{ flex-direction:column; text-align:center; gap:20px; }
     .footer-right{ text-align:center; }
 }
@@ -180,7 +200,7 @@ body{
 <!-- NAV -->
 <div class="nav">
     <div class="logo">
-        <img src="danpaylogo.jpg" alt="Danpay logo">
+        <img src="danpaylogo.jpg">
     </div>
     <div class="nav-right">
         <a href="tel:+4570180099" class="phone">📞 +45 70 18 00 99</a>
@@ -191,106 +211,51 @@ body{
 <!-- HERO -->
 <div class="hero">
     <div class="hero-text">
-        <h1>Restaurant / Café / Pizzaria system</h1>
+        <h1>Restaurant / Café / Pizzaria</h1>
         <p>Alt du har brug for – samlet i én løsning</p>
     </div>
 </div>
 
-<!-- 1: SALGSVÆRKTØJ -->
+<!-- SECTIONS -->
 <div class="split">
     <img src="restaurant.jpg">
     <div class="text">
         <h2>Professionelt salgsværktøj</h2>
         <ul>
-            <li>Brugervenligt og letforståeligt system</li>
-            <li>Hurtig oprettelse af produkter og kategorier</li>
-            <li>Valgmuligheder på produkter (tilbehør, størrelser)</li>
-            <li>Åbn/luk kasser fra flere enheder</li>
-            <li>Betaling via kort eller faktura</li>
-            <li>QR-bestilling og online menukort</li>
-            <li>Gavekort og tilgodebeviser</li>
-            <li>Lagerstatus i realtid</li>
+            <li>Brugervenligt system</li>
+            <li>Hurtig oprettelse af produkter</li>
+            <li>QR-bestilling & online menu</li>
+            <li>Lagerstyring i realtid</li>
         </ul>
     </div>
 </div>
 
-<!-- 2: BORDSTYRING -->
 <div class="split reverse">
     <img src="qr-booking.jpg">
     <div class="text">
         <h2>Bordstyring & booking</h2>
         <ul>
-            <li>2D bordplan og kalenderoverblik</li>
-            <li>Autobooking ved salg af varer som filføjes til et ledigt bord (automatisk reservation genereres)</li>
-            <li>Online bordbooking via hjemmeside & sociale medier</li>
+            <li>2D bordplan</li>
+            <li>Online booking</li>
             <li>SMS påmindelser</li>
-            <li>Split regninger og flyt gæster</li>
+            <li>Split regninger</li>
         </ul>
     </div>
 </div>
 
-<!-- 3: BETALING -->
 <div class="split">
     <img src="betaling.jpg">
     <div class="text">
         <h2>Fleksibel betaling</h2>
         <ul>
-            <li>Kreditkort, kontant, faktura</li>
-            <li>Kundekonti og efterfakturering</li>
-            <li>Rabatgrupper og kampagner</li>
-            <li>Mobile POS løsninger</li>
-            <li>Variable priser og mængderabat</li>
+            <li>Kort, kontant & faktura</li>
+            <li>Mobile POS</li>
+            <li>Rabat & kampagner</li>
         </ul>
     </div>
 </div>
 
-<!-- 4: BEMANDING -->
-<div class="split reverse">
-    <img src="restaurant.jpg">
-    <div class="text">
-        <h2>Bemanding & løn</h2>
-        <ul>
-            <li>Vagtplan og tidsregistrering</li>
-            <li>Overblik over timer og løn</li>
-            <li>Kopiering af vagtplaner</li>
-            <li>Automatisk vagttildeling</li>
-            <li>Provision og løntillæg</li>
-        </ul>
-    </div>
-</div>
-
-<!-- 5: TAKEAWAY / APP -->
-<div class="split">
-    <img src="qr-kode1.jpg">
-    <div class="text">
-        <h2>Takeaway & bestillings-app</h2>
-        <ul>
-            <li>Opret en takeaway bestilling enten som en Online bestilling eller via bestillings-app</li>
-            <li>Mulighed for bordreservation (booking) + bestilling på forhånd, så maden/drikke står klar ved ankomst</li>
-            <li>Betaling via kreditkort direkte i app (mod et tillæg)</li>
-            <li>Bestillinger fra web eller appen vises i kassesystemet: medarbejdere kan manuelt godkende eller afvise, ellers lad systemet selv gøre det automatisk</li>
-			<li>Konkurrencer og billetsalg via appen: restauranter kan oprette konkurrencer (spørgsmål + svar) eller events med billetkøb</li>
-			<li>Loyalitetsprogrammer og kampagner</li>
-            <li>Push-beskeder til kunder</li>
-        </ul>
-    </div>
-</div>
-
-<!-- 6: INTEGRATION -->
-<div class="split reverse">
-    <img src="statistik.png">
-    <div class="text">
-        <h2>Integration & tilpasning</h2>
-        <ul>
-            <li>Integration til E-conomic, Dinero m.fl.</li>
-            <li>Fungerer på Android & Windows backoffice </li>
-            <li>Integration til betalingsterminaler</li>
-            <li>Brugerroller og adgangsstyring</li>
-        </ul>
-    </div>
-</div>
-
-<!-- 🔥 PRIS -->
+<!-- PRICING -->
 <div class="pricing">
     <p class="price-sub">Pris fra kun</p>
     <h2 class="price-main">299,00 kr/md</h2>
@@ -301,15 +266,11 @@ body{
 
     <ul class="price-list">
         <li>Kassesystem</li>
-        <li>Selskabshåndtering & billetsalg</li>
-        <li>Vagtplan, tidsregistrering & medarbejder app</li>
-        <li>Online bestilling & digitalt menukort (QR)</li>
-        <li>Bordstyring & booking + SMS( Plus et tillæg)</li>
-        <li>Bestillings-app & loyalitet</li>
-        <li>Integration til regnskab & terminaler</li>
+        <li>Online bestilling & QR</li>
+        <li>Bordbooking & SMS</li>
+        <li>App & loyalitet</li>
+        <li>Integrationer</li>
     </ul>
-
-    
 </div>
 
 <!-- CTA -->
@@ -321,10 +282,10 @@ body{
 <!-- FOOTER -->
 <footer class="footer">
     <div class="footer-left">
-        <img src="danpaylogo.jpg" alt="Danpay logo">
+        <img src="danpaylogo.jpg">
     </div>
     <div class="footer-right">
-	    <p>DanPay ApS<p>
+        <p>DanPay ApS</p>
         <p>CVR: 25128184</p>
         <p>9200 Aalborg SV</p>
         <p><a href="mailto:kundeservice@danpay.dk">Kundeservice@danpay.dk</a></p>
