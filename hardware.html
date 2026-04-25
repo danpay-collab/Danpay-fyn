@@ -14,7 +14,7 @@ body{font-family:'Inter',sans-serif;margin:0;background:#f1f5f9}
 .nav{display:flex;justify-content:space-between;padding:16px 10%;background:white}
 .logo img{height:40px}
 
-/* HERO FIXED */
+/* HERO */
 .hero{
     height:420px;
     background:url('hardware.jpg') center/cover no-repeat;
@@ -26,174 +26,53 @@ body{font-family:'Inter',sans-serif;margin:0;background:#f1f5f9}
     text-align:center;
     position:relative;
 }
-
-/* overlay */
 .hero::before{
     content:"";
     position:absolute;
     inset:0;
     background:rgba(0,0,0,0.5);
 }
-
-.hero h1, .hero p{
-    position:relative;
-}
-
-.hero p{
-    font-size:18px;
-    opacity:0.9;
-    margin-top:10px;
-}
+.hero h1,.hero p{position:relative}
+.hero p{font-size:18px;margin-top:10px}
 
 /* FILTER */
-.categories{
-    display:flex;
-    justify-content:center;
-    gap:15px;
-    padding:25px;
-}
-
+.categories{display:flex;justify-content:center;gap:15px;padding:25px}
 .categories button{
     padding:10px 20px;
     border:none;
     border-radius:20px;
     background:#e2e8f0;
     cursor:pointer;
-    transition:0.3s;
 }
-
-.categories button:hover{
-    background:#cbd5f5;
-}
-
-.categories .active{
-    background:#3b82f6;
-    color:white;
-}
+.categories .active{background:#3b82f6;color:white}
 
 /* GRID */
-.products{
-    display:grid;
-    grid-template-columns:repeat(5,1fr);
-    gap:20px;
-    padding:40px 10%;
-}
+.products{display:grid;grid-template-columns:repeat(5,1fr);gap:20px;padding:40px 10%}
+.card{background:white;border-radius:12px;padding:15px;text-align:center;box-shadow:0 5px 15px rgba(0,0,0,0.05)}
+.card img{width:100%;height:120px;object-fit:contain}
+.card p{font-size:14px;min-height:50px}
+select{padding:6px;border-radius:6px;margin:5px 0;width:100%}
+.price{font-weight:600;margin:5px 0}
 
-.card{
-    background:white;
-    border-radius:12px;
-    padding:15px;
-    text-align:center;
-    box-shadow:0 5px 15px rgba(0,0,0,0.05);
-}
-
-.card img{
-    width:100%;
-    height:120px;
-    object-fit:contain;
-}
-
-.card p{
-    font-size:14px;
-    min-height:50px;
-}
-
-select{
-    padding:6px;
-    border-radius:6px;
-    margin:5px 0;
-    width:100%;
-}
-
-.price{
-    font-weight:600;
-    margin:5px 0;
-}
-
-/* SMÅ KNAPPER */
-.qty{
-    display:flex;
-    justify-content:center;
-    gap:10px;
-}
-
-.qty button{
-    width:28px;
-    height:28px;
-    border:none;
-    background:#e2e8f0;
-    border-radius:6px;
-    cursor:pointer;
-}
-
-.qty input{
-    width:40px;
-    text-align:center;
-}
+/* QTY */
+.qty{display:flex;justify-content:center;gap:10px}
+.qty button{width:28px;height:28px;border:none;background:#e2e8f0;border-radius:6px}
+.qty input{width:40px;text-align:center}
 
 /* TOTAL */
-.total{
-    padding:30px 10%;
-    text-align:right;
-    font-size:22px;
-    font-weight:600;
-}
+.total{padding:30px 10%;text-align:right;font-size:22px;font-weight:600}
 
 /* FORM */
-.lead{
-    background:white;
-    margin:60px 10%;
-    padding:30px;
-    border-radius:12px;
-}
-
-.form-grid{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:15px;
-}
-
-input{
-    padding:12px;
-    border-radius:8px;
-    border:1px solid #ddd;
-}
-
-.btn{
-    margin-top:20px;
-    background:#3b82f6;
-    color:white;
-    padding:14px;
-    border:none;
-    border-radius:8px;
-    cursor:pointer;
-}
+.lead{background:white;margin:60px 10%;padding:30px;border-radius:12px}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:15px}
+input{padding:12px;border-radius:8px;border:1px solid #ddd}
+.btn{margin-top:20px;background:#3b82f6;color:white;padding:14px;border:none;border-radius:8px}
 
 /* FOOTER */
-.footer{
-    background:#0b1736;
-    color:white;
-    margin-top:80px;
-}
-
-.footer-inner{
-    max-width:1200px;
-    margin:auto;
-    padding:50px 20px;
-    display:flex;
-    justify-content:space-between;
-}
-
-.footer-left img{
-    height:45px;
-}
-
-.footer-bottom{
-    text-align:center;
-    padding:15px;
-    background:#020617;
-    color:#94a3b8;
-}
+.footer{background:#0b1736;color:white;margin-top:80px}
+.footer-inner{max-width:1200px;margin:auto;padding:50px 20px;display:flex;justify-content:space-between}
+.footer-left img{height:45px}
+.footer-bottom{text-align:center;padding:15px;background:#020617;color:#94a3b8}
 
 /* MOBILE */
 @media(max-width:900px){
@@ -251,11 +130,8 @@ Total: <span id="total">0</span> kr
 </footer>
 
 <script>
-const products = [...arguments.callee.caller.toString()];
 
 const products = [
-
-/* KASSE */
 {
 name:"Sunmi D3 Pro 15,6” Android",
 category:"kasse",
@@ -270,25 +146,19 @@ extras:[
 {label:"Kundedisplay 15,6”",price:3695}
 ]
 },
-
 {
 name:"Sunmi D3 Mini",
 price:5990,
 category:"kasse",
 img:"https://danpay.dk/wp-content/uploads/2025/05/1111111111-removebg-preview.png"
 },
-
-/* TILBEHØR */
 {name:"Sunmi NT320 Printer",price:1995,category:"tilbehor",img:"https://danpay.dk/wp-content/uploads/2025/11/Sunmi-NT320-Printer.png"},
 {name:"Sunmi 2D Scanner",price:795,category:"tilbehor",img:"https://danpay.dk/wp-content/uploads/2025/11/sunmi_u2scanner.png"},
 {name:"Scanner bordstativ",price:795,category:"tilbehor",img:"https://danpay.dk/wp-content/uploads/2025/11/sunmi_u2_stand.jpg"},
 {name:"SUNMI Kundedisplay 10,1”",price:2195,category:"tilbehor",img:"https://danpay.dk/wp-content/uploads/2025/11/sunmi_t3_10_disp_1-1.png"},
 {name:"SUNMI Kundedisplay 15,6”",price:3695,category:"tilbehor",img:"https://danpay.dk/wp-content/uploads/2025/12/sunmi_t3_15_disp_1.png"},
-
-/* STATIVER */
 {name:"Sunmi Fixed Stativ",price:795,category:"stativ",img:"https://danpay.dk/wp-content/uploads/2025/11/Sunmi-Fixed-Stativ.png"},
 {name:"Sunmi Pivoting Base",price:1295,category:"stativ",img:"https://danpay.dk/wp-content/uploads/2025/11/Sunmi-Multi-Function-Pivoting-Base.png"}
-
 ];
 
 let quantities={};
@@ -353,7 +223,6 @@ function calc(){
 let total=0;
 
 products.forEach((p,i)=>{
-
 let price=p.price||0;
 
 if(p.options){
