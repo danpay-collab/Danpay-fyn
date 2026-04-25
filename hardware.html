@@ -16,33 +16,32 @@ body{font-family:'Inter',sans-serif;margin:0;background:#f1f5f9}
 
 /* HERO */
 .hero{
-    height:420px;
-    background:url('hardware.jpg') center/cover no-repeat;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    flex-direction:column;
-    color:white;
-    text-align:center;
-    position:relative;
+height:420px;
+background:url('hardware.jpg') center/cover no-repeat;
+display:flex;
+align-items:center;
+justify-content:center;
+flex-direction:column;
+color:white;
+text-align:center;
+position:relative;
 }
 .hero::before{
-    content:"";
-    position:absolute;
-    inset:0;
-    background:rgba(0,0,0,0.5);
+content:"";
+position:absolute;
+inset:0;
+background:rgba(0,0,0,0.5);
 }
 .hero h1,.hero p{position:relative}
-.hero p{font-size:18px;margin-top:10px}
 
 /* FILTER */
 .categories{display:flex;justify-content:center;gap:15px;padding:25px}
 .categories button{
-    padding:10px 20px;
-    border:none;
-    border-radius:20px;
-    background:#e2e8f0;
-    cursor:pointer;
+padding:10px 20px;
+border:none;
+border-radius:20px;
+background:#e2e8f0;
+cursor:pointer;
 }
 .categories .active{background:#3b82f6;color:white}
 
@@ -132,6 +131,7 @@ Total: <span id="total">0</span> kr
 <script>
 
 const products = [
+
 {
 name:"Sunmi D3 Pro 15,6” Android",
 category:"kasse",
@@ -147,19 +147,114 @@ extras:[
 ]
 },
 {
+name:"Sunmi Flex 3 KDS",
+category:"kasse",
+img:"https://danpay.dk/wp-content/uploads/2025/11/Sunmi-Flex-3.png",
+options:[
+{label:'18.5"',price:4955},
+{label:'22"',price:4495},
+{label:'27"',price:9695}
+]
+},
+
+{
+name:"Sunmi CPad",
+category:"kasse",
+img:"https://danpay.dk/wp-content/uploads/2025/11/sunmi-CPad.png",
+options:[
+{label:'CPad 8.7"',price:2795},
+{label:'CPad 11"',price:2695},
+{label:'CPad 14"',price:4695}
+]
+},
+{
 name:"Sunmi D3 Mini",
 price:5990,
 category:"kasse",
 img:"https://danpay.dk/wp-content/uploads/2025/05/1111111111-removebg-preview.png"
 },
-{name:"Sunmi K2 Mini, Bordmodel, 1D | 2D, 15,6'', Android",price:9995,category:"kasse",img:"https://danpay.dk/wp-content/uploads/2026/01/sunmi_k2_wall_5.png"},    
-{name:"Sunmi NT320 Printer",price:1995,category:"tilbehor",img:"https://danpay.dk/wp-content/uploads/2025/11/Sunmi-NT320-Printer.png"},
-{name:"Sunmi 2D Scanner",price:795,category:"tilbehor",img:"https://danpay.dk/wp-content/uploads/2025/11/sunmi_u2scanner.png"},
-{name:"Scanner bordstativ",price:795,category:"tilbehor",img:"https://danpay.dk/wp-content/uploads/2025/11/sunmi_u2_stand.jpg"},
-{name:"SUNMI Kundedisplay 10,1”",price:2195,category:"tilbehor",img:"https://danpay.dk/wp-content/uploads/2025/11/sunmi_t3_10_disp_1-1.png"},
-{name:"SUNMI Kundedisplay 15,6”",price:3695,category:"tilbehor",img:"https://danpay.dk/wp-content/uploads/2025/12/sunmi_t3_15_disp_1.png"},
-{name:"Sunmi Fixed Stativ",price:795,category:"stativ",img:"https://danpay.dk/wp-content/uploads/2025/11/Sunmi-Fixed-Stativ.png"},
-{name:"Sunmi Pivoting Base",price:1295,category:"stativ",img:"https://danpay.dk/wp-content/uploads/2025/11/Sunmi-Multi-Function-Pivoting-Base.png"}
+
+{
+name:"Sunmi K2 Mini",
+price:9995,
+category:"kasse",
+img:"https://danpay.dk/wp-content/uploads/2026/01/sunmi_k2_wall_5.png"
+},
+
+{
+name:"Sunmi NT320 Printer",
+price:1995,
+category:"tilbehor",
+img:"https://danpay.dk/wp-content/uploads/2025/11/Sunmi-NT320-Printer.png"
+},
+
+{
+name:"Sunmi 2D Scanner",
+price:795,
+category:"tilbehor",
+img:"https://danpay.dk/wp-content/uploads/2025/11/sunmi_u2scanner.png"
+},
+
+{
+name:"Scanner bordstativ",
+price:795,
+category:"tilbehor",
+img:"https://danpay.dk/wp-content/uploads/2025/11/sunmi_u2_stand.jpg"
+},
+
+{
+name:"SUNMI Kundedisplay 10,1”",
+price:2195,
+category:"tilbehor",
+img:"https://danpay.dk/wp-content/uploads/2025/11/sunmi_t3_10_disp_1-1.png"
+},
+
+{
+name:"SUNMI Kundedisplay 15,6”",
+price:3695,
+category:"tilbehor",
+img:"https://danpay.dk/wp-content/uploads/2025/12/sunmi_t3_15_disp_1.png"
+},
+
+{
+name:"Sunmi Fixed Stativ",
+price:795,
+category:"stativ",
+img:"https://danpay.dk/wp-content/uploads/2025/11/Sunmi-Fixed-Stativ.png"
+},
+
+{
+name:"Sunmi Pivoting Base",
+price:1295,
+category:"stativ",
+img:"https://danpay.dk/wp-content/uploads/2025/11/Sunmi-Multi-Function-Pivoting-Base.png"
+},
+{
+name:"Sunmi Floor Stativ - Printer",
+price:6895,
+category:"stativ",
+img:"https://danpay.dk/wp-content/uploads/2025/11/Sunmi-Floor-Stativ-Printer.png"
+},
+{
+name:"Sunmi Floor Stativ - Printer - Scanner - Table",
+price:9895,
+category:"stativ",
+img:"https://danpay.dk/wp-content/uploads/2025/11/Sunmi-Floor-Stativ-Printer-Scanner-Table.png"
+},
+{
+name:"Sunmi Countertop Stativ - Printer",
+price:4995,
+category:"stativ",
+img:"https://danpay.dk/wp-content/uploads/2025/11/Sunmi-Countertop-Stativ-Printer.png"
+},
+{
+name:"Sunmi Countertop Stativ - Printer - Scanner",
+price:7295,
+category:"stativ",
+img:"https://danpay.dk/wp-content/uploads/2025/11/Sunmi-Countertop-Stativ-Printer-Scanner.png"
+},
+
+
 ];
 
 let quantities={};
@@ -196,7 +291,7 @@ document.getElementById("products").innerHTML+=`
 <p>${p.name}</p>
 ${optionsHTML}
 ${extrasHTML}
-<div class="price">${price} kr</div>
+<div class="price" id="price${i}">${price} kr</div>
 
 <div class="qty">
 <button onclick="change(${i},-1)">-</button>
@@ -224,6 +319,7 @@ function calc(){
 let total=0;
 
 products.forEach((p,i)=>{
+
 let price=p.price||0;
 
 if(p.options){
@@ -235,6 +331,9 @@ if(p.extras){
 let extra=document.getElementById("extra"+i);
 if(extra) price+=p.extras[extra.value].price;
 }
+
+let priceEl=document.getElementById("price"+i);
+if(priceEl) priceEl.innerText=price+" kr";
 
 total+=quantities[i]*price;
 });
