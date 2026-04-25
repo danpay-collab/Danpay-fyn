@@ -3,358 +3,234 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Hardware - Danpay</title>
+<title>Hardware løsninger - Danpay</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
 
 <style>
+body{font-family:'Inter',sans-serif;margin:0;background:#f1f5f9}
+.nav{display:flex;justify-content:space-between;padding:16px 10%;background:white}
+.logo img{height:40px}
 
-/* RESET */
-body{
-    font-family:'Inter',sans-serif;
-    margin:0;
-    background:#ffffff;
-    color:#0f172a;
+.hero{height:300px;background:url('Hardware.jpg') center/cover;display:flex;align-items:center;justify-content:center;color:white}
+
+.categories{display:flex;justify-content:center;gap:15px;padding:20px}
+.categories button{padding:10px 20px;border:none;border-radius:20px;background:#e2e8f0;cursor:pointer}
+.categories .active{background:#3b82f6;color:white}
+
+.products{display:grid;grid-template-columns:repeat(5,1fr);gap:20px;padding:40px 10%}
+
+.card{background:white;border-radius:12px;padding:15px;text-align:center;box-shadow:0 5px 15px rgba(0,0,0,0.05)}
+.card img{width:100%;height:120px;object-fit:contain}
+.card p{font-size:14px;min-height:50px}
+
+select{padding:6px;border-radius:6px;margin:5px 0;width:100%}
+.price{font-weight:600;margin:5px 0}
+
+.qty{display:flex;justify-content:center;gap:10px}
+.qty button{width:28px;height:28px;border:none;background:#e2e8f0;border-radius:6px}
+.qty input{width:40px;text-align:center}
+
+.total{padding:30px 10%;text-align:right;font-size:22px;font-weight:600}
+
+.lead{background:white;margin:60px 10%;padding:30px;border-radius:12px}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:15px}
+input{padding:12px;border-radius:8px;border:1px solid #ddd}
+.btn{margin-top:20px;background:#3b82f6;color:white;padding:14px;border:none;border-radius:8px}
+
+.footer{background:#0b1736;color:white;margin-top:80px}
+.footer-inner{max-width:1200px;margin:auto;padding:50px 20px;display:flex;justify-content:space-between}
+.footer-left img{height:45px}
+.footer-bottom{text-align:center;padding:15px;background:#020617;color:#94a3b8}
+
+@media(max-width:900px){
+.products{grid-template-columns:1fr 1fr}
 }
-
-/* NAV */
-.nav{
-    position:sticky;
-    top:0;
-    z-index:1000;
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    padding:16px 10%;
-    background:rgba(255,255,255,0.85);
-    backdrop-filter:blur(10px);
-}
-
-.logo img{ height:45px; }
-
-.nav-right{
-    display:flex;
-    gap:20px;
-    align-items:center;
-}
-
-.phone{
-    text-decoration:none;
-    color:#0f172a;
-    font-weight:600;
-}
-
-.cta-btn{
-    background:linear-gradient(90deg,#0ea5e9,#3b82f6);
-    color:white;
-    padding:10px 18px;
-    border-radius:8px;
-    text-decoration:none;
-}
-
-.back-btn{
-    text-decoration:none;
-    color:#0ea5e9;
-    font-weight:600;
-}
-
-/* HERO */
-.hero{
-    height:420px;
-    background:url('hardware.jpg') center/cover;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    position:relative;
-}
-
-.hero::before{
-    content:"";
-    position:absolute;
-    inset:0;
-    background:linear-gradient(to top, rgba(0,0,0,0.75), rgba(0,0,0,0.4));
-}
-
-.hero-text{
-    position:relative;
-    color:white;
-    text-align:center;
-}
-
-.hero-text h1{
-    font-size:48px;
-    margin-bottom:10px;
-}
-
-.hero-text p{
-    font-size:20px;
-    color:#e2e8f0;
-}
-
-/* INTRO */
-.section{
-    padding:80px 10%;
-    text-align:center;
-}
-
-.section p{
-    color:#64748b;
-    max-width:700px;
-    margin:auto;
-}
-
-/* 🔥 PAKKER */
-.hardware-pakker{
-    padding:80px 10%;
-    text-align:center;
-}
-
-.sub{
-    color:#64748b;
-    margin-bottom:40px;
-}
-
-.pakke-grid{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:40px;
-}
-
-.pakke{
-    background:#f8fafc;
-    padding:30px;
-    border-radius:16px;
-    transition:all 0.3s ease;
-    position:relative;
-}
-
-.pakke:hover{
-    transform:translateY(-10px);
-    box-shadow:0 20px 50px rgba(0,0,0,0.12);
-}
-
-/* 🔥 BILLEDER FIX */
-.pakke img{
-    width:100%;
-    height:180px;
-    object-fit:contain;
-    margin-bottom:20px;
-}
-
-/* POPULÆR */
-.highlight{
-    border:2px solid #0ea5e9;
-    transform:scale(1.03);
-}
-
-.badge{
-    position:absolute;
-    top:15px;
-    right:15px;
-    background:#0ea5e9;
-    color:white;
-    font-size:12px;
-    padding:6px 12px;
-    border-radius:20px;
-}
-
-/* TEKST */
-.pris{
-    font-size:22px;
-    font-weight:600;
-}
-
-.leje{
-    font-size:14px;
-    color:#475569;
-    margin:10px 0 15px;
-}
-
-.trust{
-    font-size:14px;
-    color:#16a34a;
-    margin-bottom:20px;
-}
-
-/* KNAP */
-.btn-pakke{
-    display:inline-block;
-    background:linear-gradient(90deg,#0ea5e9,#3b82f6);
-    color:white;
-    padding:12px 22px;
-    border-radius:10px;
-    text-decoration:none;
-}
-
-/* CTA */
-.cta{
-    text-align:center;
-    padding:80px 10%;
-}
-
-.btn-main{
-    background:linear-gradient(90deg,#0ea5e9,#3b82f6);
-    padding:14px 28px;
-    border-radius:10px;
-    color:white;
-    text-decoration:none;
-}
-
-/* FOOTER */
-.footer{
-    width:100%;
-    background:#0b1736;
-    color:white;
-}
-
-.footer-inner{
-    max-width:1200px;
-    margin:auto;
-    padding:50px 20px;
-    display:flex;
-    justify-content:space-between;
-}
-
-.footer-left img{ height:45px; }
-
-.footer-right{
-    text-align:right;
-    color:#cbd5e1;
-}
-
-.footer-bottom{
-    text-align:center;
-    padding:15px;
-    background:#020617;
-    color:#94a3b8;
-}
-
-/* MOBILE */
-@media(max-width:768px){
-    .pakke-grid{ grid-template-columns:1fr; }
-    .hero{ height:300px; }
-    .hero-text h1{ font-size:30px; }
-}
-
 </style>
 </head>
 
 <body>
 
-<!-- NAV -->
 <div class="nav">
-    <div class="logo">
-        <img src="danpaylogo.jpg">
-    </div>
-
-    <div class="nav-right">
-        <a href="index.html" class="back-btn">← Forside</a>
-        <a href="tel:+4570180099" class="phone">+45 70 18 00 99</a>
-        <a href="#" class="cta-btn">Kontakt</a>
-    </div>
+<div class="logo"><img src="danpaylogo.jpg"></div>
+<div>+45 70 18 00 99</div>
 </div>
 
-<!-- HERO -->
 <div class="hero">
-    <div class="hero-text">
-        <h1>Hardware & kasseudstyr</h1>
-        <p>Professionelle løsninger klar til brug</p>
-    </div>
+<h1>Hardware løsninger</h1>
 </div>
 
-<!-- INTRO -->
-<div class="section">
-    <p>
-        Vi leverer komplette POS løsninger med skærme, printere og betalingsterminaler.
-        Alt fungerer sammen fra dag ét.
-    </p>
+<div class="categories">
+<button onclick="filterCategory('all')" class="active">Alle</button>
+<button onclick="filterCategory('kasse')">Kasseapparat</button>
+<button onclick="filterCategory('tilbehor')">Tilbehør</button>
+<button onclick="filterCategory('stativ')">Stativer</button>
 </div>
 
-<!-- 🔥 PAKKER -->
-<div class="hardware-pakker">
+<div class="products" id="products"></div>
 
-    <h2>Populære hardwarepakker</h2>
-    <p class="sub">Køb eller leasing</p>
-
-    <div class="pakke-grid">
-
-        <!-- START -->
-        <div class="pakke">
-            <img src="pakke1.jpg">
-
-            <h3>Startpakke</h3>
-            <p>10" skærm + printer + pengeskuffe</p>
-
-            <div class="pris">kr. 4.400</div>
-
-            <div class="leje">
-                kr. 249/md<br>
-                Oprettelse 900 kr
-            </div>
-
-            <div class="trust">
-                ✔ Klar på 24 timer<br>
-                ✔ Dansk support
-            </div>
-
-            <a href="hardware-bestilling.html?pakke=start" class="btn-pakke">Få tilbud</a>
-        </div>
-
-        <!-- PRO -->
-        <div class="pakke highlight">
-            <div class="badge">Mest populær</div>
-
-            <img src="pakke2.jpg">
-
-            <h3>Pro pakke</h3>
-            <p>15,6" skærm + printer + pengeskuffe</p>
-
-            <div class="pris">kr. 6.447</div>
-
-            <div class="leje">
-                kr. 349/md<br>
-                Oprettelse 1.500 kr
-            </div>
-
-            <div class="trust">
-                ✔ Bedst til travl butik<br>
-                ✔ Hurtig opsætning
-            </div>
-
-            <a href="hardware-bestilling.html?pakke=pro" class="btn-pakke">Få tilbud</a>
-        </div>
-
-    </div>
-
+<div class="total">
+Total: <span id="total">0</span> kr
 </div>
 
-<!-- CTA -->
-<div class="cta">
-    <h2>Klar til at komme i gang?</h2>
-    <a href="hardware-bestilling.html" class="btn-main">Se priser / bestil</a>
+<div class="lead">
+<h2>Få et tilbud</h2>
+<div class="form-grid">
+<input id="cvr" placeholder="CVR">
+<input id="firma" placeholder="Firmanavn">
+<input id="kontakt" placeholder="Kontaktperson">
+<input id="telefon" placeholder="Telefon">
+<input id="email" placeholder="Email">
+</div>
+<button class="btn" onclick="send()">Send forespørgsel</button>
 </div>
 
-<!-- FOOTER -->
 <footer class="footer">
-    <div class="footer-inner">
-
-        <div class="footer-left">
-            <img src="danpaylogo.jpg">
-        </div>
-
-        <div class="footer-right">
-            <p>DanPay ApS</p>
-            <p>CVR: 25128184</p>
-            <p>9200 Aalborg SV</p>
-            <p>Kundeservice@danpay.dk</p>
-        </div>
-
-    </div>
-
-    <div class="footer-bottom">
-        © 2026 Danpay – Alle rettigheder forbeholdes
-    </div>
+<div class="footer-inner">
+<div class="footer-left"><img src="danpaylogo.jpg"></div>
+<div>
+<p>DanPay ApS</p>
+<p>CVR: 25128184</p>
+</div>
+</div>
+<div class="footer-bottom">© 2026 Danpay</div>
 </footer>
+
+<script>
+
+const products = [
+
+/* KASSE */
+{
+name:"Sunmi D3 Pro 15,6” Android",
+category:"kasse",
+img:"https://danpay.dk/wp-content/uploads/2025/11/sunmi_d3_front-1.png",
+options:[
+{label:"Uden printer & skuffe",price:6995},
+{label:"Med printer & skuffe",price:8395}
+],
+extras:[
+{label:"Ingen kundeskærm",price:0},
+{label:"Kundedisplay 10,1”",price:2195},
+{label:"Kundedisplay 15,6”",price:3695}
+]
+},
+
+{
+name:"Sunmi D3 Mini",
+price:5990,
+category:"kasse",
+img:"https://danpay.dk/wp-content/uploads/2025/05/1111111111-removebg-preview.png"
+},
+
+/* TILBEHØR */
+{name:"Sunmi NT320 Printer",price:1995,category:"tilbehor",img:"https://danpay.dk/wp-content/uploads/2025/11/Sunmi-NT320-Printer.png"},
+{name:"Sunmi 2D Scanner",price:795,category:"tilbehor",img:"https://danpay.dk/wp-content/uploads/2025/11/sunmi_u2scanner.png"},
+{name:"Scanner bordstativ",price:795,category:"tilbehor",img:"https://danpay.dk/wp-content/uploads/2025/11/sunmi_u2_stand.jpg"},
+{name:"SUNMI Kundedisplay 10,1”",price:2195,category:"tilbehor",img:"https://danpay.dk/wp-content/uploads/2025/11/sunmi_t3_10_disp_1-1.png"},
+{name:"SUNMI Kundedisplay 15,6”",price:3695,category:"tilbehor",img:"https://danpay.dk/wp-content/uploads/2025/12/sunmi_t3_15_disp_1.png"},
+
+/* STATIVER */
+{name:"Sunmi Fixed Stativ",price:795,category:"stativ",img:"https://danpay.dk/wp-content/uploads/2025/11/Sunmi-Fixed-Stativ.png"},
+{name:"Sunmi Pivoting Base",price:1295,category:"stativ",img:"https://danpay.dk/wp-content/uploads/2025/11/Sunmi-Multi-Function-Pivoting-Base.png"}
+
+];
+
+let quantities={};
+
+function renderProducts(filter="all"){
+document.getElementById("products").innerHTML="";
+
+products.forEach((p,i)=>{
+
+if(filter!=="all" && p.category!==filter) return;
+
+quantities[i]=quantities[i]||0;
+
+let optionsHTML="";
+let extrasHTML="";
+let price=p.price||0;
+
+if(p.options){
+optionsHTML=`<select id="opt${i}" onchange="calc()">
+${p.options.map((o,idx)=>`<option value="${idx}">${o.label} - ${o.price} kr</option>`).join("")}
+</select>`;
+price=p.options[0].price;
+}
+
+if(p.extras){
+extrasHTML=`<select id="extra${i}" onchange="calc()">
+${p.extras.map((e,idx)=>`<option value="${idx}">${e.label} (+${e.price} kr)</option>`).join("")}
+</select>`;
+}
+
+document.getElementById("products").innerHTML+=`
+<div class="card">
+<img src="${p.img}">
+<p>${p.name}</p>
+${optionsHTML}
+${extrasHTML}
+<div class="price">${price} kr</div>
+
+<div class="qty">
+<button onclick="change(${i},-1)">-</button>
+<input id="q${i}" value="${quantities[i]}">
+<button onclick="change(${i},1)">+</button>
+</div>
+</div>`;
+});
+}
+
+function filterCategory(cat){
+document.querySelectorAll(".categories button").forEach(b=>b.classList.remove("active"));
+event.target.classList.add("active");
+renderProducts(cat);
+}
+
+function change(i,val){
+quantities[i]+=val;
+if(quantities[i]<0) quantities[i]=0;
+document.getElementById("q"+i).value=quantities[i];
+calc();
+}
+
+function calc(){
+let total=0;
+
+products.forEach((p,i)=>{
+
+let price=p.price||0;
+
+if(p.options){
+let opt=document.getElementById("opt"+i);
+if(opt) price=p.options[opt.value].price;
+}
+
+if(p.extras){
+let extra=document.getElementById("extra"+i);
+if(extra) price+=p.extras[extra.value].price;
+}
+
+total+=quantities[i]*price;
+});
+
+document.getElementById("total").innerText=total;
+}
+
+function send(){
+let body=`CVR: ${cvr.value}
+Firma: ${firma.value}
+Kontakt: ${kontakt.value}
+Telefon: ${telefon.value}
+Email: ${email.value}
+Total: ${document.getElementById("total").innerText} kr`;
+
+window.location.href="mailto:salg@danpay.dk?subject=Hardware tilbud&body="+encodeURIComponent(body);
+}
+
+renderProducts();
+
+</script>
 
 </body>
 </html>
