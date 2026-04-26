@@ -18,41 +18,25 @@ body{font-family:'Inter',sans-serif;margin:0;background:#f1f5f9}
 .hero{
 height:420px;
 background:url('hardware.jpg') center/cover no-repeat;
-display:flex;
-align-items:center;
-justify-content:center;
-flex-direction:column;
-color:white;
-text-align:center;
-position:relative;
+display:flex;align-items:center;justify-content:center;
+flex-direction:column;color:white;text-align:center;position:relative;
 }
-.hero::before{
-content:"";
-position:absolute;
-inset:0;
-background:rgba(0,0,0,0.5);
-}
+.hero::before{content:"";position:absolute;inset:0;background:rgba(0,0,0,0.5)}
 .hero h1,.hero p{position:relative}
-.hero p:last-child{
-    font-size:16px;
-    opacity:0.8;
-    margin-top:5px;
-}
 
 /* FILTER */
 .categories{display:flex;justify-content:center;gap:15px;padding:25px}
 .categories button{
-padding:10px 20px;
-border:none;
-border-radius:20px;
-background:#e2e8f0;
-cursor:pointer;
+padding:10px 20px;border:none;border-radius:20px;background:#e2e8f0;cursor:pointer;
 }
 .categories .active{background:#3b82f6;color:white}
 
 /* GRID */
 .products{display:grid;grid-template-columns:repeat(5,1fr);gap:20px;padding:40px 10%}
-.card{background:white;border-radius:12px;padding:15px;text-align:center;box-shadow:0 5px 15px rgba(0,0,0,0.05)}
+.card{
+background:white;border-radius:12px;padding:15px;text-align:center;
+box-shadow:0 5px 15px rgba(0,0,0,0.05)
+}
 .card img{width:100%;height:120px;object-fit:contain}
 .card p{font-size:14px;min-height:50px}
 select{padding:6px;border-radius:6px;margin:5px 0;width:100%}
@@ -60,28 +44,36 @@ select{padding:6px;border-radius:6px;margin:5px 0;width:100%}
 
 /* QTY */
 .qty{display:flex;justify-content:center;gap:10px}
-.qty button{width:28px;height:28px;border:none;background:#e2e8f0;border-radius:6px}
+.qty button{width:28px;height:28px;border:none;background:#e2e8f0;border-radius:6px;cursor:pointer}
 .qty input{width:40px;text-align:center}
+
+/* INFO BUTTON */
+.info-btn{
+margin-top:8px;background:#3b82f6;color:white;border:none;
+padding:6px 10px;border-radius:6px;cursor:pointer
+}
+
+/* MODAL */
+.modal{
+display:none;position:fixed;inset:0;background:rgba(0,0,0,0.6);
+align-items:center;justify-content:center;z-index:999;
+}
+.modal-box{
+background:white;border-radius:16px;padding:25px;
+max-width:700px;width:90%;position:relative;
+}
+.modal-img{
+width:140px;margin:15px auto;display:block;
+}
+.badges{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin-bottom:10px}
+.badge{background:#e0f2fe;padding:6px 10px;border-radius:8px;font-size:12px}
+
+.info-grid{
+display:grid;grid-template-columns:1fr 1fr;gap:15px;
+}
 
 /* TOTAL */
 .total{padding:30px 10%;text-align:right;font-size:22px;font-weight:600}
-
-/* FORM */
-.lead{background:white;margin:60px 10%;padding:30px;border-radius:12px}
-.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:15px}
-input{padding:12px;border-radius:8px;border:1px solid #ddd}
-.btn{margin-top:20px;background:#3b82f6;color:white;padding:14px;border:none;border-radius:8px}
-
-/* FOOTER */
-.footer{background:#0b1736;color:white;margin-top:80px}
-.footer-inner{max-width:1200px;margin:auto;padding:50px 20px;display:flex;justify-content:space-between}
-.footer-left img{height:45px}
-.footer-bottom{text-align:center;padding:15px;background:#020617;color:#94a3b8}
-
-/* MOBILE */
-@media(max-width:900px){
-.products{grid-template-columns:1fr 1fr}
-}
 </style>
 </head>
 
@@ -107,37 +99,38 @@ input{padding:12px;border-radius:8px;border:1px solid #ddd}
 
 <div class="products" id="products"></div>
 
-<div class="total">
-Total: <span id="total">0</span> kr
+<div class="total">Total: <span id="total">0</span> kr</div>
+
+<!-- MODAL -->
+<div class="modal" id="modal">
+<div class="modal-box">
+
+<span onclick="closeModal()" style="position:absolute;right:15px;top:10px;cursor:pointer">✕</span>
+
+<h2 id="modalTitle"></h2>
+
+<img id="modalImg" class="modal-img">
+
+<div class="badges">
+<span class="badge">POS</span>
+<span class="badge">Hardware</span>
 </div>
 
-<div class="lead">
-<h2>Få et tilbud</h2>
-<div class="form-grid">
-<input id="cvr" placeholder="CVR">
-<input id="firma" placeholder="Firmanavn">
-<input id="kontakt" placeholder="Kontaktperson">
-<input id="telefon" placeholder="Telefon">
-<input id="email" placeholder="Email">
-</div>
-<button class="btn" onclick="send()">Send forespørgsel</button>
+<div class="info-grid">
+<div><b>Beskrivelse</b><p id="modalDesc"></p></div>
+<div><b>Funktion</b><p id="modalFunc"></p></div>
+<div><b>Specifikation</b><p id="modalSpec"></p></div>
+<div><b>Forbindelse</b><p id="modalConn"></p></div>
 </div>
 
-<footer class="footer">
-<div class="footer-inner">
-<div class="footer-left"><img src="danpaylogo.jpg"></div>
-<div>
-<p>DanPay ApS</p>
-<p>CVR: 25128184</p>
 </div>
 </div>
-<div class="footer-bottom">© 2026 Danpay</div>
-</footer>
 
 <script>
 
 const products = [
 
+/* KASSE */
 {
 name:"Sunmi D3 Pro 15,6” Android",
 category:"kasse",
@@ -148,19 +141,32 @@ options:[
 ],
 extras:[
 {label:"Ingen kundeskærm",price:0},
-{label:"Kundedisplay 10,1”",price:2195},
-{label:"Kundedisplay 15,6”",price:3695}
-]
+{label:"10,1” display",price:2195},
+{label:"15,6” display",price:3695}
+],
+info:{
+desc:"Komplet POS løsning",
+func:"Butik og restaurant",
+spec:"Android system",
+conn:"USB / Ethernet"
+}
 },
+
 {
 name:"Sunmi Flex 3 KDS",
 category:"kasse",
 img:"https://danpay.dk/wp-content/uploads/2025/11/Sunmi-Flex-3.png",
 options:[
-{label:'18.5"',price:4955},
-{label:'22"',price:4495},
-{label:'27"',price:9695}
-]
+{label:"18.5”",price:4955},
+{label:"22”",price:4495},
+{label:"27”",price:9695}
+],
+info:{
+desc:"Køkkenskærm",
+func:"KDS system",
+spec:"Touch display",
+conn:"LAN / WiFi"
+}
 },
 
 {
@@ -168,115 +174,38 @@ name:"Sunmi CPad",
 category:"kasse",
 img:"https://danpay.dk/wp-content/uploads/2025/11/sunmi-CPad.png",
 options:[
-{label:'CPad 8.7"',price:2795},
-{label:'CPad 11"',price:2695},
-{label:'CPad 14"',price:4695}
-]
-},
-{
-name:"Sunmi D3 Mini",
-price:5990,
-category:"kasse",
-img:"https://danpay.dk/wp-content/uploads/2025/05/1111111111-removebg-preview.png"
-},
-
-{
-name:"Sunmi K2 Mini",
-price:9995,
-category:"kasse",
-img:"https://danpay.dk/wp-content/uploads/2026/01/sunmi_k2_wall_5.png"
+{label:"8.7”",price:2795},
+{label:"11”",price:2695},
+{label:"14”",price:4695}
+],
+info:{
+desc:"Tablet POS",
+func:"Mobil løsning",
+spec:"Android 14",
+conn:"WiFi / Bluetooth"
+}
 },
 
-{
-name:"Sunmi NT320 Printer",
-price:1995,
-category:"tilbehor",
-img:"https://danpay.dk/wp-content/uploads/2025/11/Sunmi-NT320-Printer.png"
-},
+{name:"Sunmi D3 Mini",price:5990,category:"kasse",img:"https://danpay.dk/wp-content/uploads/2025/05/1111111111-removebg-preview.png"},
+{name:"Sunmi K2 Mini",price:9995,category:"kasse",img:"https://danpay.dk/wp-content/uploads/2026/01/sunmi_k2_wall_5.png"},
 
-{
-name:"Sunmi 2D Scanner",
-price:795,
-category:"tilbehor",
-img:"https://danpay.dk/wp-content/uploads/2025/11/sunmi_u2scanner.png"
-},
+/* TILBEHØR */
+{name:"Sunmi NT320 Printer",price:1995,category:"tilbehor",img:"https://danpay.dk/wp-content/uploads/2025/11/Sunmi-NT320-Printer.png"},
+{name:"Sunmi 2D Scanner",price:795,category:"tilbehor",img:"https://danpay.dk/wp-content/uploads/2025/11/sunmi_u2scanner.png"},
+{name:"Scanner bordstativ",price:795,category:"tilbehor",img:"https://danpay.dk/wp-content/uploads/2025/11/sunmi_u2_stand.jpg"},
+{name:"Kundedisplay 10,1”",price:2195,category:"tilbehor",img:"https://danpay.dk/wp-content/uploads/2025/11/sunmi_t3_10_disp_1-1.png"},
+{name:"Kundedisplay 15,6”",price:3695,category:"tilbehor",img:"https://danpay.dk/wp-content/uploads/2025/12/sunmi_t3_15_disp_1.png"},
 
-{
-name:"Scanner bordstativ",
-price:795,
-category:"tilbehor",
-img:"https://danpay.dk/wp-content/uploads/2025/11/sunmi_u2_stand.jpg"
-},
-
-{
-name:"SUNMI Kundedisplay 10,1 til D3 Pro”",
-price:2195,
-category:"tilbehor",
-img:"https://danpay.dk/wp-content/uploads/2025/11/sunmi_t3_10_disp_1-1.png"
-},
-
-{
-name:"SUNMI Kundedisplay 15,6 til D3 Pro”",
-price:3695,
-category:"tilbehor",
-img:"https://danpay.dk/wp-content/uploads/2025/12/sunmi_t3_15_disp_1.png"
-},
-
-{
-name:"Sunmi Fixed Stativ - CPad 8.7-11",
-price:795,
-category:"stativ",
-img:"https://danpay.dk/wp-content/uploads/2025/11/Sunmi-Fixed-Stativ.png"
-},
-{
-name:"Sunmi Table-Side Stativ",
-price:995,
-category:"stativ",
-img:"Sunmi CPad.png"
-},
-{
-name:"Sunmi Pivoting Base",
-price:1295,
-category:"stativ",
-img:"https://danpay.dk/wp-content/uploads/2025/11/Sunmi-Multi-Function-Pivoting-Base.png"
-},
-{
-name:"Sunmi Printing Base",
-price:1295,
-category:"stativ",
-img:"Sunmi Printing Base.png"
-},
-{
-name:"Sunmi Desktop Base",
-price:1195,
-category:"stativ",
-img:"Sunmi Desktop Base.png"
-},
-{
-name:"Sunmi Floor Stativ Flex 3 - Printer",
-price:6895,
-category:"stativ",
-img:"https://danpay.dk/wp-content/uploads/2025/11/Sunmi-Floor-Stativ-Printer.png"
-},
-{
-name:"Sunmi Floor Stativ Flex 3 - Printer - Scanner - Table",
-price:9895,
-category:"stativ",
-img:"https://danpay.dk/wp-content/uploads/2025/11/Sunmi-Floor-Stativ-Printer-Scanner-Table.png"
-},
-{
-name:"Sunmi Countertop Stativ Flex 3 - Printer",
-price:4995,
-category:"stativ",
-img:"https://danpay.dk/wp-content/uploads/2025/11/Sunmi-Countertop-Stativ-Printer.png"
-},
-{
-name:"Sunmi Countertop Stativ Flex 3- Printer - Scanner",
-price:7295,
-category:"stativ",
-img:"https://danpay.dk/wp-content/uploads/2025/11/Sunmi-Countertop-Stativ-Printer-Scanner.png"
-},
-
+/* STATIVER */
+{name:"Sunmi Fixed Stativ",price:795,category:"stativ",img:"https://danpay.dk/wp-content/uploads/2025/11/Sunmi-Fixed-Stativ.png"},
+{name:"Sunmi Table-Side Stativ",price:995,category:"stativ",img:"Sunmi CPad.png"},
+{name:"Sunmi Pivoting Base",price:1295,category:"stativ",img:"https://danpay.dk/wp-content/uploads/2025/11/Sunmi-Multi-Function-Pivoting-Base.png"},
+{name:"Sunmi Printing Base",price:1295,category:"stativ",img:"Sunmi Printing Base.png"},
+{name:"Sunmi Desktop Base",price:1195,category:"stativ",img:"Sunmi Desktop Base.png"},
+{name:"Sunmi Floor Stativ Flex 3 - Printer",price:6895,category:"stativ",img:"https://danpay.dk/wp-content/uploads/2025/11/Sunmi-Floor-Stativ-Printer.png"},
+{name:"Sunmi Floor Stativ Flex 3 - Printer - Scanner - Table",price:9895,category:"stativ",img:"https://danpay.dk/wp-content/uploads/2025/11/Sunmi-Floor-Stativ-Printer-Scanner-Table.png"},
+{name:"Sunmi Countertop Stativ Flex 3 - Printer",price:4995,category:"stativ",img:"https://danpay.dk/wp-content/uploads/2025/11/Sunmi-Countertop-Stativ-Printer.png"},
+{name:"Sunmi Countertop Stativ Flex 3- Printer - Scanner",price:7295,category:"stativ",img:"https://danpay.dk/wp-content/uploads/2025/11/Sunmi-Countertop-Stativ-Printer-Scanner.png"}
 
 ];
 
@@ -286,34 +215,26 @@ function renderProducts(filter="all"){
 document.getElementById("products").innerHTML="";
 
 products.forEach((p,i)=>{
-
 if(filter!=="all" && p.category!==filter) return;
 
 quantities[i]=quantities[i]||0;
 
-let optionsHTML="";
-let extrasHTML="";
-let price=p.price||0;
+let price=p.price||p.options?.[0].price||0;
 
-if(p.options){
-optionsHTML=`<select id="opt${i}" onchange="calc()">
+let optHTML=p.options?`<select id="opt${i}" onchange="calc()">
 ${p.options.map((o,idx)=>`<option value="${idx}">${o.label} - ${o.price} kr</option>`).join("")}
-</select>`;
-price=p.options[0].price;
-}
+</select>`:"";
 
-if(p.extras){
-extrasHTML=`<select id="extra${i}" onchange="calc()">
+let extraHTML=p.extras?`<select id="extra${i}" onchange="calc()">
 ${p.extras.map((e,idx)=>`<option value="${idx}">${e.label} (+${e.price} kr)</option>`).join("")}
-</select>`;
-}
+</select>`:"";
 
 document.getElementById("products").innerHTML+=`
 <div class="card">
 <img src="${p.img}">
 <p>${p.name}</p>
-${optionsHTML}
-${extrasHTML}
+${optHTML}
+${extraHTML}
 <div class="price" id="price${i}">${price} kr</div>
 
 <div class="qty">
@@ -321,14 +242,10 @@ ${extrasHTML}
 <input id="q${i}" value="${quantities[i]}">
 <button onclick="change(${i},1)">+</button>
 </div>
+
+<button class="info-btn" onclick="showInfo(${i})">Info</button>
 </div>`;
 });
-}
-
-function filterCategory(cat){
-document.querySelectorAll(".categories button").forEach(b=>b.classList.remove("active"));
-event.target.classList.add("active");
-renderProducts(cat);
 }
 
 function change(i,val){
@@ -342,7 +259,6 @@ function calc(){
 let total=0;
 
 products.forEach((p,i)=>{
-
 let price=p.price||0;
 
 if(p.options){
@@ -364,15 +280,26 @@ total+=quantities[i]*price;
 document.getElementById("total").innerText=total;
 }
 
-function send(){
-let body=`CVR: ${cvr.value}
-Firma: ${firma.value}
-Kontakt: ${kontakt.value}
-Telefon: ${telefon.value}
-Email: ${email.value}
-Total: ${document.getElementById("total").innerText} kr`;
+function showInfo(i){
+let p=products[i];
+document.getElementById("modal").style.display="flex";
+document.getElementById("modalTitle").innerText=p.name;
+document.getElementById("modalImg").src=p.img;
 
-window.location.href="mailto:salg@danpay.dk?subject=Hardware tilbud&body="+encodeURIComponent(body);
+document.getElementById("modalDesc").innerText=p.info?.desc||"";
+document.getElementById("modalFunc").innerText=p.info?.func||"";
+document.getElementById("modalSpec").innerText=p.info?.spec||"";
+document.getElementById("modalConn").innerText=p.info?.conn||"";
+}
+
+function closeModal(){
+document.getElementById("modal").style.display="none";
+}
+
+function filterCategory(cat){
+document.querySelectorAll(".categories button").forEach(b=>b.classList.remove("active"));
+event.target.classList.add("active");
+renderProducts(cat);
 }
 
 renderProducts();
