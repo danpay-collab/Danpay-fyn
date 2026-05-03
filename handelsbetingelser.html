@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Handelsbetingelser - DanPay</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+
+/* BASE */
+body{
+    font-family:'Inter',sans-serif;
+    margin:0;
+    background:#ffffff;
+    color:#0f172a;
+    line-height:1.8;
+}
+
+/* NAV (samme som dine sider) */
+.nav{
+    position:sticky;
+    top:0;
+    z-index:1000;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:16px 10%;
+    background:rgba(255,255,255,0.8);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid rgba(0,0,0,0.05);
+}
+
+.logo img{ height:45px; }
+
+.nav-right{
+    display:flex;
+    gap:20px;
+    align-items:center;
+}
+
+.phone{
+    text-decoration:none;
+    color:#0f172a;
+    font-weight:600;
+}
+
+.cta-btn{
+    background:linear-gradient(90deg,#0ea5e9,#3b82f6);
+    color:white;
+    padding:10px 18px;
+    border-radius:8px;
+    text-decoration:none;
+}
+
+.back-btn{
+    text-decoration:none;
+    color:#0ea5e9;
+    font-weight:600;
+}
+
+/* HERO */
+.hero{
+    padding:80px 10%;
+    background:#f1f5f9;
+}
+
+.hero h1{
+    font-size:36px;
+}
+
+/* CONTENT */
+.content{
+    max-width:900px;
+    margin:auto;
+    padding:60px 10%;
+}
+
+.section{
+    margin-bottom:40px;
+}
+
+.section h2{
+    font-size:22px;
+    margin-bottom:10px;
+}
+
+.section h3{
+    font-size:18px;
+    margin-top:20px;
+}
+
+.section p{
+    margin-bottom:15px;
+    color:#334155;
+}
+
+/* FOOTER (samme som din side) */
+.footer{
+    width:100%;
+    background:#0b1736;
+    color:white;
+    margin-top:80px;
+}
+
+.footer-inner{
+    max-width:1200px;
+    margin:auto;
+    padding:50px 20px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.footer-left img{ height:45px; }
+
+.footer-right{
+    text-align:right;
+    font-size:14px;
+    color:#cbd5e1;
+}
+
+.footer-bottom{
+    text-align:center;
+    padding:15px;
+    font-size:12px;
+    background:#020617;
+    color:#94a3b8;
+}
+
+/* MOBILE */
+@media(max-width:668px){
+
+    .nav{
+        flex-direction:column;
+        align-items:flex-start;
+        gap:10px;
+    }
+
+    .nav-right{
+        width:100%;
+        display:flex;
+        justify-content:space-between;
+    }
+
+    .phone{
+        white-space:nowrap;
+        font-size:14px;
+    }
+
+}
+</style>
+</head>
+
+<body>
+
+<!-- NAV -->
+<div class="nav">
+    <div class="logo">
+        <img src="danpaylogo.jpg">
+    </div>
+
+    <div class="nav-right">
+        <a href="index.html" class="back-btn">← Forside</a>
+        <a href="tel:+4570180099" class="phone">+45 70 18 00 99</a>
+        <a href="#" class="cta-btn">Kontakt</a>
+    </div>
+</div>
+
+<!-- HERO -->
+<div class="hero">
+    <h1>Handelsbetingelser</h1>
+</div>
+
+<!-- CONTENT -->
+<div class="content">
+
+    <div class="section">
+        <h2>1. Generelt</h2>
+        <p>Disse vilkår omhandler indgåelse af aftale om betalingsterminal med DanPay ApS.</p>
+        <p>Vilkårene kan ændres og træder i kraft 30 dage efter meddelelse til kunden.</p>
+    </div>
+
+    <div class="section">
+        <h2>2. Direkte debitering</h2>
+        <p>DanPay ApS. har ret til at debitere kundens konto for ethvert tilgodehavende.</p>
+        <p>Alle aftaler tilmeldes automatisk betalingsservice eller Leverandørservice.</p>
+    </div>
+
+    <div class="section">
+        <h2>3. Aftale om betalingsterminal</h2>
+
+        <h3>3.1 Indgåelse</h3>
+        <p>Aftaler kan indgås skriftligt, mundtligt, via e-mail eller telefon.</p>
+
+        <h3>3.2 Bindende aftale</h3>
+        <p>En bestilling er bindende, når kunden har modtaget ordrebekræftelse eller taget terminalen i brug.</p>
+
+        <h3>3.3 Fortrydelsesret</h3>
+        <p>Der er ingen fortrydelsesret, medmindre det er aftalt skriftligt.</p>
+
+        <h3>3.4 Ejerskab</h3>
+        <p>Kunden opnår ikke ejerskab over terminalen.</p>
+
+        <h3>3.5 Binding</h3>
+        <p>Aftalen er bindende i 36 måneder.</p>
+
+        <h3>3.6 Minimumsomsætning</h3>
+        <p>Der kræves minimum 50.000 kr./mdr. pr. terminal.</p>
+    </div>
+
+    <div class="section">
+        <h2>4. Opsigelse</h2>
+        <p>Aftalen kan opsiges efter bindingsperioden med 3 måneders varsel.</p>
+        <p>Opsigelse skal ske skriftligt til kundeservice@danpay.dk</p>
+    </div>
+
+    <div class="section">
+        <h2>5. Service & support</h2>
+        <p>Support håndteres af Worldline/Bambora.</p>
+        <p>Telefon: +45 78 79 47 00</p>
+    </div>
+
+    <div class="section">
+        <h2>6. Tvist</h2>
+        <p>Tvister afgøres ved byretten i Aalborg.</p>
+    </div>
+
+</div>
+
+<!-- FOOTER -->
+<footer class="footer">
+
+    <div class="footer-inner">
+
+        <div class="footer-left">
+            <img src="danpaylogo.jpg">
+        </div>
+
+        <div class="footer-right">
+            <p>DanPay ApS</p>
+            <p>CVR: 25128184</p>
+            <p>9200 Aalborg SV</p>
+            <p>Kundeservice@danpay.dk</p>
+        </div>
+
+    </div>
+
+    <div class="footer-bottom">
+        © 2026 Danpay – Alle rettigheder forbeholdes
+    </div>
+
+</footer>
+
+</body>
+</html>
