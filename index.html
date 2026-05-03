@@ -219,28 +219,39 @@ body {
 }
 
 /* MOBILE */
-@media(max-width:768px){
-    .grid {
-        grid-template-columns:1fr;
-    }
+@media(max-width:668px){
 
-    .hero h1 {
-        font-size:36px;
-    }
-
-    .hero p {
-        font-size:20px;
-    }
-
-    .footer {
+    .nav{
         flex-direction:column;
-        text-align:center;
+        align-items:flex-start;
+        gap:10px;
+    }
+
+    .nav-right{
+        width:100%;
+        display:flex;
+        justify-content:space-between;
+        align-items:center;
+    }
+
+    .phone{
+        white-space:nowrap;
+        font-size:14px;
+    }
+
+    .split img,
+    .betaling-video{
+        width:100%;
+        height:auto;
+        max-height:250px;
+        object-fit:cover;
+    }
+
+    .split{
+        padding:40px 5%;
         gap:20px;
     }
 
-    .footer-right {
-        text-align:center;
-    }
 }
 
 </style>
