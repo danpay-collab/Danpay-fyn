@@ -342,33 +342,56 @@ document.getElementById("postnr").value=(d.zipcode||"")+" "+(d.city||"");
 
 function sendOrder(){
 
-if(cart.length===0){
-alert("Din kurv er tom");
-return;
-}
+    if(cart.length===0){
+        alert("Din kurv er tom");
+        return;
+    }
 
-let orderId="DP-"+Date.now();
+    // 🔥 ORDRE ID
+    let orderId = "DP-" + Date.now();
 
-let firma=document.getElementById("firma").value;
-let email=document.getElementById("email").value;
+    // 🔥 INPUT FELTER
+    let firma = document.getElementById("firma").value;
+    let adresse = document.getElementById("adresse").value;
+    let postnr = document.getElementById("postnr").value;
+    let email = document.getElementById("email").value;
+    let kontakt = document.getElementById("kontakt").value;
+    let telefon = document.getElementById("telefon").value;
 
-let lines=cart.map(i=>`${i.qty} x ${i.name}`).join("\n");
+    // 🔥 VARER
+    let lines = cart.map(i =>
+        `${i.qty} x ${i.name} (${i.price} kr)`
+    ).join("\n");
 
-let body=`Ordre ${orderId}
+    // 🔥 BEREGNING
+    let subtotal = cart.reduce((sum, i) => sum + i.price * i.qty, 0);
+    let shipping = 59;
+    let total = subtotal + shipping;
+
+    // 🔥 MAIL BODY (ALT SAMLET)
+    let body = `Ordre ID: ${orderId}
 
 ${lines}
 
+Subtotal: ${subtotal} kr
+Fragt: ${shipping} kr
+Total: ${total} kr
+
 Firma: ${firma}
-Email: ${email}`;
+Adresse: ${adresse}
+Postnr/by: ${postnr}
+Email: ${email}
+Kontakt: ${kontakt}
+Telefon: ${telefon}`;
 
-document.getElementById("orderPopup").style.display="flex";
-document.getElementById("orderIdText").innerText="Ordre ID: "+orderId;
+    // 🔥 POPUP
+    document.getElementById("orderPopup").style.display="flex";
+    document.getElementById("orderIdText").innerText="Ordre ID: " + orderId;
 
-window.location.href="mailto:salg@danpay.dk?subject="+encodeURIComponent("Ordre "+orderId)+"&body="+encodeURIComponent(body);
-}
-
-function closePopup(){
-document.getElementById("orderPopup").style.display="none";
+    // 🔥 MAIL
+    window.location.href =
+        "mailto:salg@danpay.dk?subject=" + encodeURIComponent("Ordre " + orderId) +
+        "&body=" + encodeURIComponent(body);
 }
 </script>
 
