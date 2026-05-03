@@ -13,6 +13,7 @@ body {
     margin:0;
     background:#f8fafc;
     color:#1e293b;
+    padding-bottom:180px;
 }
 
 /* NAV */
@@ -25,7 +26,6 @@ body {
     align-items:center;
     padding:16px 10%;
     background:rgba(255,255,255,0.7);
-    backdrop-filter:blur(10px);
 }
 
 .logo img{ height:45px; }
@@ -33,26 +33,26 @@ body {
 .nav-right{
     display:flex;
     gap:20px;
-    align-items:center;
 }
 
 /* HERO */
-.hero {
-    padding:80px 10%;
+.hero{
     text-align:center;
+    padding:60px 10%;
 }
 
 /* PRODUCTS */
-.products {
+.products{
     display:grid;
     grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
     gap:30px;
     padding:40px 10%;
 }
 
-.product {
+.product{
     background:white;
     border-radius:16px;
+    overflow:hidden;
     box-shadow:0 10px 25px rgba(0,0,0,0.05);
 }
 
@@ -67,14 +67,13 @@ body {
 }
 
 .price{
-    font-size:18px;
     font-weight:600;
+    margin:10px 0;
 }
 
 .order{
     display:flex;
     gap:10px;
-    margin-top:10px;
 }
 
 .order input{
@@ -90,31 +89,70 @@ body {
     cursor:pointer;
 }
 
-/* 🔥 KURV (NU KORREKT) */
+/* CART */
 .cart{
     position:fixed;
     right:20px;
     bottom:20px;
-    width:300px;
+    width:320px;
     background:white;
     padding:20px;
     border-radius:16px;
     box-shadow:0 15px 40px rgba(0,0,0,0.2);
+    z-index:999;
 }
 
 .cart h3{ margin-top:0; }
 
 .cart-item{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
     font-size:14px;
     margin-bottom:5px;
 }
 
-.total{
-    font-weight:600;
-    margin-top:10px;
+.delete{
+    color:red;
+    cursor:pointer;
+    font-weight:bold;
 }
 
-/* FOOTER (URØRT) */
+.total{
+    margin-top:10px;
+    font-size:14px;
+}
+
+.cart input{
+    width:100%;
+    padding:8px;
+    margin:5px 0;
+}
+
+.btn-send{
+    width:100%;
+    background:#22c55e;
+    color:white;
+    padding:10px;
+    border:none;
+    border-radius:8px;
+    margin-top:10px;
+    text-decoration:none;
+    display:block;
+    text-align:center;
+}
+
+.btn-cvr{
+    width:100%;
+    background:#e2e8f0;
+    padding:8px;
+    border:none;
+    border-radius:6px;
+    margin-bottom:5px;
+    cursor:pointer;
+}
+
+/* FOOTER */
 .footer{
     background:#0b1736;
     color:white;
@@ -131,16 +169,6 @@ body {
     text-align:center;
     padding:10px;
     background:#020617;
-}
-
-/* MOBILE */
-@media(max-width:768px){
-    .cart{
-        width:100%;
-        right:0;
-        bottom:0;
-        border-radius:0;
-    }
 }
 </style>
 </head>
@@ -170,7 +198,7 @@ body {
 <div class="product">
 <img src="ruller80.png">
 <div class="product-content">
-<h3>80x80x12mm (30 stk)</h3>
+<h3>80 x 80 x 12mm (30 stk)</h3>
 <p>Standard til kassesystemer</p>
 <p>+ Levering 59 kr</p>
 <div class="price">599 kr</div>
@@ -184,7 +212,7 @@ body {
 <div class="product">
 <img src="ruller57.png">
 <div class="product-content">
-<h3>57x40x12mm (50 stk)</h3>
+<h3>57 x 40 x 12mm (50 stk)</h3>
 <p>Til mindre terminaler</p>
 <p>+ Levering 59 kr</p>
 <div class="price">499 kr</div>
@@ -198,7 +226,7 @@ body {
 <div class="product">
 <img src="ruller8040.png">
 <div class="product-content">
-<h3>80x40x12mm (40 stk)</h3>
+<h3>80 x 40 x 12mm (40 stk)</h3>
 <p>Til mindre terminaler</p>
 <p>+ Levering 59 kr</p>
 <div class="price">499 kr</div>
@@ -223,18 +251,22 @@ body {
 <!-- KURV -->
 <div class="cart">
 <h3>🛒 Din kurv</h3>
+
 <div id="cart"></div>
-<div class="total" id="total">Total: 0 kr</div>
 
-<br>
+<div class="total" id="total">
+Subtotal: 0 kr<br>
+Fragt: 0 kr<br>
+<strong>Total: 0 kr</strong>
+</div>
 
-<input placeholder="CVR">
+<input id="cvr" placeholder="CVR nummer">
+<button class="btn-cvr" onclick="lookupCVR()">Hent CVR oplysninger</button>
+
 <input placeholder="Firma">
 <input placeholder="Email">
 
-<a id="orderMail" href="#" style="display:block;margin-top:10px;background:#22c55e;color:white;text-align:center;padding:10px;border-radius:8px;text-decoration:none;">
-Send bestilling
-</a>
+<a id="orderMail" class="btn-send" href="#">Send bestilling</a>
 </div>
 
 <!-- FOOTER -->
@@ -257,28 +289,53 @@ Send bestilling
 let cart = [];
 
 function addToCart(name, price, inputId){
-    let qty = document.getElementById(inputId).value;
+    let qty = parseInt(document.getElementById(inputId).value);
     cart.push({name, price, qty});
+    renderCart();
+}
+
+function removeItem(index){
+    cart.splice(index,1);
     renderCart();
 }
 
 function renderCart(){
     let html = "";
-    let total = 0;
+    let subtotal = 0;
 
-    cart.forEach(item=>{
+    cart.forEach((item, index)=>{
         let sum = item.price * item.qty;
-        total += sum;
-        html += `<div class="cart-item">${item.qty} x ${item.name} = ${sum} kr</div>`;
+        subtotal += sum;
+
+        html += `
+        <div class="cart-item">
+            ${item.qty} x ${item.name}
+            <span class="delete" onclick="removeItem(${index})">❌</span>
+        </div>`;
     });
 
+    let shipping = cart.length > 0 ? 59 : 0;
+    let total = subtotal + shipping;
+
     document.getElementById("cart").innerHTML = html;
-    document.getElementById("total").innerText = "Total: " + total + " kr";
+
+    document.getElementById("total").innerHTML =
+        `Subtotal: ${subtotal} kr<br>
+         Fragt: ${shipping} kr<br>
+         <strong>Total: ${total} kr</strong>`;
 
     let mailText = cart.map(i=>`${i.qty} x ${i.name}`).join("%0D%0A");
 
     document.getElementById("orderMail").href =
-        `mailto:salg@danpay.dk?subject=Bestilling&body=${mailText}`;
+        `mailto:salg@danpay.dk?subject=Bestilling&body=${mailText}%0D%0AFragt: ${shipping} kr%0D%0ATotal: ${total} kr`;
+}
+
+/* CVR lookup (simpel version) */
+function lookupCVR(){
+    let cvr = document.getElementById("cvr").value;
+    if(cvr){
+        window.open("https://cvrapi.dk/api?search=" + cvr);
+    }
 }
 </script>
 
