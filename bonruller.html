@@ -8,7 +8,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
 
 <style>
-body {
+body{
     font-family:'Inter',sans-serif;
     margin:0;
     background:#f8fafc;
@@ -20,32 +20,49 @@ body {
     justify-content:space-between;
     padding:20px 10%;
 }
+.logo img{height:45px;}
 
-.logo img{ height:45px; }
-
+/* HERO */
 .hero{
     text-align:center;
     padding:60px 10%;
 }
 
+/* GRID */
 .products{
     display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-    gap:30px;
+    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+    gap:25px;
     padding:40px 10%;
 }
 
+/* CARD */
 .product{
     background:white;
     border-radius:16px;
-    padding:20px;
+    overflow:hidden;
     box-shadow:0 10px 25px rgba(0,0,0,0.05);
 }
 
+/* 🔧 BILLEDER RETTET */
 .product img{
     width:100%;
-    height:220px;
+    height:180px;        /* mindre */
     object-fit:cover;
+}
+
+.product-content{
+    padding:15px;
+}
+
+.product h3{
+    margin:0 0 8px;
+    font-size:16px;
+}
+
+.product p{
+    font-size:14px;
+    color:#64748b;
 }
 
 .price{
@@ -53,41 +70,44 @@ body {
     margin:10px 0;
 }
 
+/* ORDER */
 .order{
     display:flex;
-    gap:10px;
+    gap:8px;
+    margin-top:10px;
 }
 
 .order input{
-    width:60px;
+    width:55px;
+    padding:6px;
     text-align:center;
 }
 
+/* 🔧 KNAPPER MINDRE */
 .btn{
     flex:1;
+    padding:8px;
+    font-size:14px;
     background:linear-gradient(90deg,#0ea5e9,#3b82f6);
     border:none;
-    color:black;
-    font-weight:600;
     border-radius:8px;
+    color:black;
     cursor:pointer;
 }
 
-/* 🛒 CART */
+/* CART */
 .cart{
     position:fixed;
     bottom:20px;
     right:20px;
-    width:280px;
+    width:300px;
     background:white;
     border-radius:16px;
-    box-shadow:0 15px 40px rgba(0,0,0,0.15);
     padding:20px;
+    box-shadow:0 20px 40px rgba(0,0,0,0.2);
 }
 
-.cart h3{
-    margin-top:0;
-}
+.cart h3{margin-top:0;}
 
 .cart-items{
     max-height:150px;
@@ -95,14 +115,28 @@ body {
     font-size:14px;
 }
 
-.cart button{
+/* CHECKOUT */
+.checkout{
+    margin-top:10px;
+}
+
+.checkout input,
+.checkout textarea{
+    width:100%;
+    margin-top:6px;
+    padding:8px;
+    border-radius:6px;
+    border:1px solid #ddd;
+}
+
+.checkout button{
     width:100%;
     margin-top:10px;
     padding:10px;
-    border:none;
-    border-radius:8px;
     background:#22c55e;
     color:white;
+    border:none;
+    border-radius:8px;
     cursor:pointer;
 }
 </style>
@@ -118,95 +152,125 @@ body {
 
 <div class="hero">
     <h1>Bestil bonruller</h1>
-    <p>Vælg produkter og bestil samlet</p>
+    <p>Vælg produkter og send samlet bestilling</p>
 </div>
 
 <div class="products">
 
-<!-- PRODUCT 1 -->
+<!-- 1 -->
 <div class="product">
 <img src="ruller80.png">
-<h3>80x80x12mm (30 stk)</h3>
+<div class="product-content">
+<h3>80 x 80 x 12mm Bonrulle (30 stk)</h3>
+<p>Standard til kassesystemer</p>
+<p>+ Levering 59 kr</p>
 <div class="price">599 kr</div>
 
 <div class="order">
-<input type="number" id="qty1" value="1" min="1">
-<button onclick="addToCart('80x80x12mm',599,'qty1')" class="btn">Tilføj</button>
+<input type="number" id="q1" value="1">
+<button onclick="add('80x80',599,'q1')" class="btn">Tilføj</button>
+</div>
 </div>
 </div>
 
-<!-- PRODUCT 2 -->
+<!-- 2 -->
 <div class="product">
 <img src="ruller57.png">
-<h3>57x40x12mm (50 stk)</h3>
+<div class="product-content">
+<h3>57 x 40 x 12mm Bonrulle (50 stk)</h3>
+<p>Til mindre terminaler</p>
+<p>+ Levering 59 kr</p>
 <div class="price">499 kr</div>
 
 <div class="order">
-<input type="number" id="qty2" value="1" min="1">
-<button onclick="addToCart('57x40x12mm',499,'qty2')" class="btn">Tilføj</button>
+<input type="number" id="q2" value="1">
+<button onclick="add('57x40',499,'q2')" class="btn">Tilføj</button>
+</div>
+</div>
+</div>
+
+<!-- 3 -->
+<div class="product">
+<img src="ruller8040.png">
+<div class="product-content">
+<h3>80 x 40 x 12mm Bonrulle (40 stk)</h3>
+<p>Til mindre terminaler</p>
+<p>+ Levering 59 kr</p>
+<div class="price">499 kr</div>
+
+<div class="order">
+<input type="number" id="q3" value="1">
+<button onclick="add('80x40',499,'q3')" class="btn">Tilføj</button>
+</div>
+</div>
+</div>
+
+<!-- 4 SPECIAL -->
+<div class="product">
+<img src="bonruller1.jpg">
+<div class="product-content">
+<h3>Special bonruller</h3>
+<p>Labels & specialmål</p>
+<p>Kontakt os for tilbud</p>
+
+<button onclick="addSpecial()" class="btn">Forespørg</button>
 </div>
 </div>
 
 </div>
 
-<!-- 🛒 CART -->
+<!-- CART -->
 <div class="cart">
 <h3>🛒 Din kurv</h3>
 
-<div id="cartItems" class="cart-items">
-Ingen varer endnu
-</div>
+<div id="cart"></div>
 
-<button onclick="sendOrder()">Send bestilling</button>
+<div class="checkout">
+<input type="text" id="name" placeholder="Navn">
+<input type="email" id="email" placeholder="Email">
+<textarea id="note" placeholder="Kommentar"></textarea>
+
+<button onclick="send()">Send bestilling</button>
+</div>
 </div>
 
 <script>
 let cart = [];
 
-function addToCart(name, price, qtyId){
-    const qty = document.getElementById(qtyId).value;
-
-    cart.push({
-        name: name,
-        price: price,
-        qty: qty
-    });
-
-    renderCart();
+function add(name, price, id){
+    const qty = document.getElementById(id).value;
+    cart.push({name, qty, price});
+    render();
 }
 
-function renderCart(){
-    const container = document.getElementById("cartItems");
-
-    if(cart.length === 0){
-        container.innerHTML = "Ingen varer endnu";
-        return;
-    }
-
-    let html = "";
-    cart.forEach(item => {
-        html += `${item.name} x ${item.qty}<br>`;
-    });
-
-    container.innerHTML = html;
+function addSpecial(){
+    cart.push({name:"Special forespørgsel", qty:"-", price:"?"});
+    render();
 }
 
-function sendOrder(){
+function render(){
+    let html="";
+    cart.forEach(i=>{
+        html += `${i.name} x ${i.qty}<br>`;
+    });
+    document.getElementById("cart").innerHTML = html || "Ingen varer";
+}
 
-    if(cart.length === 0){
-        alert("Kurven er tom");
-        return;
-    }
+function send(){
+    if(cart.length === 0) return alert("Kurven er tom");
 
-    let body = "Hej DanPay,%0D%0A%0D%0AJeg vil gerne bestille:%0D%0A";
+    let body = "Hej DanPay,%0D%0A%0D%0A";
 
-    cart.forEach(item => {
-        body += `${item.name} - ${item.qty} stk%0D%0A`;
+    cart.forEach(i=>{
+        body += `${i.name} - ${i.qty}%0D%0A`;
     });
 
-    body += "%0D%0AMvh";
+    body += `%0D%0ANavn: ${document.getElementById("name").value}`;
+    body += `%0D%0AEmail: ${document.getElementById("email").value}`;
+    body += `%0D%0A%0D%0ANote: ${document.getElementById("note").value}`;
 
-    window.location.href = `mailto:salg@danpay.dk?subject=Bestilling&body=${body}`;
+    window.location.href =
+    `mailto:salg@danpay.dk?subject=Bestilling&body=${body}`;
 }
 </script>
 
