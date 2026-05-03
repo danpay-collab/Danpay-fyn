@@ -12,15 +12,39 @@ body{
     font-family:'Inter',sans-serif;
     margin:0;
     background:#f8fafc;
+    color:#1e293b;
 }
 
-/* NAV */
+/* NAV (URØRT) */
 .nav{
+    position:sticky;
+    top:0;
+    z-index:1000;
     display:flex;
     justify-content:space-between;
-    padding:20px 10%;
+    align-items:center;
+    padding:16px 10%;
+    background:rgba(255,255,255,0.7);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid rgba(0,0,0,0.05);
 }
 .logo img{height:45px;}
+.nav-right{
+    display:flex;
+    gap:20px;
+    align-items:center;
+}
+.nav-right a{
+    text-decoration:none;
+    color:#0f172a;
+    font-weight:600;
+}
+.cta-btn{
+    background:linear-gradient(90deg,#0ea5e9,#3b82f6);
+    color:white;
+    padding:10px 18px;
+    border-radius:8px;
+}
 
 /* HERO */
 .hero{
@@ -43,27 +67,16 @@ body{
     overflow:hidden;
     box-shadow:0 10px 25px rgba(0,0,0,0.05);
 }
-
-/* 🔧 BILLEDER RETTET */
 .product img{
     width:100%;
-    height:180px;        /* mindre */
+    height:180px;
     object-fit:cover;
 }
-
 .product-content{
     padding:15px;
 }
-
-.product h3{
-    margin:0 0 8px;
-    font-size:16px;
-}
-
-.product p{
-    font-size:14px;
-    color:#64748b;
-}
+.product h3{font-size:16px;margin:0 0 8px;}
+.product p{font-size:14px;color:#64748b;}
 
 .price{
     font-weight:600;
@@ -74,16 +87,14 @@ body{
 .order{
     display:flex;
     gap:8px;
-    margin-top:10px;
 }
-
 .order input{
     width:55px;
     padding:6px;
     text-align:center;
 }
 
-/* 🔧 KNAPPER MINDRE */
+/* KNAP */
 .btn{
     flex:1;
     padding:8px;
@@ -107,8 +118,6 @@ body{
     box-shadow:0 20px 40px rgba(0,0,0,0.2);
 }
 
-.cart h3{margin-top:0;}
-
 .cart-items{
     max-height:150px;
     overflow:auto;
@@ -116,10 +125,6 @@ body{
 }
 
 /* CHECKOUT */
-.checkout{
-    margin-top:10px;
-}
-
 .checkout input,
 .checkout textarea{
     width:100%;
@@ -137,31 +142,65 @@ body{
     color:white;
     border:none;
     border-radius:8px;
-    cursor:pointer;
+}
+
+/* FOOTER (URØRT) */
+.footer{
+    width:100%;
+    background:#0b1736;
+    color:white;
+    margin-top:80px;
+}
+.footer-inner{
+    max-width:1200px;
+    margin:auto;
+    padding:50px 20px;
+    display:flex;
+    justify-content:space-between;
+}
+.footer-left img{height:45px;}
+.footer-right{
+    text-align:right;
+    font-size:14px;
+    color:#cbd5e1;
+}
+.footer-bottom{
+    text-align:center;
+    padding:15px;
+    background:#020617;
+    color:#94a3b8;
 }
 </style>
 </head>
 
 <body>
 
+<!-- NAV -->
 <div class="nav">
     <div class="logo">
         <img src="danpaylogo.jpg">
     </div>
+
+    <div class="nav-right">
+        <a href="index.html">← Forside</a>
+        <a href="tel:+4570180099">+45 70 18 00 99</a>
+        <a href="#" class="cta-btn">Kontakt</a>
+    </div>
 </div>
 
+<!-- HERO -->
 <div class="hero">
     <h1>Bestil bonruller</h1>
     <p>Vælg produkter og send samlet bestilling</p>
 </div>
 
+<!-- PRODUCTS -->
 <div class="products">
 
-<!-- 1 -->
 <div class="product">
 <img src="ruller80.png">
 <div class="product-content">
-<h3>80 x 80 x 12mm Bonrulle (30 stk)</h3>
+<h3>80x80x12mm (30 stk)</h3>
 <p>Standard til kassesystemer</p>
 <p>+ Levering 59 kr</p>
 <div class="price">599 kr</div>
@@ -173,11 +212,10 @@ body{
 </div>
 </div>
 
-<!-- 2 -->
 <div class="product">
 <img src="ruller57.png">
 <div class="product-content">
-<h3>57 x 40 x 12mm Bonrulle (50 stk)</h3>
+<h3>57x40x12mm (50 stk)</h3>
 <p>Til mindre terminaler</p>
 <p>+ Levering 59 kr</p>
 <div class="price">499 kr</div>
@@ -189,11 +227,10 @@ body{
 </div>
 </div>
 
-<!-- 3 -->
 <div class="product">
 <img src="ruller8040.png">
 <div class="product-content">
-<h3>80 x 40 x 12mm Bonrulle (40 stk)</h3>
+<h3>80x40x12mm (40 stk)</h3>
 <p>Til mindre terminaler</p>
 <p>+ Levering 59 kr</p>
 <div class="price">499 kr</div>
@@ -205,7 +242,6 @@ body{
 </div>
 </div>
 
-<!-- 4 SPECIAL -->
 <div class="product">
 <img src="bonruller1.jpg">
 <div class="product-content">
@@ -222,8 +258,7 @@ body{
 <!-- CART -->
 <div class="cart">
 <h3>🛒 Din kurv</h3>
-
-<div id="cart"></div>
+<div id="cart" class="cart-items">Ingen varer</div>
 
 <div class="checkout">
 <input type="text" id="name" placeholder="Navn">
@@ -234,17 +269,35 @@ body{
 </div>
 </div>
 
+<!-- FOOTER -->
+<footer class="footer">
+<div class="footer-inner">
+<div class="footer-left">
+<img src="danpaylogo.jpg">
+</div>
+<div class="footer-right">
+<p>DanPay ApS</p>
+<p>CVR: 25128184</p>
+<p>9200 Aalborg SV</p>
+<p>Kundeservice@danpay.dk</p>
+</div>
+</div>
+<div class="footer-bottom">
+© 2026 Danpay – Alle priser ekskl. moms
+</div>
+</footer>
+
 <script>
 let cart = [];
 
 function add(name, price, id){
     const qty = document.getElementById(id).value;
-    cart.push({name, qty, price});
+    cart.push({name, qty});
     render();
 }
 
 function addSpecial(){
-    cart.push({name:"Special forespørgsel", qty:"-", price:"?"});
+    cart.push({name:"Special forespørgsel", qty:"-"});
     render();
 }
 
@@ -257,8 +310,6 @@ function render(){
 }
 
 function send(){
-    if(cart.length === 0) return alert("Kurven er tom");
-
     let body = "Hej DanPay,%0D%0A%0D%0A";
 
     cart.forEach(i=>{
@@ -267,7 +318,7 @@ function send(){
 
     body += `%0D%0ANavn: ${document.getElementById("name").value}`;
     body += `%0D%0AEmail: ${document.getElementById("email").value}`;
-    body += `%0D%0A%0D%0ANote: ${document.getElementById("note").value}`;
+    body += `%0D%0ANote: ${document.getElementById("note").value}`;
 
     window.location.href =
     `mailto:salg@danpay.dk?subject=Bestilling&body=${body}`;
