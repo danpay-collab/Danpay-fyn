@@ -90,13 +90,18 @@ body{
     font-size:14px;
 }
 
-.delete{cursor:pointer; color:red;}
-
-.cart input{
+.cart input,
+.cart button,
+.btn-send,
+.btn-cvr {
     width:100%;
-    margin:5px 0;
-    padding:8px;
+    box-sizing:border-box;   /* 🔥 VIGTIG */
+    padding:10px;
+    border-radius:8px;
+    font-size:14px;
 }
+    
+.delete{cursor:pointer; color:red;}
 
 .btn-send{
     background:#22c55e;
