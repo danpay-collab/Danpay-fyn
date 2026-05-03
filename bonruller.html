@@ -8,142 +8,109 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
 
 <style>
-body {
+body{
     font-family:'Inter',sans-serif;
     margin:0;
     background:#f8fafc;
     color:#1e293b;
-    padding-bottom:180px;
 }
 
 /* NAV */
 .nav{
     position:sticky;
     top:0;
-    z-index:1000;
     display:flex;
     justify-content:space-between;
-    align-items:center;
     padding:16px 10%;
-    background:rgba(255,255,255,0.7);
+    background:white;
 }
-
-.logo img{ height:45px; }
-
-.nav-right{
-    display:flex;
-    gap:20px;
-}
+.logo img{height:45px;}
+.nav-right{display:flex; gap:20px;}
 
 /* HERO */
-.hero{
-    text-align:center;
-    padding:60px 10%;
-}
+.hero{text-align:center; padding:60px 10%;}
 
 /* PRODUCTS */
-.products {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 30px;
-    padding: 40px 10%;
+.products{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:30px;
+    padding:40px 10%;
 }
 
 .product{
     background:white;
     border-radius:16px;
-    overflow:hidden;
     box-shadow:0 10px 25px rgba(0,0,0,0.05);
+    overflow:hidden;
 }
 
 .product img{
-    width:85%;
-    height:220px;
+    width:100%;
+    height:240px;
     object-fit:cover;
 }
 
-.product-content{
-    padding:20px;
-}
+.product-content{padding:20px;}
 
-.price{
-    font-weight:600;
-    margin:10px 0;
-}
+.price{font-weight:600; margin:10px 0;}
 
-.order{
-    display:flex;
-    gap:10px;
-}
+.order{display:flex; gap:10px;}
 
-.order input{
-    width:60px;
-}
+.order input{width:60px;}
 
 .btn-buy{
     flex:1;
-    background:linear-gradient(90deg,#0ea5e9,#3b82f6);
-    color:black;
+    background:#0ea5e9;
+    color:white;
     border:none;
     border-radius:8px;
     cursor:pointer;
 }
 
-/* CART */
-.cart {
-    position: fixed;
-    right: 20px;
-    bottom: 120px;
-    width: 320px;
-    background: white;
-    border-radius: 16px;
-    box-shadow: 0 15px 40px rgba(0,0,0,0.15);
-    padding: 20px;
-    z-index: 1000;
+/* CART (MIDT PÅ SIDEN) */
+.cart{
+    position:fixed;
+    top:50%;
+    right:20px;
+    transform:translateY(-50%);
+    width:320px;
+    background:white;
+    border-radius:16px;
+    padding:20px;
+    box-shadow:0 20px 40px rgba(0,0,0,0.2);
 }
 
 .cart-item{
     display:flex;
     justify-content:space-between;
-    align-items:center;
-    font-size:14px;
-    margin-bottom:5px;
-}
-
-.delete{
-    color:red;
-    cursor:pointer;
-}
-
-.total{
-    margin-top:10px;
     font-size:14px;
 }
+
+.delete{cursor:pointer; color:red;}
 
 .cart input{
     width:100%;
-    padding:8px;
     margin:5px 0;
+    padding:8px;
 }
 
 .btn-send{
-    width:100%;
     background:#22c55e;
     color:white;
     padding:10px;
+    display:block;
+    text-align:center;
     border-radius:8px;
     margin-top:10px;
-    text-align:center;
-    display:block;
 }
 
 .btn-cvr{
     width:100%;
-    background:#e2e8f0;
     padding:8px;
+    background:#e2e8f0;
     border-radius:6px;
     margin-bottom:5px;
-    cursor:pointer;
 }
 
 /* FOOTER */
@@ -152,50 +119,68 @@ body {
     color:white;
     margin-top:80px;
 }
-
 .footer-inner{
     display:flex;
     justify-content:space-between;
     padding:40px 10%;
 }
-
 .footer-bottom{
     text-align:center;
     padding:10px;
     background:#020617;
+}
+
+/* MOBILE */
+@media(max-width:900px){
+
+    .products{
+        grid-template-columns:1fr;
+    }
+
+    .cart{
+        position:relative;
+        transform:none;
+        top:auto;
+        right:auto;
+        width:90%;
+        margin:20px auto;
+    }
+
+    .footer-inner{
+        flex-direction:column;
+        gap:20px;
+        text-align:center;
+    }
 }
 </style>
 </head>
 
 <body>
 
-<!-- NAV -->
 <div class="nav">
-    <div class="logo">
-        <img src="danpaylogo.jpg">
-    </div>
-    <div class="nav-right">
-        <a href="index.html">Forside</a>
-        <a href="tel:+4570180099">+45 70 18 00 99</a>
-    </div>
+<div class="logo"><img src="danpaylogo.jpg"></div>
+<div class="nav-right">
+<a href="index.html">Forside</a>
+<a href="tel:+4570180099">+45 70 18 00 99</a>
+</div>
 </div>
 
-<!-- HERO -->
 <div class="hero">
-    <h1>Bestil bonruller</h1>
+<h1>Bestil bonruller</h1>
+<p>Hurtig levering og skarpe priser</p>
 </div>
 
-<!-- PRODUKTER -->
 <div class="products">
 
 <div class="product">
 <img src="ruller80.png">
 <div class="product-content">
 <h3>80 x 80 (30 stk)</h3>
+<p>Standard til kassesystemer</p>
 <div class="price">599 kr</div>
 <div class="order">
 <input type="number" value="1" id="p1">
-<button class="btn-buy" onclick="addToCart('80x80',599,'p1')">Tilføj</button>
+<button onclick="addToCart('80x80',599,'p1')" class="btn-buy">Tilføj</button>
 </div>
 </div>
 </div>
@@ -204,10 +189,11 @@ body {
 <img src="ruller57.png">
 <div class="product-content">
 <h3>57 x 40 (50 stk)</h3>
+<p>Til mindre terminaler</p>
 <div class="price">499 kr</div>
 <div class="order">
 <input type="number" value="1" id="p2">
-<button class="btn-buy" onclick="addToCart('57x40',499,'p2')">Tilføj</button>
+<button onclick="addToCart('57x40',499,'p2')" class="btn-buy">Tilføj</button>
 </div>
 </div>
 </div>
@@ -216,26 +202,35 @@ body {
 <img src="ruller8040.png">
 <div class="product-content">
 <h3>80 x 40 (40 stk)</h3>
+<p>Til mindre terminaler</p>
 <div class="price">499 kr</div>
 <div class="order">
 <input type="number" value="1" id="p3">
-<button class="btn-buy" onclick="addToCart('80x40',499,'p3')">Tilføj</button>
+<button onclick="addToCart('80x40',499,'p3')" class="btn-buy">Tilføj</button>
 </div>
+</div>
+</div>
+
+<div class="product">
+<img src="bonruller1.jpg">
+<div class="product-content">
+<h3>Special bonruller</h3>
+<p>Kontakt os for specialmål</p>
+<a href="mailto:salg@danpay.dk">Forespørg</a>
 </div>
 </div>
 
 </div>
 
-<!-- KURV -->
 <div class="cart">
 <h3>🛒 Din kurv</h3>
 <div id="cart"></div>
 <div id="total"></div>
 
 <input id="cvr" placeholder="CVR">
-<button class="btn-cvr" onclick="lookupCVR()">Hent CVR</button>
+<button onclick="lookupCVR()" class="btn-cvr">Hent CVR</button>
 
-<input id="firma" placeholder="Firmanavn">
+<input id="firma" placeholder="Firma">
 <input id="adresse" placeholder="Adresse">
 <input id="postnr" placeholder="Postnr">
 
@@ -246,73 +241,59 @@ body {
 <a id="orderMail" class="btn-send">Send bestilling</a>
 </div>
 
-<!-- FOOTER -->
 <div class="footer">
 <div class="footer-inner">
 <div><img src="danpaylogo.jpg" style="height:45px;"></div>
 <div>
 <p>DanPay ApS</p>
 <p>CVR: 25128184</p>
+<p>9200 Aalborg SV</p>
+<p>Kundeservice@danpay.dk</p>
 </div>
 </div>
 <div class="footer-bottom">© 2026 Danpay</div>
 </div>
 
 <script>
-let cart = [];
+let cart=[];
 
-function addToCart(name, price, inputId){
-    let qty = parseInt(document.getElementById(inputId).value);
-    if(!qty || qty < 1) return;
-    cart.push({name, price, qty});
-    renderCart();
+function addToCart(name,price,id){
+let qty=parseInt(document.getElementById(id).value);
+cart.push({name,price,qty});
+renderCart();
 }
 
-function removeItem(index){
-    cart.splice(index,1);
-    renderCart();
+function removeItem(i){
+cart.splice(i,1);
+renderCart();
 }
 
 function renderCart(){
-    let html = "";
-    let subtotal = 0;
+let html="",sum=0;
 
-    cart.forEach((item,i)=>{
-        let sum = item.price * item.qty;
-        subtotal += sum;
+cart.forEach((item,i)=>{
+sum+=item.price*item.qty;
+html+=`${item.qty} x ${item.name} <span class="delete" onclick="removeItem(${i})">❌</span><br>`;
+});
 
-        html += `<div class="cart-item">
-        ${item.qty} x ${item.name}
-        <span class="delete" onclick="removeItem(${i})">❌</span>
-        </div>`;
-    });
+let shipping=cart.length?59:0;
+let total=sum+shipping;
 
-    let shipping = cart.length ? 59 : 0;
-    let total = subtotal + shipping;
-
-    document.getElementById("cart").innerHTML = html;
-    document.getElementById("total").innerHTML =
-    `Subtotal: ${subtotal} kr<br>Fragt: ${shipping} kr<br><b>Total: ${total} kr</b>`;
-
-    let firma = document.getElementById("firma").value;
-    let kontakt = document.getElementById("kontakt").value;
-
-    let mail = cart.map(i=>`${i.qty} x ${i.name}`).join("\n");
-
-    document.getElementById("orderMail").href =
-    `mailto:salg@danpay.dk?subject=Bestilling&body=${encodeURIComponent(mail)}`;
+document.getElementById("cart").innerHTML=html;
+document.getElementById("total").innerHTML=
+`Subtotal: ${sum} kr<br>Fragt: ${shipping} kr<br><b>Total: ${total} kr</b>`;
 }
 
 function lookupCVR(){
-    let cvr = document.getElementById("cvr").value;
+let cvr=document.getElementById("cvr").value;
 
-    fetch("https://cvrapi.dk/api?search="+cvr+"&country=dk")
-    .then(r=>r.json())
-    .then(data=>{
-        document.getElementById("firma").value = data.name || "";
-        document.getElementById("adresse").value = data.address || "";
-        document.getElementById("postnr").value = data.zipcode + " " + data.city;
-    });
+fetch("https://cvrapi.dk/api?search="+cvr+"&country=dk")
+.then(r=>r.json())
+.then(d=>{
+document.getElementById("firma").value=d.name||"";
+document.getElementById("adresse").value=d.address||"";
+document.getElementById("postnr").value=d.zipcode+" "+d.city;
+});
 }
 </script>
 
