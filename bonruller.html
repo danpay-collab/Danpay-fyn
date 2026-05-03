@@ -44,7 +44,7 @@ body {
 /* PRODUCTS */
 .products {
     display: grid;
-    grid-template-columns: repeat(3, 1fr); /* 🔥 FAST 3 */
+    grid-template-columns: repeat(3, 1fr);
     gap: 30px;
     padding: 40px 10%;
 }
@@ -93,7 +93,7 @@ body {
 .cart {
     position: fixed;
     right: 20px;
-    bottom: 120px; /* 🔥 hævet fra footer */
+    bottom: 120px;
     width: 320px;
     background: white;
     border-radius: 16px;
@@ -101,8 +101,6 @@ body {
     padding: 20px;
     z-index: 1000;
 }
-
-.cart h3{ margin-top:0; }
 
 .cart-item{
     display:flex;
@@ -115,7 +113,6 @@ body {
 .delete{
     color:red;
     cursor:pointer;
-    font-weight:bold;
 }
 
 .total{
@@ -134,19 +131,16 @@ body {
     background:#22c55e;
     color:white;
     padding:10px;
-    border:none;
     border-radius:8px;
     margin-top:10px;
-    text-decoration:none;
-    display:block;
     text-align:center;
+    display:block;
 }
 
 .btn-cvr{
     width:100%;
     background:#e2e8f0;
     padding:8px;
-    border:none;
     border-radius:6px;
     margin-bottom:5px;
     cursor:pointer;
@@ -170,35 +164,6 @@ body {
     padding:10px;
     background:#020617;
 }
-
-/* MOBILE */
-@media(max-width:668px){
-
-    .nav{
-        flex-direction:column;
-        align-items:flex-start;
-        gap:10px;
-    }
-
-    .nav-right{
-        width:100%;
-        display:flex;
-        justify-content:space-between;
-    }
-
-    .footer{
-        flex-direction:column;
-        gap:20px;
-    }
-
-    .footer-right{
-        text-align:left;
-    }
-
-    .footer-links{
-        justify-content:flex-start;
-    }
-}
 </style>
 </head>
 
@@ -218,7 +183,6 @@ body {
 <!-- HERO -->
 <div class="hero">
     <h1>Bestil bonruller</h1>
-    <p>Hurtig levering og skarpe priser</p>
 </div>
 
 <!-- PRODUKTER -->
@@ -227,9 +191,7 @@ body {
 <div class="product">
 <img src="ruller80.png">
 <div class="product-content">
-<h3>80 x 80 x 12mm (30 stk)</h3>
-<p>Standard til kassesystemer</p>
-<p>+ Levering 59 kr</p>
+<h3>80 x 80 (30 stk)</h3>
 <div class="price">599 kr</div>
 <div class="order">
 <input type="number" value="1" id="p1">
@@ -241,9 +203,7 @@ body {
 <div class="product">
 <img src="ruller57.png">
 <div class="product-content">
-<h3>57 x 40 x 12mm (50 stk)</h3>
-<p>Til mindre terminaler</p>
-<p>+ Levering 59 kr</p>
+<h3>57 x 40 (50 stk)</h3>
 <div class="price">499 kr</div>
 <div class="order">
 <input type="number" value="1" id="p2">
@@ -255,9 +215,7 @@ body {
 <div class="product">
 <img src="ruller8040.png">
 <div class="product-content">
-<h3>80 x 40 x 12mm (40 stk)</h3>
-<p>Til mindre terminaler</p>
-<p>+ Levering 59 kr</p>
+<h3>80 x 40 (40 stk)</h3>
 <div class="price">499 kr</div>
 <div class="order">
 <input type="number" value="1" id="p3">
@@ -266,57 +224,38 @@ body {
 </div>
 </div>
 
-<div class="product">
-<img src="bonruller1.jpg">
-<div class="product-content">
-<h3>Special bonruller</h3>
-<p>Kontakt os for specialmål</p>
-<a href="mailto:salg@danpay.dk">Forespørg</a>
-</div>
-</div>
-
 </div>
 
 <!-- KURV -->
 <div class="cart">
 <h3>🛒 Din kurv</h3>
-
 <div id="cart"></div>
+<div id="total"></div>
 
-<div class="total" id="total">
-Subtotal: 0 kr<br>
-Fragt: 0 kr<br>
-<strong>Total: 0 kr</strong>
-</div>
+<input id="cvr" placeholder="CVR">
+<button class="btn-cvr" onclick="lookupCVR()">Hent CVR</button>
 
-<input id="cvr" placeholder="CVR nummer">
-<button class="btn-cvr" onclick="lookupCVR()">Hent CVR oplysninger</button>
+<input id="firma" placeholder="Firmanavn">
+<input id="adresse" placeholder="Adresse">
+<input id="postnr" placeholder="Postnr">
 
-<input type="text" id="firma" placeholder="Firmanavn">
-<input type="text" id="adresse" placeholder="Adresse">
-<input type="text" id="postnr" placeholder="Postnr & By">
+<input id="email" placeholder="Email">
+<input id="kontakt" placeholder="Kontaktperson">
+<input id="telefon" placeholder="Telefon">
 
-<input type="email" id="email" placeholder="Email">
-<input type="text" id="kontakt" placeholder="Kontaktperson">
-<input type="text" id="telefon" placeholder="Telefonnummer">
-
-<a id="orderMail" class="btn-send" href="#">Send bestilling</a>
+<a id="orderMail" class="btn-send">Send bestilling</a>
 </div>
 
 <!-- FOOTER -->
 <div class="footer">
 <div class="footer-inner">
-<div>
-<img src="danpaylogo.jpg" style="height:45px;">
-</div>
+<div><img src="danpaylogo.jpg" style="height:45px;"></div>
 <div>
 <p>DanPay ApS</p>
 <p>CVR: 25128184</p>
-<p>9200 Aalborg SV</p>
-<p>Kundeservice@danpay.dk</p>
 </div>
 </div>
-<div class="footer-bottom">© 2026 Danpay - Alle Priser er ekskl moms</div>
+<div class="footer-bottom">© 2026 Danpay</div>
 </div>
 
 <script>
@@ -324,6 +263,7 @@ let cart = [];
 
 function addToCart(name, price, inputId){
     let qty = parseInt(document.getElementById(inputId).value);
+    if(!qty || qty < 1) return;
     cart.push({name, price, qty});
     renderCart();
 }
@@ -337,53 +277,42 @@ function renderCart(){
     let html = "";
     let subtotal = 0;
 
-    cart.forEach((item, index)=>{
+    cart.forEach((item,i)=>{
         let sum = item.price * item.qty;
         subtotal += sum;
 
-        html += `
-        <div class="cart-item">
-            ${item.qty} x ${item.name}
-            <span class="delete" onclick="removeItem(${index})">❌</span>
+        html += `<div class="cart-item">
+        ${item.qty} x ${item.name}
+        <span class="delete" onclick="removeItem(${i})">❌</span>
         </div>`;
     });
 
-    let shipping = cart.length > 0 ? 59 : 0;
+    let shipping = cart.length ? 59 : 0;
     let total = subtotal + shipping;
 
     document.getElementById("cart").innerHTML = html;
-
     document.getElementById("total").innerHTML =
-        `Subtotal: ${subtotal} kr<br>
-         Fragt: ${shipping} kr<br>
-         <strong>Total: ${total} kr</strong>`;
+    `Subtotal: ${subtotal} kr<br>Fragt: ${shipping} kr<br><b>Total: ${total} kr</b>`;
 
-    let mailText = cart.map(i=>`${i.qty} x ${i.name}`).join("%0D%0A");
+    let firma = document.getElementById("firma").value;
+    let kontakt = document.getElementById("kontakt").value;
+
+    let mail = cart.map(i=>`${i.qty} x ${i.name}`).join("\n");
 
     document.getElementById("orderMail").href =
-        `mailto:salg@danpay.dk?subject=Bestilling&body=${mailText}%0D%0AFragt: ${shipping} kr%0D%0ATotal: ${total} kr`;
+    `mailto:salg@danpay.dk?subject=Bestilling&body=${encodeURIComponent(mail)}`;
 }
 
-/* CVR lookup (simpel version) */
- if (!data || !data.name) {
-                alert("CVR ikke fundet");
-                return;
-            }
+function lookupCVR(){
+    let cvr = document.getElementById("cvr").value;
 
-            // ✔ Auto udfyld kun firma + adresse
-            document.getElementById("firma").value = data.name || "";
-
-            document.getElementById("adresse").value =
-                (data.address || "") + " " + (data.addressco || "");
-
-            document.getElementById("postnr").value =
-                (data.zipcode || "") + " " + (data.city || "");
-
-        })
-        .catch(err => {
-            console.error(err);
-            alert("Fejl ved opslag");
-        });
+    fetch("https://cvrapi.dk/api?search="+cvr+"&country=dk")
+    .then(r=>r.json())
+    .then(data=>{
+        document.getElementById("firma").value = data.name || "";
+        document.getElementById("adresse").value = data.address || "";
+        document.getElementById("postnr").value = data.zipcode + " " + data.city;
+    });
 }
 </script>
 
