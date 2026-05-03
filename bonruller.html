@@ -8,44 +8,33 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
 
 <style>
+
 body{
     font-family:'Inter',sans-serif;
     margin:0;
     background:#f8fafc;
     color:#1e293b;
 }
-/*popup tak for din ordre */
-    <div style="
-    background:white;
-    padding:30px;
-    border-radius:16px;
-    text-align:center;
-    max-width:400px;
-    ">
-        <h2>Tak for din ordre 🎉</h2>
-        <p id="orderIdText"></p>
-        <button onclick="closePopup()" style="
-            margin-top:15px;
-            padding:10px 20px;
-            border:none;
-            border-radius:8px;
-            background:#0ea5e9;
-            color:white;
-            cursor:pointer;
-        ">Luk</button>
-    </div>
-</div>
-/* NAV */
+
+/* NAV (URØRT) */
 .nav{
     position:sticky;
     top:0;
+    z-index:1000;
     display:flex;
     justify-content:space-between;
+    align-items:center;
     padding:16px 10%;
-    background:white;
+    background:rgba(255,255,255,0.7);
+    backdrop-filter:blur(10px);
 }
+
 .logo img{height:45px;}
-.nav-right{display:flex; gap:20px;}
+
+.nav-right{
+    display:flex;
+    gap:20px;
+}
 
 /* HERO */
 .hero{text-align:center; padding:60px 10%;}
@@ -55,10 +44,9 @@ body{
     display:grid;
     grid-template-columns:repeat(2, 1fr);
     gap:30px;
-
-    max-width:900px;     /* 🔥 begrænser bredden */
-    margin-left:10%;     /* 🔥 skubber ind fra venstre */
-    margin-right:380px;  /* 🔥 giver plads til kurv */
+    max-width:900px;
+    margin-left:10%;
+    margin-right:380px;
 }
 
 .product{
@@ -70,8 +58,8 @@ body{
 
 .product img{
     width:100%;
-    height:220px;     /* fast højde */
-    object-fit:cover; /* bevarer proportion */
+    height:220px;
+    object-fit:cover;
 }
 
 .product-content{padding:20px;}
@@ -91,7 +79,7 @@ body{
     cursor:pointer;
 }
 
-/* CART (MIDT PÅ SIDEN) */
+/* CART */
 .cart{
     position:fixed;
     top:50%;
@@ -104,58 +92,64 @@ body{
     box-shadow:0 20px 40px rgba(0,0,0,0.2);
 }
 
-.cart-item{
-    display:flex;
-    justify-content:space-between;
-    font-size:14px;
-}
-
 .cart input,
 .cart button,
 .btn-send,
-.btn-cvr {
+.btn-cvr{
     width:100%;
-    box-sizing:border-box;   /* 🔥 VIGTIG */
+    box-sizing:border-box;
     padding:10px;
     border-radius:8px;
     font-size:14px;
 }
-    
+
 .delete{cursor:pointer; color:red;}
 
 .btn-send{
     background:#22c55e;
     color:white;
-    padding:10px;
-    display:block;
     text-align:center;
-    border-radius:8px;
     margin-top:10px;
+    text-decoration:none;
 }
 
 .btn-cvr{
-    width:100%;
-    padding:8px;
     background:#e2e8f0;
-    border-radius:6px;
     margin-bottom:5px;
 }
 
-/* FOOTER */
+/* FOOTER (URØRT) */
 .footer{
+    width:100%;
     background:#0b1736;
     color:white;
     margin-top:80px;
 }
+
 .footer-inner{
+    max-width:1200px;
+    margin:auto;
+    padding:50px 20px;
     display:flex;
     justify-content:space-between;
-    padding:40px 10%;
 }
+
 .footer-bottom{
     text-align:center;
-    padding:10px;
+    padding:15px;
     background:#020617;
+    color:#94a3b8;
+}
+
+/* POPUP */
+#orderPopup{
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,0.5);
+    display:none;
+    align-items:center;
+    justify-content:center;
+    z-index:2000;
 }
 
 /* MOBILE */
@@ -163,13 +157,12 @@ body{
 
     .products{
         grid-template-columns:1fr;
+        margin:20px;
     }
 
     .cart{
         position:relative;
         transform:none;
-        top:auto;
-        right:auto;
         width:90%;
         margin:20px auto;
     }
@@ -185,19 +178,25 @@ body{
 
 <body>
 
+<!-- NAV -->
 <div class="nav">
-<div class="logo"><img src="danpaylogo.jpg"></div>
+<div class="logo">
+<img src="danpaylogo.jpg">
+</div>
+
 <div class="nav-right">
 <a href="index.html">Forside</a>
 <a href="tel:+4570180099">+45 70 18 00 99</a>
 </div>
 </div>
 
+<!-- HERO -->
 <div class="hero">
 <h1>Bestil bonruller</h1>
 <p>Hurtig levering og skarpe priser</p>
 </div>
 
+<!-- PRODUCTS -->
 <div class="products">
 
 <div class="product">
@@ -250,6 +249,7 @@ body{
 
 </div>
 
+<!-- CART -->
 <div class="cart">
 <h3>🛒 Din kurv</h3>
 <div id="cart"></div>
@@ -266,12 +266,25 @@ body{
 <input id="kontakt" placeholder="Kontaktperson">
 <input id="telefon" placeholder="Telefon">
 
-<a href="#" id="orderMail" class="btn-send" onclick="sendOrder()">Send bestilling</a>
+<a href="javascript:void(0)" onclick="sendOrder()" class="btn-send">Send bestilling</a>
 </div>
 
+<!-- POPUP -->
+<div id="orderPopup">
+    <div style="background:white;padding:30px;border-radius:16px;text-align:center;">
+        <h2>Tak for din ordre 🎉</h2>
+        <p id="orderIdText"></p>
+        <button onclick="closePopup()">Luk</button>
+    </div>
+</div>
+
+<!-- FOOTER -->
 <div class="footer">
 <div class="footer-inner">
-<div><img src="danpaylogo.jpg" style="height:45px;"></div>
+<div>
+<img src="danpaylogo.jpg" style="height:45px;">
+</div>
+
 <div>
 <p>DanPay ApS</p>
 <p>CVR: 25128184</p>
@@ -279,7 +292,10 @@ body{
 <p>Kundeservice@danpay.dk</p>
 </div>
 </div>
-<div class="footer-bottom">© 2026 Danpay - Alle Priser er ekskl</div>
+
+<div class="footer-bottom">
+© 2026 Danpay – Alle rettigheder forbeholdes - Alle Priser er ekskl.
+</div>
 </div>
 
 <script>
@@ -320,56 +336,39 @@ fetch("https://cvrapi.dk/api?search="+cvr+"&country=dk")
 .then(d=>{
 document.getElementById("firma").value=d.name||"";
 document.getElementById("adresse").value=d.address||"";
-document.getElementById("postnr").value=d.zipcode+" "+d.city;
+document.getElementById("postnr").value=(d.zipcode||"")+" "+(d.city||"");
 });
 }
 
 function sendOrder(){
 
-    if(cart.length === 0){
-        alert("Din kurv er tom");
-        return;
-    }
-
-    let firma = document.getElementById("firma").value;
-    let adresse = document.getElementById("adresse").value;
-    let postnr = document.getElementById("postnr").value;
-    let email = document.getElementById("email").value;
-    let kontakt = document.getElementById("kontakt").value;
-    let telefon = document.getElementById("telefon").value;
-
-    let orderLines = cart.map(item =>
-        `${item.qty} x ${item.name} (${item.price} kr)`
-    ).join("%0D%0A");
-
-    let subtotal = cart.reduce((sum, item) => sum + item.price * item.qty, 0);
-    let shipping = 59;
-    let total = subtotal + shipping;
-
-    let body = 
-`Ordre ID: ${orderId}%0D%0A%0D%0A
-${orderLines}%0D%0A%0D%0A
-Subtotal: ${subtotal} kr%0D%0A
-Fragt: ${shipping} kr%0D%0A
-Total: ${total} kr%0D%0A%0D%0A
-Firma: ${firma}%0D%0A
-Adresse: ${adresse}%0D%0A
-Postnr/by: ${postnr}%0D%0A
-Email: ${email}%0D%0A
-Kontakt: ${kontakt}%0D%0A
-Telefon: ${telefon}`;
-
-   // 🔥 Vis popup
-    document.getElementById("orderPopup").style.display = "flex";
-    document.getElementById("orderIdText").innerText =
-        "Dit ordre ID: " + orderId;
-
-    // 🔥 Åbn mail
-    window.location.href =
-        `mailto:salg@danpay.dk?subject=Ordre ${orderId}&body=${body}`;
+if(cart.length===0){
+alert("Din kurv er tom");
+return;
 }
+
+let orderId="DP-"+Date.now();
+
+let firma=document.getElementById("firma").value;
+let email=document.getElementById("email").value;
+
+let lines=cart.map(i=>`${i.qty} x ${i.name}`).join("\n");
+
+let body=`Ordre ${orderId}
+
+${lines}
+
+Firma: ${firma}
+Email: ${email}`;
+
+document.getElementById("orderPopup").style.display="flex";
+document.getElementById("orderIdText").innerText="Ordre ID: "+orderId;
+
+window.location.href="mailto:salg@danpay.dk?subject="+encodeURIComponent("Ordre "+orderId)+"&body="+encodeURIComponent(body);
+}
+
 function closePopup(){
-    document.getElementById("orderPopup").style.display = "none";
+document.getElementById("orderPopup").style.display="none";
 }
 </script>
 
