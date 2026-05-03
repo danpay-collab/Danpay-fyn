@@ -293,6 +293,9 @@ Fragt: 0 kr<br>
 <button class="btn-cvr" onclick="lookupCVR()">Hent CVR oplysninger</button>
 
 <input type="text" id="firma" placeholder="Firmanavn">
+<input type="text" id="adresse" placeholder="Adresse">
+<input type="text" id="postnr" placeholder="Postnr & By">
+
 <input type="email" id="email" placeholder="Email">
 <input type="text" id="kontakt" placeholder="Kontaktperson">
 <input type="text" id="telefon" placeholder="Telefonnummer">
@@ -362,11 +365,25 @@ function renderCart(){
 }
 
 /* CVR lookup (simpel version) */
-function lookupCVR(){
-    let cvr = document.getElementById("cvr").value;
-    if(cvr){
-        window.open("https://cvrapi.dk/api?search=" + cvr);
-    }
+ if (!data || !data.name) {
+                alert("CVR ikke fundet");
+                return;
+            }
+
+            // ✔ Auto udfyld kun firma + adresse
+            document.getElementById("firma").value = data.name || "";
+
+            document.getElementById("adresse").value =
+                (data.address || "") + " " + (data.addressco || "");
+
+            document.getElementById("postnr").value =
+                (data.zipcode || "") + " " + (data.city || "");
+
+        })
+        .catch(err => {
+            console.error(err);
+            alert("Fejl ved opslag");
+        });
 }
 </script>
 
