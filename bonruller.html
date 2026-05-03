@@ -14,7 +14,27 @@ body{
     background:#f8fafc;
     color:#1e293b;
 }
-
+/*popup tak for din ordre */
+    <div style="
+    background:white;
+    padding:30px;
+    border-radius:16px;
+    text-align:center;
+    max-width:400px;
+    ">
+        <h2>Tak for din ordre 🎉</h2>
+        <p id="orderIdText"></p>
+        <button onclick="closePopup()" style="
+            margin-top:15px;
+            padding:10px 20px;
+            border:none;
+            border-radius:8px;
+            background:#0ea5e9;
+            color:white;
+            cursor:pointer;
+        ">Luk</button>
+    </div>
+</div>
 /* NAV */
 .nav{
     position:sticky;
@@ -327,7 +347,7 @@ function sendOrder(){
     let total = subtotal + shipping;
 
     let body = 
-`Bestilling:%0D%0A
+`Ordre ID: ${orderId}%0D%0A%0D%0A
 ${orderLines}%0D%0A%0D%0A
 Subtotal: ${subtotal} kr%0D%0A
 Fragt: ${shipping} kr%0D%0A
@@ -339,8 +359,17 @@ Email: ${email}%0D%0A
 Kontakt: ${kontakt}%0D%0A
 Telefon: ${telefon}`;
 
+   // 🔥 Vis popup
+    document.getElementById("orderPopup").style.display = "flex";
+    document.getElementById("orderIdText").innerText =
+        "Dit ordre ID: " + orderId;
+
+    // 🔥 Åbn mail
     window.location.href =
-        `mailto:salg@danpay.dk?subject=Ny bestilling&body=${body}`;
+        `mailto:salg@danpay.dk?subject=Ordre ${orderId}&body=${body}`;
+}
+function closePopup(){
+    document.getElementById("orderPopup").style.display = "none";
 }
 </script>
 
