@@ -12,298 +12,203 @@ body {
     font-family:'Inter',sans-serif;
     margin:0;
     background:#f8fafc;
-    color:#1e293b;
 }
 
 /* NAV */
 .nav{
-    position:sticky;
-    top:0;
-    z-index:1000;
     display:flex;
     justify-content:space-between;
-    align-items:center;
-    padding:16px 10%;
-    background:rgba(255,255,255,0.7);
-    backdrop-filter:blur(10px);
-    border-bottom:1px solid rgba(0,0,0,0.05);
+    padding:20px 10%;
 }
 
 .logo img{ height:45px; }
 
-.nav-right{
-    display:flex;
-    gap:20px;
-    align-items:center;
-}
-
-.nav-right a{
-    text-decoration:none;
-    color:#0f172a;
-    font-weight:600;
-}
-
-.nav-right a:hover{
-    color:#0ea5e9;
-}
-
-.cta-btn{
-    background:linear-gradient(90deg,#0ea5e9,#3b82f6);
-    color:white;
-    padding:10px 18px;
-    border-radius:8px;
-}
-
-/* HERO */
-.hero {
-    padding:80px 10%;
+.hero{
     text-align:center;
+    padding:60px 10%;
 }
 
-.hero h1 {
-    font-size:44px;
-}
-
-.hero p {
-    font-size:18px;
-    color:#64748b;
-}
-
-/* PRODUCTS GRID */
-.products {
+.products{
     display:grid;
     grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
     gap:30px;
     padding:40px 10%;
 }
 
-/* PRODUCT CARD */
-.product {
+.product{
     background:white;
     border-radius:16px;
-    overflow:hidden;
+    padding:20px;
     box-shadow:0 10px 25px rgba(0,0,0,0.05);
-    transition:0.3s;
 }
 
-.product:hover{
-    transform:translateY(-6px);
-}
-
-/* IMAGE */
 .product img{
-    width:85%;
-    height:300px;
+    width:100%;
+    height:220px;
     object-fit:cover;
 }
 
-/* CONTENT */
-.product-content{
-    padding:20px;
-}
-
-.product h3{
-    margin:0 0 10px;
-}
-
 .price{
-    font-size:20px;
     font-weight:600;
     margin:10px 0;
 }
 
-/* ORDER */
 .order{
     display:flex;
     gap:10px;
-    margin-top:10px;
 }
 
 .order input{
     width:60px;
-    padding:8px;
-    border-radius:6px;
-    border:1px solid #ddd;
     text-align:center;
 }
 
-.btn-buy{
+.btn{
     flex:1;
-    display:flex;
-    align-items:center;      /* lodret centrering */
-    justify-content:center;  /* vandret centrering */
-
     background:linear-gradient(90deg,#0ea5e9,#3b82f6);
-    color:black;             /* 🔥 sort tekst */
     border:none;
+    color:black;
+    font-weight:600;
     border-radius:8px;
     cursor:pointer;
-    font-weight:600;
 }
 
-/* CTA */
-.cta{
-    text-align:center;
-    padding:80px 10%;
+/* 🛒 CART */
+.cart{
+    position:fixed;
+    bottom:20px;
+    right:20px;
+    width:280px;
+    background:white;
+    border-radius:16px;
+    box-shadow:0 15px 40px rgba(0,0,0,0.15);
+    padding:20px;
 }
 
-.btn-main{
-    background:linear-gradient(90deg,#0ea5e9,#3b82f6);
-    padding:14px 28px;
-    border-radius:10px;
-    color:white;
-    text-decoration:none;
+.cart h3{
+    margin-top:0;
 }
 
-/* FOOTER */
-.footer{
-    width:100%;
-    background:#0b1736;
-    color:white;
-    margin-top:80px;
-}
-
-.footer-inner{
-    max-width:1200px;
-    margin:auto;
-    padding:50px 20px;
-    display:flex;
-    justify-content:space-between;
-}
-
-.footer-left img{ height:45px; }
-
-.footer-right{
-    text-align:right;
+.cart-items{
+    max-height:150px;
+    overflow:auto;
     font-size:14px;
-    color:#cbd5e1;
 }
 
-.footer-bottom{
-    text-align:center;
-    padding:15px;
-    background:#020617;
-    color:#94a3b8;
-}
-
-/* MOBILE */
-@media(max-width:668px){
-    .nav{
-        flex-direction:column;
-        align-items:flex-start;
-    }
+.cart button{
+    width:100%;
+    margin-top:10px;
+    padding:10px;
+    border:none;
+    border-radius:8px;
+    background:#22c55e;
+    color:white;
+    cursor:pointer;
 }
 </style>
 </head>
 
 <body>
 
-<!-- NAV -->
 <div class="nav">
     <div class="logo">
         <img src="danpaylogo.jpg">
     </div>
-
-    <div class="nav-right">
-        <a href="index.html" class="back-btn">Forside</a>
-        <a href="tel:+4570180099" class="phone">+45 7018 0099</a>
-        <a href="#" class="cta-btn">Kontakt</a>
-    </div>
 </div>
 
-<!-- HERO -->
 <div class="hero">
     <h1>Bestil bonruller</h1>
-    <p>Hurtig levering og skarpe priser</p>
+    <p>Vælg produkter og bestil samlet</p>
 </div>
 
-<!-- PRODUCTS -->
 <div class="products">
 
+<!-- PRODUCT 1 -->
 <div class="product">
 <img src="ruller80.png">
-<div class="product-content">
-<h3>80 x 80 x 12mm Bonrulle (30 stk pr kasse)</h3>
-<p>Standard til kassesystemer</p>
-    <p>plus Levering 59 kr</p>
-<div class="price">599 kr / kasse</div>
+<h3>80x80x12mm (30 stk)</h3>
+<div class="price">599 kr</div>
 
 <div class="order">
-<input type="number" value="1" min="1">
-<a href="mailto:salg@danpay.dk?subject=Bestilling 80x80x12mm bonruller" class="btn-buy">Bestil</a>
-</div>
+<input type="number" id="qty1" value="1" min="1">
+<button onclick="addToCart('80x80x12mm',599,'qty1')" class="btn">Tilføj</button>
 </div>
 </div>
 
+<!-- PRODUCT 2 -->
 <div class="product">
 <img src="ruller57.png">
-<div class="product-content">
-<h3>57 x 40 x 12 mm Bonrulle (50 stk pr kasse)</h3>
-<p>Til mindre terminaler - sunmi V3</p>
-    <p>plus Levering 59 kr</p>
-<div class="price">499 kr / kasse</div>
+<h3>57x40x12mm (50 stk)</h3>
+<div class="price">499 kr</div>
 
 <div class="order">
-<input type="number" value="1" min="1">
-<a href="mailto:salg@danpay.dk?subject=Bestilling 57x40x12mm bonruller" class="btn-buy">Bestil</a>
-</div>
-</div>
-</div>
-
-<div class="product">
-<img src="ruller8040.png">
-<div class="product-content">
-<h3>80 x 40 x 12 mm Bonrulle (40 stk pr kasse)</h3>
-<p>Til mindre terminaler</p>
-    <p>plus Levering 59 kr</p>
-<div class="price">499 kr / kasse</div>
-
-<div class="order">
-<input type="number" value="1" min="1">
-<a href="mailto:salg@danpay.dk?subject=Bestilling 80x40x12mm bonruller" class="btn-buy">Bestil</a>
-</div>
-</div>
-</div>    
-
-<div class="product">
-<img src="bonruller1.jpg">
-<div class="product-content">
-<h3>Special bonruller</h3>
-<p>Vi sælger Labels og Bonruller</p>
-<p>Kontakt os for specialmål</p>
-<div class="price">Kontakt for pris</div>
-
-<div class="order">
-<a href="mailto:salg@danpay.dk?subject=Special bonruller" class="btn-buy">Forespørg</a>
-</div>
+<input type="number" id="qty2" value="1" min="1">
+<button onclick="addToCart('57x40x12mm',499,'qty2')" class="btn">Tilføj</button>
 </div>
 </div>
 
 </div>
 
-<!-- CTA -->
-<div class="cta">
-<h2>Har du spørgsmål?</h2>
-<a href="mailto:salg@danpay.dk" class="btn-main">Kontakt os</a>
+<!-- 🛒 CART -->
+<div class="cart">
+<h3>🛒 Din kurv</h3>
+
+<div id="cartItems" class="cart-items">
+Ingen varer endnu
 </div>
 
-<!-- FOOTER -->
-<footer class="footer">
-<div class="footer-inner">
-<div class="footer-left">
-<img src="danpaylogo.jpg">
+<button onclick="sendOrder()">Send bestilling</button>
 </div>
-<div class="footer-right">
-<p>DanPay ApS</p>
-<p>CVR: 25128184</p>
-<p>9200 Aalborg SV</p>
-<p>Kundeservice@danpay.dk</p>
-</div>
-</div>
-<div class="footer-bottom">
-© 2026 Danpay - Alle priser Ekskl. moms.
-</div>
-</footer>
+
+<script>
+let cart = [];
+
+function addToCart(name, price, qtyId){
+    const qty = document.getElementById(qtyId).value;
+
+    cart.push({
+        name: name,
+        price: price,
+        qty: qty
+    });
+
+    renderCart();
+}
+
+function renderCart(){
+    const container = document.getElementById("cartItems");
+
+    if(cart.length === 0){
+        container.innerHTML = "Ingen varer endnu";
+        return;
+    }
+
+    let html = "";
+    cart.forEach(item => {
+        html += `${item.name} x ${item.qty}<br>`;
+    });
+
+    container.innerHTML = html;
+}
+
+function sendOrder(){
+
+    if(cart.length === 0){
+        alert("Kurven er tom");
+        return;
+    }
+
+    let body = "Hej DanPay,%0D%0A%0D%0AJeg vil gerne bestille:%0D%0A";
+
+    cart.forEach(item => {
+        body += `${item.name} - ${item.qty} stk%0D%0A`;
+    });
+
+    body += "%0D%0AMvh";
+
+    window.location.href = `mailto:salg@danpay.dk?subject=Bestilling&body=${body}`;
+}
+</script>
 
 </body>
 </html>
