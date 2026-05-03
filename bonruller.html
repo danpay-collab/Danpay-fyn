@@ -396,6 +396,12 @@ Telefon: ${telefon}`;
 function closePopup(){
     document.getElementById("orderPopup").style.display = "none";
 }
+window.onclick = function(event){
+    let popup = document.getElementById("orderPopup");
+    if(event.target === popup){
+        popup.style.display = "none";
+    }
+}
 </script>
 
 </body>
