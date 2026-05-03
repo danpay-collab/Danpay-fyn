@@ -42,11 +42,11 @@ body {
 }
 
 /* PRODUCTS */
-.products{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-    gap:30px;
-    padding:40px 10%;
+.products {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 🔥 FAST 3 */
+    gap: 30px;
+    padding: 40px 10%;
 }
 
 .product{
@@ -90,16 +90,16 @@ body {
 }
 
 /* CART */
-.cart{
-    position:fixed;
-    right:20px;
-    bottom:20px;
-    width:320px;
-    background:white;
-    padding:20px;
-    border-radius:16px;
-    box-shadow:0 15px 40px rgba(0,0,0,0.2);
-    z-index:999;
+.cart {
+    position: fixed;
+    right: 20px;
+    bottom: 120px; /* 🔥 hævet fra footer */
+    width: 320px;
+    background: white;
+    border-radius: 16px;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+    padding: 20px;
+    z-index: 1000;
 }
 
 .cart h3{ margin-top:0; }
@@ -169,6 +169,18 @@ body {
     text-align:center;
     padding:10px;
     background:#020617;
+}
+
+@media(max-width:900px){
+    .products {
+        grid-template-columns: 1fr;
+    }
+
+    .cart {
+        right: 10px;
+        bottom: 20px;
+        width: 90%;
+    }
 }
 </style>
 </head>
