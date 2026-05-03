@@ -270,11 +270,11 @@ body{
 </div>
 
 <!-- POPUP -->
-<div id="orderPopup">
+<div id="orderPopup" style="display:none;">
     <div style="background:white;padding:30px;border-radius:16px;text-align:center;">
         <h2>Tak for din ordre 🎉</h2>
         <p id="orderIdText"></p>
-        <button onclick="closePopup()">Luk</button>
+       <button onclick="closePopup()">Luk</button>
     </div>
 </div>
 
@@ -392,6 +392,9 @@ Telefon: ${telefon}`;
     window.location.href =
         "mailto:salg@danpay.dk?subject=" + encodeURIComponent("Ordre " + orderId) +
         "&body=" + encodeURIComponent(body);
+}
+function closePopup(){
+    document.getElementById("orderPopup").style.display = "none";
 }
 </script>
 
