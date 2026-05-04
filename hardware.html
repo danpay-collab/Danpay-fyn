@@ -680,6 +680,84 @@ function lookupCVR(){
     });
 }
 
+function send(){
+
+let lines = "";
+let total = 0;
+
+products.forEach((p,i)=>{
+
+    if(quantities[i] > 0){
+
+        let price = p.price || 0;
+        let optionText = "";
+        let extraText = "";
+
+        // OPTION
+        if(p.options){
+            let opt = document.getElementById("opt"+i);
+            if(opt){
+                let selected = p.options[opt.value];
+                price = selected.price;
+                optionText = " (" + selected.label + ")";
+            }
+        }
+
+        // EXTRA
+        if(p.extras){
+            let extra = document.getElementById("extra"+i);
+            if(extra){
+                let selected = p.extras[extra.value];
+                price += selected.price;
+                if(selected.price > 0){
+                    extraText = " + " + selected.label;
+                }
+            }
+        }
+
+        let lineTotal = price * quantities[i];
+        total += lineTotal;
+
+        lines += `${quantities[i]} x ${p.name}${optionText}${extraText} = ${lineTotal} kr\n`;
+    }
+
+});
+
+if(lines === ""){
+    alert("Du har ikke valgt nogen produkter");
+    return;
+}
+
+// Kundedata
+let firma = document.getElementById("firma").value;
+let adresse = document.getElementById("adresse").value;
+let postnr = document.getElementById("postnr").value;
+let kontakt = document.getElementById("kontakt").value;
+let telefon = document.getElementById("telefon").value;
+let email = document.getElementById("email").value;
+
+// Mail tekst
+let body = 
+`Hardware forespørgsel
+
+Produkter:
+${lines}
+
+Samlet pris: ${total} kr
+
+Firma: ${firma}
+Adresse: ${adresse}
+Postnr/by: ${postnr}
+Kontakt: ${kontakt}
+Telefon: ${telefon}
+Email: ${email}
+`;
+
+// Send mail
+window.location.href =
+"mailto:salg@danpay.dk?subject=Hardware forespørgsel&body=" + encodeURIComponent(body);
+}
+    
 </script>
 
 </body>
