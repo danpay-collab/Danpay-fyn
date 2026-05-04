@@ -33,7 +33,42 @@ body{
 
 .nav-right{
     display:flex;
-    gap:20px;
+    align-items:center;
+    gap:15px;
+}
+
+/* normal link */
+.nav-link{
+    text-decoration:none;
+    color:#0f172a;
+    font-weight:500;
+}
+
+/* telefon knap */
+.phone-btn{
+    background:#e2e8f0;
+    padding:8px 14px;
+    border-radius:8px;
+    text-decoration:none;
+    color:#0f172a;
+    font-weight:600;
+}
+
+/* CTA knap */
+.cta-btn{
+    background:linear-gradient(90deg,#0ea5e9,#3b82f6);
+    color:white;
+    padding:10px 18px;
+    border-radius:8px;
+    text-decoration:none;
+    font-weight:600;
+    transition:0.2s;
+}
+
+.cta-btn:hover{
+    transform:translateY(-2px);
+    box-shadow:0 6px 20px rgba(14,165,233,0.3);
+
 }
 
 /* HERO */
@@ -207,9 +242,17 @@ body{
 </div>
 
 <div class="nav-right">
-<a href="index.html">Forside</a>
-<a href="tel:+4570180099">+45 70 18 00 99</a>
-</div>
+
+    <a href="index.html" class="nav-link">Forside</a>
+
+    <a href="tel:+4570180099" class="phone-btn">
+        📞 +45 70 18 00 99
+    </a>
+
+    <a href="kontakt.html" class="cta-btn">
+        Kontakt
+    </a>
+
 </div>
 
 <!-- HERO -->
