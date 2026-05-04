@@ -228,7 +228,10 @@ Total: <span id="total">0</span> kr
 <h2>Få et tilbud</h2>
 <div class="form-grid">
 <input id="cvr" placeholder="CVR">
+<button class="btn" onclick="lookupCVR()">Hent CVR oplysninger</button>
 <input id="firma" placeholder="Firmanavn">
+<input id="adresse" placeholder="Adresse">
+<input id="postnr" placeholder="Postnr & By">
 <input id="kontakt" placeholder="Kontaktperson">
 <input id="telefon" placeholder="Telefon">
 <input id="email" placeholder="Email">
@@ -253,7 +256,7 @@ Total: <span id="total">0</span> kr
     </div>
 
     <div class="footer-bottom">
-        © 2026 Danpay – Alle rettigheder forbeholdes
+        © 2026 DanPay – Alle rettigheder forbeholdes. Alle priser er ekskl. moms. Der tages forbehold for trykfejl, prisændringer og udsolgte varer.
     </div>
 </footer>
 
@@ -552,6 +555,36 @@ document.getElementById("modal").style.display="none";
 }
 
 renderProducts();
+
+function lookupCVR(){
+
+    let cvr = document.getElementById("cvr").value;
+
+    if(!cvr){
+        alert("Indtast CVR nummer");
+        return;
+    }
+
+    fetch("https://cvrapi.dk/api?search=" + cvr + "&country=dk")
+    .then(res => res.json())
+    .then(data => {
+
+        if(!data || data.error){
+            alert("CVR ikke fundet");
+            return;
+        }
+
+        document.getElementById("firma").value = data.name || "";
+        document.getElementById("adresse").value = data.address || "";
+        document.getElementById("postnr").value =
+            (data.zipcode || "") + " " + (data.city || "");
+
+    })
+    .catch(err => {
+        console.error(err);
+        alert("Fejl ved opslag");
+    });
+}
 
 </script>
 
