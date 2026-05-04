@@ -153,26 +153,48 @@ body{
 }
 
 /* MOBILE */
-@media(max-width:900px){
-
-    .products{
-        grid-template-columns:1fr;
-        margin:20px;
+/* MOBILE */
+@media(max-width:668px){
+    .nav-right{
+        width:100%;
+        justify-content:space-between;
     }
 
-    .cart{
-        position:relative;
-        transform:none;
-        width:90%;
-        margin:20px auto;
+    .phone-btn{
+        font-size:13px;
+        padding:6px 10px;
     }
 
-    .footer-inner{
+    .nav{
         flex-direction:column;
-        gap:20px;
-        text-align:center;
+        align-items:flex-start;
+        gap:10px;
     }
-}
+
+    .nav-right{
+        width:100%;
+        display:flex;
+        justify-content:space-between;
+        align-items:center;
+    }
+
+    .phone{
+        white-space:nowrap;
+        font-size:14px;
+    }
+
+    .split img,
+    .betaling-video{
+        width:100%;
+        height:auto;
+        max-height:250px;
+        object-fit:cover;
+    }
+
+    .split{
+        padding:40px 5%;
+        gap:20px;
+    }
 </style>
 </head>
 
